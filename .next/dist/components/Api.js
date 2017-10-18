@@ -9,14 +9,10 @@ var _axios = require("axios");
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _secrets = require("./secrets.json");
-
-var _secrets2 = _interopRequireDefault(_secrets);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var server = _axios2.default.create({
-  baseURL: _secrets2.default.server_url,
+  baseURL: "https://jonathanzanella-myinvestments.herokuapp.com/api",
   timeout: 60000,
   headers: {
     Accept: "application/json",
