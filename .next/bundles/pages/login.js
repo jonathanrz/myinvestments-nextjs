@@ -1,0 +1,6 @@
+
+          window.__NEXT_REGISTER_PAGE('/login', function() {
+            var comp = module.exports=webpackJsonp([5],{233:function(e,t,n){e.exports=n(234)},234:function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var u=n(12),l=a(u),d=n(1),i=a(d),o=n(2),f=a(o),r=n(13),h=a(r),s=n(14),c=a(s),m=n(5),p=a(m),b=n(102),k=a(b),v=n(33),_=a(v),S=n(108),g=a(S),y=function(e){function t(e){(0,i.default)(this,t);var n=(0,h.default)(this,(t.__proto__||(0,l.default)(t)).call(this,e));return n.state={token:""},n.handleChange=n.handleChange.bind(n),n.handleSubmit=n.handleSubmit.bind(n),n}return(0,c.default)(t,e),(0,f.default)(t,[{key:"handleChange",value:function(e){this.setState({token:e.target.value})}},{key:"handleSubmit",value:function(e){g.default.set("token",this.state.token),_.default.push("/"),e.preventDefault()}},{key:"render",value:function(){return p.default.createElement(k.default,null,p.default.createElement("form",{onSubmit:this.handleSubmit},p.default.createElement("label",null,"Token:",p.default.createElement("input",{type:"text",name:"token",value:this.state.token,onChange:this.handleChange})),p.default.createElement("input",{type:"submit",value:"Submit"})))}}]),t}(p.default.Component);t.default=y}},[233]);
+            return { page: comp.default }
+          })
+        
