@@ -6,10 +6,14 @@ const layoutStyle = {
   border: "1px solid #DDD"
 };
 
+const pageStyle = {
+  margin: 20
+};
+
 const Layout = props => (
   <div style={layoutStyle}>
     <Header />
-    {props.children}
+    <div style={pageStyle}>{props.children}</div>
   </div>
 );
 
