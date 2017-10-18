@@ -29,11 +29,8 @@ class Index extends React.Component {
 }
 
 Index.getInitialProps = async function({ req }) {
-  console.log("token=" + req.cookies);
   const res = await getInvestments(req.cookies["token"]);
-  const data = res.data();
-
-  console.log(`Investments data fetched. Count: ${data.length}`);
+  const data = res.data;
 
   return {
     investments: data

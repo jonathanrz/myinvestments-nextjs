@@ -2,8 +2,6 @@ import Layout from "../components/MyLayout.js";
 import Router from "next/router";
 import Cookie from "js-cookie";
 
-const isProduction = process.env.NODE_ENV === "production";
-
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +16,7 @@ class Index extends React.Component {
   }
 
   handleSubmit(event) {
-    Cookie.set("token", this.state.token, { secure: isProduction });
+    Cookie.set("token", this.state.token);
     Router.push(`/`);
     event.preventDefault();
   }
