@@ -1,8 +1,7 @@
 import axios from "axios";
-import secrets from "./secrets.json";
 
 const server = axios.create({
-  baseURL: secrets.server_url,
+  baseURL: "https://jonathanzanella-myinvestments.herokuapp.com/api",
   timeout: 60000,
   headers: {
     Accept: "application/json",
