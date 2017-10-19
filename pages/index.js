@@ -40,9 +40,10 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = async function({ req }) {
-  console.log("running on=" + (req ? "Server" : "Client"));
-  const token = req ? req.headers.cookies["token"] : Cookie.get("token");
+Index.getInitialProps = async function({ isServer, req }) {
+  console.log("running on=" + (isServer ? "Server" : "Client"));
+  console.log("cookies=" + req.cookies);
+  const token = isServer ? req.cookies["token"] : Cookie.get("token");
   console.log("token=" + token);
   const res = await getInvestments(req.headers.cookies["token"]);
   const data = res.data;
