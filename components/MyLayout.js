@@ -1,4 +1,5 @@
 import Header from "./Header";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 const layoutStyle = {
   margin: 20,
@@ -11,10 +12,12 @@ const pageStyle = {
 };
 
 const Layout = props => (
-  <div style={layoutStyle}>
-    <Header />
-    <div style={pageStyle}>{props.children}</div>
-  </div>
+  <MuiThemeProvider>
+    <div style={layoutStyle}>
+      <Header />
+      <div style={pageStyle}>{props.children}</div>
+    </div>
+  </MuiThemeProvider>
 );
 
 export default Layout;
