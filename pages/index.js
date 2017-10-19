@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "../components/MyLayout.js";
 import Link from "next/link";
-import Cookie from "js-cookie";
+import { Cookie as ClientCookie } from "js-cookie";
+import { parse as CookieParser } from "cookie";
 import fetch from "isomorphic-unfetch";
 import { getInvestments } from "../components/Api";
 
@@ -43,7 +44,9 @@ class Index extends React.Component {
 Index.getInitialProps = async function({ req }) {
   console.log("cookies=" + req.cookie);
   console.log("cookies2=" + req.headers.cookie);
-  const token = req ? req.headers.cookie["token"] : Cookie.get("token");
+  const token = req
+    ? CookieParser(req.headers.cookie).token
+    : ClientCookie.get("token");
   console.log("token=" + token);
   const res = await getInvestments(token);
   const data = res.data;
