@@ -41,6 +41,7 @@ class Index extends React.Component {
 }
 
 Index.getInitialProps = async function({ req }) {
+  console.log("cookies=" + req.cookie);
   console.log("cookies2=" + req.headers.cookie);
   const token = req ? req.headers.cookie["token"] : Cookie.get("token");
   console.log("token=" + token);
