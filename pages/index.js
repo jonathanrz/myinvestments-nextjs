@@ -45,7 +45,7 @@ Index.getInitialProps = async function({ isServer, req }) {
   console.log("cookies=" + req.cookies);
   const token = isServer ? req.cookies["token"] : Cookie.get("token");
   console.log("token=" + token);
-  const res = await getInvestments(req.headers.cookies["token"]);
+  const res = await getInvestments(token);
   const data = res.data;
 
   return {
