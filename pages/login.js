@@ -1,27 +1,28 @@
-import Layout from "../components/MyLayout.js";
-import Router from "next/router";
-import Cookie from "js-cookie";
+import React from 'react'
+import Layout from '../components/MyLayout.js'
+import Router from 'next/router'
+import Cookie from 'js-cookie'
 
 class Index extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { token: "" };
+  constructor (props) {
+    super(props)
+    this.state = { token: '' }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({ token: event.target.value });
+  handleChange (event) {
+    this.setState({ token: event.target.value })
   }
 
-  handleSubmit(event) {
-    Cookie.set("token", this.state.token);
-    Router.push(`/`);
-    event.preventDefault();
+  handleSubmit (event) {
+    Cookie.set('token', this.state.token)
+    Router.push('/')
+    event.preventDefault()
   }
 
-  render() {
+  render () {
     return (
       <Layout>
         <form onSubmit={this.handleSubmit}>
@@ -37,8 +38,8 @@ class Index extends React.Component {
           <input type="submit" value="Submit" />
         </form>
       </Layout>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index

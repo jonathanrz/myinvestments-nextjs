@@ -7,7 +7,8 @@
     "dev": "node server.js",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "lint:js": "eslint ./**/ --ignore-path .gitignore"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,18 @@
     "react": "^16.0.0",
     "react-cookie": "^2.1.1",
     "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }

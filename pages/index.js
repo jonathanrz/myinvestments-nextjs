@@ -1,8 +1,8 @@
-import React from "react";
-import Layout from "../components/MyLayout.js";
-import Link from "next/link";
-import { Cookie as ClientCookie } from "js-cookie";
-import { parse as CookieParser } from "cookie";
+import React from 'react'
+import Layout from '../components/MyLayout.js'
+import PropTypes from 'prop-types'
+import { Cookie as ClientCookie } from 'js-cookie'
+import { parse as CookieParser } from 'cookie'
 import {
   Table,
   TableHeader,
@@ -10,16 +10,28 @@ import {
   TableRow,
   TableHeaderColumn,
   TableRowColumn
-} from "material-ui/Table";
-import { getInvestments } from "../components/Api";
+} from 'material-ui/Table'
+import { getInvestments } from '../components/Api'
 
 class Index extends React.Component {
-  render() {
-    const { investments } = this.props;
+  static async getInitialProps ({ req }) {
+    const token = req
+      ? CookieParser(req.headers.cookie).token
+      : ClientCookie.get('token')
+    const res = await getInvestments(token)
+    const data = res.data
+
+    return {
+      investments: data
+    }
+  }
+
+  render () {
+    const { investments } = this.props
 
     return (
       <Layout>
-        <Table height={500} fixedHeader={true} selectable={false}>
+        <Table height={500} fixedHeader selectable={false}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Nome</TableHeaderColumn>
@@ -28,11 +40,7 @@ class Index extends React.Component {
               <TableHeaderColumn>Vencimento</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody
-            displayRowCheckbox={false}
-            showRowHover={true}
-            stripedRows={true}
-          >
+          <TableBody displayRowCheckbox={false} showRowHover stripedRows>
             {investments.map(item => (
               <TableRow key={item._id}>
                 <TableRowColumn>{item.name}</TableRowColumn>
@@ -44,20 +52,12 @@ class Index extends React.Component {
           </TableBody>
         </Table>
       </Layout>
-    );
+    )
   }
 }
 
-Index.getInitialProps = async function({ req }) {
-  const token = req
-    ? CookieParser(req.headers.cookie).token
-    : ClientCookie.get("token");
-  const res = await getInvestments(token);
-  const data = res.data;
+Index.propTypes = {
+  investments: PropTypes.element.isRequired
+}
 
-  return {
-    investments: data
-  };
-};
-
-export default Index;
+export default Index

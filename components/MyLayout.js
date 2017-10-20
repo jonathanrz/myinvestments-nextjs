@@ -1,15 +1,17 @@
-import Header from "./Header";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import React from 'react'
+import Header from './Header'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import PropTypes from 'prop-types'
 
 const layoutStyle = {
   margin: 20,
   padding: 20,
-  border: "1px solid #DDD"
-};
+  border: '1px solid #DDD'
+}
 
 const pageStyle = {
   margin: 20
-};
+}
 
 const Layout = props => (
   <MuiThemeProvider>
@@ -18,6 +20,10 @@ const Layout = props => (
       <div style={pageStyle}>{props.children}</div>
     </div>
   </MuiThemeProvider>
-);
+)
 
-export default Layout;
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
+}
+
+export default Layout
