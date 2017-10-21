@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/MyLayout.js'
 import Router from 'next/router'
-import Cookie from 'js-cookie'
+import { setToken } from '../components/Api'
 
 class Index extends React.Component {
   constructor (props) {
@@ -17,9 +17,9 @@ class Index extends React.Component {
   }
 
   handleSubmit (event) {
-    Cookie.set('token', this.state.token)
-    Router.push('/')
     event.preventDefault()
+    setToken(this.state.token)
+    Router.push('/')
   }
 
   render () {

@@ -1,8 +1,7 @@
 import React from 'react'
-import Layout from '../components/MyLayout.js'
 import PropTypes from 'prop-types'
-import { Cookie as ClientCookie } from 'js-cookie'
-import { parse as CookieParser } from 'cookie'
+import Link from 'next/link'
+import Router from 'next/router'
 import {
   Table,
   TableHeader,
@@ -11,19 +10,28 @@ import {
   TableHeaderColumn,
   TableRowColumn
 } from 'material-ui/Table'
-import { getInvestments } from '../components/Api'
+import Layout from '../components/MyLayout.js'
+import { getInvestments, getToken } from '../components/Api'
 
 class Index extends React.Component {
   static async getInitialProps ({ req }) {
-    const token = req
-      ? CookieParser(req.headers.cookie).token
-      : ClientCookie.get('token')
-    const res = await getInvestments(token)
+    const res = await getInvestments(getToken(req))
     const data = res.data
 
     return {
       investments: data
     }
+  }
+
+  constructor (props) {
+    super(props)
+
+    this.onInvestment = this.onInvestment.bind(this)
+  }
+
+  onInvestment (e) {
+    e.preventDefault()
+    Router.push(e.href)
   }
 
   render () {
@@ -43,7 +51,14 @@ class Index extends React.Component {
           <TableBody displayRowCheckbox={false} showRowHover stripedRows>
             {investments.map(item => (
               <TableRow key={item._id}>
-                <TableRowColumn>{item.name}</TableRowColumn>
+                <TableRowColumn>
+                  <Link
+                    onClick={this.onInvestment}
+                    href={`/investment?id=${item._id}`}
+                  >
+                    <a>{item.name}</a>
+                  </Link>
+                </TableRowColumn>
                 <TableRowColumn>{item.type}</TableRowColumn>
                 <TableRowColumn>{item.holder}</TableRowColumn>
                 <TableRowColumn>{item.due_date}</TableRowColumn>
