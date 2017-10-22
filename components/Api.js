@@ -17,11 +17,9 @@ export const setToken = token => {
 }
 
 export const getToken = req => {
-  const token = req
+  return req
     ? parse(req.headers.cookie).token
     : window.localStorage.getItem('token')
-  console.log(`req=${req} token=${token}`)
-  return token
 }
 
 export const getInvestments = token => {
