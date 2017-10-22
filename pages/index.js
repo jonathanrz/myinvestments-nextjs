@@ -38,7 +38,7 @@ class Index extends React.Component {
     const { investments } = this.props
 
     return (
-      <Layout>
+      <Layout title="Investimentos">
         <Table height={500} fixedHeader selectable={false}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>

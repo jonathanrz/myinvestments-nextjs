@@ -1,13 +1,7 @@
 import React from 'react'
-import Header from './Header'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar'
 import PropTypes from 'prop-types'
-
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD'
-}
 
 const pageStyle = {
   margin: 20
@@ -15,14 +9,16 @@ const pageStyle = {
 
 const Layout = props => (
   <MuiThemeProvider>
-    <div style={layoutStyle}>
-      <Header />
-      <div style={pageStyle}>{props.children}</div>
-    </div>
+    <AppBar
+      title={props.title}
+      iconClassNameRight="muidocs-icon-navigation-expand-more"
+    />
+    <div style={pageStyle}>{props.children}</div>
   </MuiThemeProvider>
 )
 
 Layout.propTypes = {
+  title: PropTypes.element.isRequired,
   children: PropTypes.element.isRequired
 }
 

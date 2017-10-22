@@ -16,11 +16,7 @@ class Index extends React.Component {
   render () {
     const { investment } = this.props
 
-    return (
-      <Layout>
-        <div>{investment.name}</div>
-      </Layout>
-    )
+    return <Layout title={investment.name} />
   }
 }
 
