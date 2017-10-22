@@ -1,6 +1,7 @@
 import React from 'react'
-import Layout from '../components/MyLayout.js'
+import Router from 'next/router'
 import PropTypes from 'prop-types'
+import Layout from '../components/MyLayout.js'
 import { getInvestment, getToken } from '../components/Api'
 
 class Index extends React.Component {
@@ -16,7 +17,15 @@ class Index extends React.Component {
   render () {
     const { investment } = this.props
 
-    return <Layout title={investment.name} />
+    return (
+      <Layout
+        title={investment.name}
+        detail={true}
+        onNavigationClose={() => {
+          Router.push('/')
+        }}
+      />
+    )
   }
 }
 
