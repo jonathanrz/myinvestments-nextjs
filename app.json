@@ -1,14 +1,10 @@
 {
-  "name": "myinvestments-nextjs",
-  "scripts": {
-  },
-  "env": {
-  },
-  "formation": {
-  },
-  "addons": [
-
-  ],
+  "name": "My investments react js",
+  "repository": "https://github.com/jonathanrz/myinvestments-nextjs",
+  "scripts": {},
+  "env": {},
+  "formation": {},
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
