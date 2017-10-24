@@ -30,11 +30,14 @@ class Index extends React.Component {
       incomes: incomes.data
         .reverse()
         .map(item => {
-          item.lastIncomeValue =
-            lastIncomeValue !== 0 ? lastIncomeValue : item.value
+          if (lastIncomeValue === 0) {
+            item.gain = 0
+            item.gainInPerc = 0
+          } else {
+            item.gain = item.value - lastIncomeValue - (item.bought || 0)
+            item.gainInPerc = item.gain / lastIncomeValue
+          }
           lastIncomeValue = item.value
-          item.gain = item.value - item.lastIncomeValue
-          item.gainInPerc = item.gain / item.lastIncomeValue
           return item
         })
         .reverse()
@@ -66,6 +69,7 @@ class Index extends React.Component {
                   <TableHeaderColumn>Data</TableHeaderColumn>
                   <TableHeaderColumn>Quantidade</TableHeaderColumn>
                   <TableHeaderColumn>Valor</TableHeaderColumn>
+                  <TableHeaderColumn>Comprado</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda %</TableHeaderColumn>
                 </TableRow>
@@ -77,6 +81,9 @@ class Index extends React.Component {
                     <TableRowColumn>{item.quantity}</TableRowColumn>
                     <TableRowColumn>
                       {formatMoney(item.value, 2)}
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      {formatMoney(item.bought, 2)}
                     </TableRowColumn>
                     <TableRowColumn
                       style={{
