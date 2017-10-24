@@ -17,7 +17,7 @@ import {
 import FlatButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
-import { formatMoney } from '../utils/number'
+import { formatMoney, formatPercent } from '../utils/number'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -34,6 +34,7 @@ class Index extends React.Component {
             lastIncomeValue !== 0 ? lastIncomeValue : item.value
           lastIncomeValue = item.value
           item.gain = item.value - item.lastIncomeValue
+          item.gainInPerc = item.gain / item.lastIncomeValue
           return item
         })
         .reverse()
@@ -66,6 +67,7 @@ class Index extends React.Component {
                   <TableHeaderColumn>Quantidade</TableHeaderColumn>
                   <TableHeaderColumn>Valor</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda</TableHeaderColumn>
+                  <TableHeaderColumn>Ganho/Perda %</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false} showRowHover stripedRows>
@@ -82,6 +84,13 @@ class Index extends React.Component {
                       }}
                     >
                       {formatMoney(item.gain, 2)}
+                    </TableRowColumn>
+                    <TableRowColumn
+                      style={{
+                        color: item.gain >= 0 ? greenColor : redColor
+                      }}
+                    >
+                      {formatPercent(item.gainInPerc)}
                     </TableRowColumn>
                   </TableRow>
                 ))}
