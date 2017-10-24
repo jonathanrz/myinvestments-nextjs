@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
+import Date from '../components/Date'
 import {
   green700 as greenColor,
   red800 as redColor
@@ -77,7 +78,9 @@ class Index extends React.Component {
               <TableBody displayRowCheckbox={false} showRowHover stripedRows>
                 {incomes.map(item => (
                   <TableRow key={item._id}>
-                    <TableRowColumn>{item.date}</TableRowColumn>
+                    <TableRowColumn>
+                      <Date date={item.date} />
+                    </TableRowColumn>
                     <TableRowColumn>{item.quantity}</TableRowColumn>
                     <TableRowColumn>
                       {formatMoney(item.value, 2)}

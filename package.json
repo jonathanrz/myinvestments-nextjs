@@ -21,10 +21,13 @@
     "express": "^4.16.2",
     "js-cookie": "^2.1.4",
     "material-ui": "^0.19.4",
+    "moment": "^2.19.1",
+    "moment-timezone": "^0.5.13",
     "next": "^4.0.2",
     "react": "^16.0.0",
     "react-cookie": "^2.1.1",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-moment": "^0.6.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",

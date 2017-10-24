@@ -1,4 +1,5 @@
 import React from 'react'
+import Date from '../components/Date'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
@@ -61,7 +62,9 @@ class Index extends React.Component {
                 </TableRowColumn>
                 <TableRowColumn>{item.type}</TableRowColumn>
                 <TableRowColumn>{item.holder}</TableRowColumn>
-                <TableRowColumn>{item.due_date}</TableRowColumn>
+                <TableRowColumn>
+                  <Date date={item.due_date} />
+                </TableRowColumn>
               </TableRow>
             ))}
           </TableBody>
