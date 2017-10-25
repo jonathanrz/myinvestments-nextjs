@@ -42,6 +42,20 @@ class Index extends React.Component {
     }
   }
 
+  constructor (props) {
+    super(props)
+    this.state = { token: '' }
+
+    this.onNewIncome = this.onNewIncome.bind(this)
+  }
+
+  onNewIncome () {
+    Router.push(
+      `/new_income?investment_id=${this.props.investment._id}`,
+      `/investment/${this.props.investment._id}/new_income`
+    )
+  }
+
   render () {
     const { investment, incomes } = this.props
 
@@ -102,7 +116,7 @@ class Index extends React.Component {
             </Table>
           </CardMedia>
           <CardActions>
-            <FlatButton label="Novo Rendimento" />
+            <FlatButton label="Novo Rendimento" onClick={this.onNewIncome} />
           </CardActions>
         </Card>
       </Layout>

@@ -31,7 +31,10 @@ class Index extends React.Component {
 
   onInvestmentCell (index) {
     const investment = this.props.investments[index]
-    Router.push(`/investment?id=${investment._id}`)
+    Router.push(
+      `/investment?id=${investment._id}`,
+      `/investment/${investment._id}`
+    )
   }
 
   render () {
