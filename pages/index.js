@@ -1,8 +1,7 @@
 import React from 'react'
-import Layout from '../components/MyLayout.js'
+import Date from '../components/Date'
 import PropTypes from 'prop-types'
-import { Cookie as ClientCookie } from 'js-cookie'
-import { parse as CookieParser } from 'cookie'
+import Router from 'next/router'
 import {
   Table,
   TableHeader,
@@ -11,14 +10,12 @@ import {
   TableHeaderColumn,
   TableRowColumn
 } from 'material-ui/Table'
-import { getInvestments } from '../components/Api'
+import Layout from '../components/MyLayout.js'
+import { getInvestments, getToken } from '../components/Api'
 
 class Index extends React.Component {
   static async getInitialProps ({ req }) {
-    const token = req
-      ? CookieParser(req.headers.cookie).token
-      : ClientCookie.get('token')
-    const res = await getInvestments(token)
+    const res = await getInvestments(getToken(req))
     const data = res.data
 
     return {
@@ -26,12 +23,29 @@ class Index extends React.Component {
     }
   }
 
+  constructor (props) {
+    super(props)
+
+    this.onInvestmentCell = this.onInvestmentCell.bind(this)
+  }
+
+  onInvestmentCell (index) {
+    const investment = this.props.investments[index]
+    Router.push(`/investment?id=${investment._id}`)
+  }
+
   render () {
     const { investments } = this.props
 
     return (
-      <Layout>
-        <Table height={500} fixedHeader selectable={false}>
+      <Layout title="Investimentos">
+        <Table
+          height={500}
+          fixedHeader
+          selectable={false}
+          bodyStyle={{ 'overflow-y': 'hidden' }}
+          onCellClick={this.onInvestmentCell}
+        >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Nome</TableHeaderColumn>
@@ -46,7 +60,9 @@ class Index extends React.Component {
                 <TableRowColumn>{item.name}</TableRowColumn>
                 <TableRowColumn>{item.type}</TableRowColumn>
                 <TableRowColumn>{item.holder}</TableRowColumn>
-                <TableRowColumn>{item.due_date}</TableRowColumn>
+                <TableRowColumn>
+                  <Date date={item.due_date} />
+                </TableRowColumn>
               </TableRow>
             ))}
           </TableBody>
