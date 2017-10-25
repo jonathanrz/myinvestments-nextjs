@@ -1,11 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
-import Date from '../components/Date'
-import {
-  green700 as greenColor,
-  red800 as redColor
-} from 'material-ui/styles/colors'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import {
   Table,
@@ -17,8 +12,10 @@ import {
 } from 'material-ui/Table'
 import FlatButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
+import Date from '../components/Date'
+import { Money, MoneyWithColor } from '../components/Money'
+import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
-import { formatMoney, formatPercent } from '../utils/number'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -64,7 +61,12 @@ class Index extends React.Component {
             showExpandableButton={false}
           />
           <CardMedia>
-            <Table height={500} fixedHeader selectable={false}>
+            <Table
+              height={500}
+              fixedHeader
+              selectable={false}
+              bodyStyle={{ 'overflow-y': 'hidden' }}
+            >
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
                   <TableHeaderColumn>Data</TableHeaderColumn>
@@ -83,24 +85,16 @@ class Index extends React.Component {
                     </TableRowColumn>
                     <TableRowColumn>{item.quantity}</TableRowColumn>
                     <TableRowColumn>
-                      {formatMoney(item.value, 2)}
+                      <Money value={item.value} />
                     </TableRowColumn>
                     <TableRowColumn>
-                      {formatMoney(item.bought, 2)}
+                      <Money value={item.bought} />
                     </TableRowColumn>
-                    <TableRowColumn
-                      style={{
-                        color: item.gain >= 0 ? greenColor : redColor
-                      }}
-                    >
-                      {formatMoney(item.gain, 2)}
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.gain} />
                     </TableRowColumn>
-                    <TableRowColumn
-                      style={{
-                        color: item.gain >= 0 ? greenColor : redColor
-                      }}
-                    >
-                      {formatPercent(item.gainInPerc)}
+                    <TableRowColumn>
+                      <PercentWithColor percent={item.gainInPerc} />
                     </TableRowColumn>
                   </TableRow>
                 ))}

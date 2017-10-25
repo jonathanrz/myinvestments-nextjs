@@ -1,7 +1,6 @@
 import React from 'react'
 import Date from '../components/Date'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import Router from 'next/router'
 import {
   Table,
@@ -27,12 +26,12 @@ class Index extends React.Component {
   constructor (props) {
     super(props)
 
-    this.onInvestment = this.onInvestment.bind(this)
+    this.onInvestmentCell = this.onInvestmentCell.bind(this)
   }
 
-  onInvestment (e) {
-    e.preventDefault()
-    Router.push(e.href)
+  onInvestmentCell (index) {
+    const investment = this.props.investments[index]
+    Router.push(`/investment?id=${investment._id}`)
   }
 
   render () {
@@ -40,7 +39,13 @@ class Index extends React.Component {
 
     return (
       <Layout title="Investimentos">
-        <Table height={500} fixedHeader selectable={false}>
+        <Table
+          height={500}
+          fixedHeader
+          selectable={false}
+          bodyStyle={{ 'overflow-y': 'hidden' }}
+          onCellClick={this.onInvestmentCell}
+        >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Nome</TableHeaderColumn>
@@ -52,14 +57,7 @@ class Index extends React.Component {
           <TableBody displayRowCheckbox={false} showRowHover stripedRows>
             {investments.map(item => (
               <TableRow key={item._id}>
-                <TableRowColumn>
-                  <Link
-                    onClick={this.onInvestment}
-                    href={`/investment?id=${item._id}`}
-                  >
-                    <a>{item.name}</a>
-                  </Link>
-                </TableRowColumn>
+                <TableRowColumn>{item.name}</TableRowColumn>
                 <TableRowColumn>{item.type}</TableRowColumn>
                 <TableRowColumn>{item.holder}</TableRowColumn>
                 <TableRowColumn>
