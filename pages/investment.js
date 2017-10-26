@@ -11,7 +11,7 @@ import {
 } from 'material-ui/Table'
 import FlatButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
-import { routeToNewIncome } from '../components/Router.js'
+import { routeToRoot, routeToNewIncome } from '../components/Router.js'
 import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
@@ -61,7 +61,7 @@ class Index extends React.Component {
         title={investment.name}
         detail={true}
         onNavigationClose={() => {
-          Router.push('/')
+          routeToRoot()
         }}
       >
         <Card>

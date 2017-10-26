@@ -6,7 +6,12 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { FormsyDate, FormsyText } from 'formsy-material-ui/lib'
 import Layout from '../components/MyLayout.js'
 import { routeToInvestment } from '../components/Router.js'
-import { getInvestment, getIncomes, getToken } from '../components/Api'
+import {
+  getInvestment,
+  getIncomes,
+  getToken,
+  newIncome
+} from '../components/Api'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -48,7 +53,9 @@ class Index extends React.Component {
   }
 
   submitForm (data) {
-    alert(JSON.stringify(data, null, 4))
+    newIncome(getToken(), this.props.investment._id, data).then(response => {
+      routeToInvestment(this.props.investment._id)
+    })
   }
 
   handleQuantityChange (event) {
