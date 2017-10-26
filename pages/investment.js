@@ -1,5 +1,4 @@
 import React from 'react'
-import Router from 'next/router'
 import PropTypes from 'prop-types'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import {
@@ -12,6 +11,7 @@ import {
 } from 'material-ui/Table'
 import FlatButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
+import { routeToNewIncome } from '../components/Router.js'
 import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
@@ -50,10 +50,7 @@ class Index extends React.Component {
   }
 
   onNewIncome () {
-    Router.push(
-      `/new_income?investment_id=${this.props.investment._id}`,
-      `/investment/${this.props.investment._id}/new_income`
-    )
+    routeToNewIncome(this.props.investment._id)
   }
 
   render () {
@@ -79,7 +76,7 @@ class Index extends React.Component {
               height={500}
               fixedHeader
               selectable={false}
-              bodyStyle={{ 'overflow-y': 'hidden' }}
+              bodyStyle={{ overflowY: 'hidden' }}
             >
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
