@@ -4,6 +4,12 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import PropTypes from 'prop-types'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 const pageStyle = {
   margin: 20
@@ -26,10 +32,7 @@ class Layout extends React.Component {
             onLeftIconButtonTouchTap={onNavigationClose}
           />
         ) : (
-          <AppBar
-            title={title}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-          />
+          <AppBar title={title} iconClassNameRight="muidocs-icon-navigation-expand-more" />
         )}
 
         <div style={pageStyle}>{children}</div>
