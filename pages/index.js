@@ -1,7 +1,6 @@
 import React from 'react'
 import Date from '../components/Date'
 import PropTypes from 'prop-types'
-import Router from 'next/router'
 import {
   Table,
   TableHeader,
@@ -11,6 +10,7 @@ import {
   TableRowColumn
 } from 'material-ui/Table'
 import Layout from '../components/MyLayout.js'
+import { routeToInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
 
 class Index extends React.Component {
@@ -31,7 +31,7 @@ class Index extends React.Component {
 
   onInvestmentCell (index) {
     const investment = this.props.investments[index]
-    Router.push(`/investment?id=${investment._id}`)
+    routeToInvestment(investment._id)
   }
 
   render () {
