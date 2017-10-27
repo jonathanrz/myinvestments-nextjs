@@ -66,7 +66,7 @@ class Index extends React.Component {
         <Card>
           <CardHeader title={investment.type} subtitle={investment.holder} actAsExpander={false} showExpandableButton={false} />
           <CardMedia>
-            <Table height={500} fixedHeader selectable={false} bodyStyle={{ overflowY: 'hidden' }} onCellClick={this.onIncomeCell}>
+            <Table fixedHeader selectable={false} bodyStyle={{ overflowY: 'hidden' }} onCellClick={this.onIncomeCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
                   <TableHeaderColumn>Data</TableHeaderColumn>

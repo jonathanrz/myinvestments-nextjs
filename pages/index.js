@@ -1,14 +1,7 @@
 import React from 'react'
 import Date from '../components/Date'
 import PropTypes from 'prop-types'
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableHeaderColumn,
-  TableRowColumn
-} from 'material-ui/Table'
+import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import Layout from '../components/MyLayout.js'
 import { routeToInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
@@ -39,13 +32,7 @@ class Index extends React.Component {
 
     return (
       <Layout title="Investimentos">
-        <Table
-          height={500}
-          fixedHeader
-          selectable={false}
-          bodyStyle={{ 'overflow-y': 'hidden' }}
-          onCellClick={this.onInvestmentCell}
-        >
+        <Table fixedHeader selectable={false} bodyStyle={{ 'overflow-y': 'hidden' }} onCellClick={this.onInvestmentCell}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Nome</TableHeaderColumn>
