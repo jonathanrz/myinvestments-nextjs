@@ -18,9 +18,7 @@ export const setToken = token => {
 }
 
 export const getToken = req => {
-  return req
-    ? parse(req.headers.cookie).token
-    : window.localStorage.getItem('token')
+  return req ? parse(req.headers.cookie).token : window.localStorage.getItem('token')
 }
 
 export const getInvestments = token => {
@@ -38,9 +36,24 @@ export const getIncomes = (token, investmentId) => {
   return server.get(`/investments/${investmentId}/income/`)
 }
 
+export const getIncome = (token, investmentId, incomeId) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.get(`/investments/${investmentId}/income/${incomeId}`)
+}
+
 export const newIncome = (token, investmentId, income) => {
   server.defaults.headers.common['auth-token'] = token
   return server.post(`/investments/${investmentId}/income/`, {
+    date: moment(income.date).format('MM/YYYY'),
+    quantity: income.quantity,
+    value: income.value,
+    bought: income.bought
+  })
+}
+
+export const saveIncome = (token, investmentId, incomeId, income) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.put(`/investments/${investmentId}/income/${incomeId}`, {
     date: moment(income.date).format('MM/YYYY'),
     quantity: income.quantity,
     value: income.value,

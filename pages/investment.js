@@ -1,21 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableHeaderColumn,
-  TableRowColumn
-} from 'material-ui/Table'
+import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import FlatButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
-import { routeToRoot, routeToNewIncome } from '../components/Router.js'
 import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
+import { routeToRoot, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -47,10 +40,16 @@ class Index extends React.Component {
     this.state = { token: '' }
 
     this.onNewIncome = this.onNewIncome.bind(this)
+    this.onIncomeCell = this.onIncomeCell.bind(this)
   }
 
   onNewIncome () {
     routeToNewIncome(this.props.investment._id)
+  }
+
+  onIncomeCell (index) {
+    const income = this.props.incomes[index]
+    routeToEditIncome(this.props.investment._id, income._id)
   }
 
   render () {
@@ -65,19 +64,9 @@ class Index extends React.Component {
         }}
       >
         <Card>
-          <CardHeader
-            title={investment.type}
-            subtitle={investment.holder}
-            actAsExpander={false}
-            showExpandableButton={false}
-          />
+          <CardHeader title={investment.type} subtitle={investment.holder} actAsExpander={false} showExpandableButton={false} />
           <CardMedia>
-            <Table
-              height={500}
-              fixedHeader
-              selectable={false}
-              bodyStyle={{ overflowY: 'hidden' }}
-            >
+            <Table height={500} fixedHeader selectable={false} bodyStyle={{ overflowY: 'hidden' }} onCellClick={this.onIncomeCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
                   <TableHeaderColumn>Data</TableHeaderColumn>
