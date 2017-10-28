@@ -31,22 +31,31 @@ export const getInvestment = (token, id) => {
   return server.get(`/investments/${id}`)
 }
 
-export const newInvestment = (token, investment) => {
-  server.defaults.headers.common['auth-token'] = token
-  return server.post('/investments', {
+const isToday = date => moment().isSame(date, 'd')
+
+const buildInvestmentBody = investment => {
+  var body = {
     name: investment.name,
     type: investment.type,
     holder: investment.holder
-  })
+  }
+
+  const date = moment(investment.date)
+  if (!isToday(date)) {
+    body['due_date'] = date.format('DD/MM/YYYY')
+  }
+
+  return body
+}
+
+export const newInvestment = (token, investment) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.post('/investments', buildInvestmentBody(investment))
 }
 
 export const saveInvestment = (token, investmentId, investment) => {
   server.defaults.headers.common['auth-token'] = token
-  return server.put(`/investments/${investmentId}`, {
-    name: investment.name,
-    type: investment.type,
-    holder: investment.holder
-  })
+  return server.put(`/investments/${investmentId}`, buildInvestmentBody(investment))
 }
 
 export const getIncomes = (token, investmentId) => {
@@ -59,22 +68,21 @@ export const getIncome = (token, investmentId, incomeId) => {
   return server.get(`/investments/${investmentId}/income/${incomeId}`)
 }
 
-export const newIncome = (token, investmentId, income) => {
-  server.defaults.headers.common['auth-token'] = token
-  return server.post(`/investments/${investmentId}/income/`, {
+const buildIncomeBody = income => {
+  return {
     date: moment(income.date).format('MM/YYYY'),
     quantity: income.quantity,
     value: income.value,
     bought: income.bought
-  })
+  }
+}
+
+export const newIncome = (token, investmentId, income) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.post(`/investments/${investmentId}/income/`, buildIncomeBody(income))
 }
 
 export const saveIncome = (token, investmentId, incomeId, income) => {
   server.defaults.headers.common['auth-token'] = token
-  return server.put(`/investments/${investmentId}/income/${incomeId}`, {
-    date: moment(income.date).format('MM/YYYY'),
-    quantity: income.quantity,
-    value: income.value,
-    bought: income.bought
-  })
+  return server.put(`/investments/${investmentId}/income/${incomeId}`, buildIncomeBody(income))
 }

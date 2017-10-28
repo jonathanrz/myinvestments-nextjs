@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Formsy from 'formsy-react'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
-import { FormsyText } from 'formsy-material-ui/lib'
+import { FormsyDate, FormsyText } from 'formsy-material-ui/lib'
 import Layout from '../components/MyLayout.js'
 import { routeToRoot, routeToInvestment } from '../components/Router.js'
 import { getInvestment, getToken, newInvestment, saveInvestment } from '../components/Api'
@@ -30,6 +30,7 @@ class Index extends React.Component {
     const { investment } = props
     this.state = {
       canSubmit: false,
+      date: investment && investment.date ? new Date(new Date(investment.date).getTime() + 3 * 60 * 60 * 1000) : new Date(),
       name: investment ? investment.name : '',
       type: investment ? investment.type : '',
       holder: investment ? investment.holder : ''
@@ -40,6 +41,7 @@ class Index extends React.Component {
     this.enableSubmit = this.enableSubmit.bind(this)
     this.disableSubmit = this.disableSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleTypeChange = this.handleTypeChange.bind(this)
     this.handleHolderChange = this.handleHolderChange.bind(this)
@@ -70,6 +72,10 @@ class Index extends React.Component {
     }
   }
 
+  handleDateChange (date) {
+    this.setState({ date: date })
+  }
+
   handleNameChange (event) {
     this.setState({ name: event.target.value })
   }
@@ -84,7 +90,7 @@ class Index extends React.Component {
 
   render () {
     const { investment } = this.props
-    const { name, type, holder } = this.state
+    const { date, name, type, holder } = this.state
 
     return (
       <Layout
@@ -102,10 +108,11 @@ class Index extends React.Component {
           }}
         >
           <Formsy.Form onValid={this.enableSubmit} onInvalid={this.disableSubmit} onValidSubmit={this.submitForm}>
-            <FormsyText name="name" required validations="isWords" floatingLabelText="Nome" onChange={this.handleNameChange} value={name} style={{ display: 'block' }} />
-            <FormsyText name="type" required validations="isWords" floatingLabelText="Tipo" onChange={this.handleTypeChange} value={type} style={{ display: 'block' }} />
-            <FormsyText name="holder" required validations="isWords" floatingLabelText="Detentor" onChange={this.handleHolderChange} value={holder} style={{ display: 'block' }} />
-            <RaisedButton type="submit" label="Enviar" disabled={!this.state.canSubmit} style={{ display: 'block', margin: '32px 0', width: 256 }} />
+            <FormsyDate name="date" floatingLabelText="Data de Vencimento" onChange={this.handleDateChange} value={date} />
+            <FormsyText name="name" required floatingLabelText="Nome" onChange={this.handleNameChange} value={name} style={{ display: 'block' }} />
+            <FormsyText name="type" required floatingLabelText="Tipo" onChange={this.handleTypeChange} value={type} style={{ display: 'block' }} />
+            <FormsyText name="holder" required floatingLabelText="Detentor" onChange={this.handleHolderChange} value={holder} style={{ display: 'block' }} />
+            <RaisedButton type="submit" label="Enviar" secondary={true} disabled={!this.state.canSubmit} style={{ display: 'block', margin: '32px 0', width: 256 }} />
           </Formsy.Form>
         </Paper>
       </Layout>

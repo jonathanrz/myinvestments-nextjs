@@ -57,9 +57,7 @@ class Index extends React.Component {
                     <TableRowColumn>{item.name}</TableRowColumn>
                     <TableRowColumn>{item.type}</TableRowColumn>
                     <TableRowColumn>{item.holder}</TableRowColumn>
-                    <TableRowColumn>
-                      <Date date={item.due_date} />
-                    </TableRowColumn>
+                    <TableRowColumn>{item.due_date && <Date date={item.due_date} />}</TableRowColumn>
                   </TableRow>
                 ))}
               </TableBody>
@@ -68,7 +66,7 @@ class Index extends React.Component {
           <Divider style={{ marginTop: 20 }} />
           <CardActions>
             <RaisedButton
-              label="Novo Investmento"
+              label="Novo Investimento"
               secondary={true}
               onClick={this.onNewInvestment}
               style={{

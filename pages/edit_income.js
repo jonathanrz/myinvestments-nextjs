@@ -81,8 +81,8 @@ class Index extends React.Component {
     }
   }
 
-  handleDateChange (event) {
-    this.setState({ date: event.target.value })
+  handleDateChange (date) {
+    this.setState({ date: date })
   }
 
   handleQuantityChange (event) {
@@ -136,7 +136,7 @@ class Index extends React.Component {
               value={bought}
               style={{ display: 'block' }}
             />
-            <RaisedButton type="submit" label="Enviar" disabled={!this.state.canSubmit} style={{ display: 'block', margin: '32px 0', width: 256 }} />
+            <RaisedButton type="submit" label="Enviar" secondary={true} disabled={!this.state.canSubmit} style={{ display: 'block', margin: '32px 0', width: 256 }} />
           </Formsy.Form>
         </Paper>
       </Layout>
