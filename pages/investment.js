@@ -2,15 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
+import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton'
 import Layout from '../components/MyLayout.js'
 import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
-import { routeToRoot, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
+import { routeToRoot, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -63,6 +65,17 @@ class Index extends React.Component {
         detail={true}
         onNavigationClose={() => {
           routeToRoot()
+        }}
+        rightElements={() => {
+          return (
+            <IconButton>
+              <EditorModeEdit
+                onClick={() => {
+                  routeToEditInvestment(investment._id)
+                }}
+              />
+            </IconButton>
+          )
         }}
       >
         <Card>
