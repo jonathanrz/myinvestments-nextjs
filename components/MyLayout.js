@@ -16,8 +16,16 @@ const pageStyle = {
 }
 
 class Layout extends React.Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    detail: PropTypes.bool.isRequired,
+    onNavigationClose: PropTypes.func,
+    children: PropTypes.element.isRequired,
+    rightElements: PropTypes.func
+  }
+
   render () {
-    const { detail, title, children, onNavigationClose } = this.props
+    const { detail, title, children, onNavigationClose, rightElements } = this.props
 
     return (
       <MuiThemeProvider>
@@ -30,6 +38,7 @@ class Layout extends React.Component {
               </IconButton>
             }
             onLeftIconButtonTouchTap={onNavigationClose}
+            iconElementRight={rightElements ? rightElements() : <div />}
           />
         ) : (
           <AppBar title={title} iconClassNameRight="muidocs-icon-navigation-expand-more" />
@@ -39,13 +48,6 @@ class Layout extends React.Component {
       </MuiThemeProvider>
     )
   }
-}
-
-Layout.propTypes = {
-  title: PropTypes.string.isRequired,
-  detail: PropTypes.bool.isRequired,
-  onNavigationClose: PropTypes.func,
-  children: PropTypes.element.isRequired
 }
 
 export default Layout

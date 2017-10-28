@@ -31,6 +31,24 @@ export const getInvestment = (token, id) => {
   return server.get(`/investments/${id}`)
 }
 
+export const newInvestment = (token, investment) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.post('/investments', {
+    name: investment.name,
+    type: investment.type,
+    holder: investment.holder
+  })
+}
+
+export const saveInvestment = (token, investmentId, investment) => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.put(`/investments/${investmentId}`, {
+    name: investment.name,
+    type: investment.type,
+    holder: investment.holder
+  })
+}
+
 export const getIncomes = (token, investmentId) => {
   server.defaults.headers.common['auth-token'] = token
   return server.get(`/investments/${investmentId}/income/`)
