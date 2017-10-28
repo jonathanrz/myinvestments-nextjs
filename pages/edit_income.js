@@ -40,8 +40,8 @@ class Index extends React.Component {
     this.state = {
       canSubmit: false,
       date: income ? new Date(new Date(income.date).getTime() + 3 * 60 * 60 * 1000) : new Date(),
-      quantity: income ? income.quantity : lastIncome.quantity,
-      value: income ? income.value : lastIncome.value,
+      quantity: income ? income.quantity : lastIncome ? lastIncome.quantity : 0,
+      value: income ? income.value : lastIncome ? lastIncome.value : 0,
       bought: income ? income.bought : 0
     }
 
