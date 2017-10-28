@@ -1,9 +1,12 @@
 import React from 'react'
 import Date from '../components/Date'
 import PropTypes from 'prop-types'
+import { Card, CardActions, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
+import Divider from 'material-ui/Divider'
+import RaisedButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
-import { routeToInvestment } from '../components/Router.js'
+import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
 
 class Index extends React.Component {
@@ -20,6 +23,7 @@ class Index extends React.Component {
     super(props)
 
     this.onInvestmentCell = this.onInvestmentCell.bind(this)
+    this.onNewInvestment = this.onNewInvestment.bind(this)
   }
 
   onInvestmentCell (index) {
@@ -27,33 +31,52 @@ class Index extends React.Component {
     routeToInvestment(investment._id)
   }
 
+  onNewInvestment () {
+    routeToNewInvestment()
+  }
+
   render () {
     const { investments } = this.props
 
     return (
       <Layout title="Investimentos">
-        <Table fixedHeader selectable={false} bodyStyle={{ 'overflow-y': 'hidden' }} onCellClick={this.onInvestmentCell}>
-          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-            <TableRow>
-              <TableHeaderColumn>Nome</TableHeaderColumn>
-              <TableHeaderColumn>Tipo</TableHeaderColumn>
-              <TableHeaderColumn>Titular</TableHeaderColumn>
-              <TableHeaderColumn>Vencimento</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-            {investments.map(item => (
-              <TableRow key={item._id}>
-                <TableRowColumn>{item.name}</TableRowColumn>
-                <TableRowColumn>{item.type}</TableRowColumn>
-                <TableRowColumn>{item.holder}</TableRowColumn>
-                <TableRowColumn>
-                  <Date date={item.due_date} />
-                </TableRowColumn>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <Card>
+          <CardMedia>
+            <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
+              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                <TableRow>
+                  <TableHeaderColumn>Nome</TableHeaderColumn>
+                  <TableHeaderColumn>Tipo</TableHeaderColumn>
+                  <TableHeaderColumn>Titular</TableHeaderColumn>
+                  <TableHeaderColumn>Vencimento</TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody displayRowCheckbox={false} showRowHover stripedRows>
+                {investments.map(item => (
+                  <TableRow key={item._id}>
+                    <TableRowColumn>{item.name}</TableRowColumn>
+                    <TableRowColumn>{item.type}</TableRowColumn>
+                    <TableRowColumn>{item.holder}</TableRowColumn>
+                    <TableRowColumn>
+                      <Date date={item.due_date} />
+                    </TableRowColumn>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardMedia>
+          <Divider style={{ marginTop: 20 }} />
+          <CardActions>
+            <RaisedButton
+              label="Novo Investmento"
+              secondary={true}
+              onClick={this.onNewInvestment}
+              style={{
+                margin: 12
+              }}
+            />
+          </CardActions>
+        </Card>
       </Layout>
     )
   }

@@ -36,7 +36,7 @@ class Index extends React.Component {
 
   constructor (props) {
     super(props)
-    const { income, lastIncome } = props
+    const { investment, income, lastIncome } = props
     this.state = {
       canSubmit: false,
       date: income ? new Date(new Date(income.date).getTime() + 3 * 60 * 60 * 1000) : new Date(),
@@ -45,11 +45,15 @@ class Index extends React.Component {
       bought: income ? income.bought : 0
     }
 
+    this.title = income ? `Alterar Recebimento de ${investment.name}` : `Novo Recebimento de ${investment.name}`
+
     this.enableSubmit = this.enableSubmit.bind(this)
     this.disableSubmit = this.disableSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleQuantityChange = this.handleQuantityChange.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
+    this.handleBoughtChange = this.handleBoughtChange.bind(this)
   }
 
   enableSubmit () {
@@ -99,7 +103,7 @@ class Index extends React.Component {
 
     return (
       <Layout
-        title={`Novo Recebimento de ${investment.name}`}
+        title={this.title}
         detail={true}
         onNavigationClose={() => {
           routeToInvestment(investment._id)

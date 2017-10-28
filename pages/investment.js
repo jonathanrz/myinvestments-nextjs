@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
-import FlatButton from 'material-ui/FlatButton'
+import Subheader from 'material-ui/Subheader'
+import Divider from 'material-ui/Divider'
+import RaisedButton from 'material-ui/FlatButton'
 import Layout from '../components/MyLayout.js'
 import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
@@ -65,7 +67,9 @@ class Index extends React.Component {
       >
         <Card>
           <CardHeader title={investment.type} subtitle={investment.holder} actAsExpander={false} showExpandableButton={false} />
-          <CardMedia>
+          <CardMedia style={{ marginTop: 20 }}>
+            <Subheader>Rendimentos</Subheader>
+            <Divider />
             <Table fixedHeader selectable={false} bodyStyle={{ overflowY: 'hidden' }} onCellClick={this.onIncomeCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
@@ -101,8 +105,16 @@ class Index extends React.Component {
               </TableBody>
             </Table>
           </CardMedia>
+          <Divider style={{ marginTop: 20 }} />
           <CardActions>
-            <FlatButton label="Novo Rendimento" onClick={this.onNewIncome} />
+            <RaisedButton
+              label="Novo Rendimento"
+              secondary={true}
+              onClick={this.onNewIncome}
+              style={{
+                margin: 12
+              }}
+            />
           </CardActions>
         </Card>
       </Layout>
