@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
+import { Card, CardActions, CardHeader, CardMedia, CardText } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit'
 import Subheader from 'material-ui/Subheader'
@@ -13,18 +13,24 @@ import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
 import { routeToRoot, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
+import { formatMoney } from '../utils/number'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
-    const investment = await getInvestment(getToken(req), query.id)
-    const incomes = await getIncomes(getToken(req), query.id)
+    const resInvestment = await getInvestment(getToken(req), query.id)
+    const resIncomes = await getIncomes(getToken(req), query.id)
+    const incomes = resIncomes.data
     var lastIncomeValue = 0
+    var totalBought = 0
+    var currentValue = incomes.length > 0 ? incomes[0].value : 0
+    var totalMonths = incomes.length - 1
 
     return {
-      investment: investment.data,
-      incomes: incomes.data
+      investment: resInvestment.data,
+      incomes: incomes
         .reverse()
         .map(item => {
+          totalBought += item.bought || 0
           if (lastIncomeValue === 0) {
             item.gain = 0
             item.gainInPerc = 0
@@ -35,7 +41,10 @@ class Index extends React.Component {
           lastIncomeValue = item.value
           return item
         })
-        .reverse()
+        .reverse(),
+      currentValue: currentValue,
+      totalBought: totalBought,
+      totalMonths: totalMonths
     }
   }
 
@@ -57,7 +66,7 @@ class Index extends React.Component {
   }
 
   render () {
-    const { investment, incomes } = this.props
+    const { investment, incomes, currentValue, totalBought, totalMonths } = this.props
 
     return (
       <Layout
@@ -80,6 +89,17 @@ class Index extends React.Component {
       >
         <Card>
           <CardHeader title={investment.type} subtitle={investment.holder} actAsExpander={false} showExpandableButton={false} />
+          <CardText>
+            <div>
+              <strong>Investimento:</strong> {formatMoney(totalBought, 2)}{' '}
+            </div>
+            <div>
+              <strong>Rendimento:</strong> {formatMoney(currentValue - totalBought, 2)}{' '}
+            </div>
+            <div>
+              <strong>Meses:</strong> {totalMonths}{' '}
+            </div>
+          </CardText>
           <CardMedia style={{ marginTop: 20 }}>
             <Subheader>Rendimentos</Subheader>
             <Divider />
@@ -137,7 +157,10 @@ class Index extends React.Component {
 
 Index.propTypes = {
   investment: PropTypes.element.isRequired,
-  incomes: PropTypes.array.isRequired
+  incomes: PropTypes.array.isRequired,
+  currentValue: PropTypes.number.isRequired,
+  totalBought: PropTypes.number.isRequired,
+  totalMonths: PropTypes.number.isRequired
 }
 
 export default Index
