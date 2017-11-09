@@ -12,7 +12,7 @@ import Date from '../components/Date'
 import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
-import { routeToRoot, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
+import { routeToInvestments, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
 import { formatMoney } from '../utils/number'
 
 class Index extends React.Component {
@@ -73,7 +73,7 @@ class Index extends React.Component {
         title={investment.name}
         detail={true}
         onNavigationClose={() => {
-          routeToRoot()
+          routeToInvestments()
         }}
         rightElements={() => {
           return (
