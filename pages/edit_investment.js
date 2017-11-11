@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { FormsyDate, FormsyText } from 'formsy-material-ui/lib'
 import Layout from '../components/MyLayout.js'
-import { routeToRoot, routeToInvestment } from '../components/Router.js'
+import { routeToInvestments, routeToInvestment } from '../components/Router.js'
 import { getInvestment, getToken, newInvestment, saveInvestment } from '../components/Api'
 
 class Index extends React.Component {
@@ -67,7 +67,7 @@ class Index extends React.Component {
       })
     } else {
       newInvestment(getToken(), data).then(response => {
-        routeToRoot()
+        routeToInvestments()
       })
     }
   }
@@ -98,7 +98,7 @@ class Index extends React.Component {
         detail={true}
         onNavigationClose={() => {
           if (investment) routeToInvestment(investment._id)
-          else routeToRoot()
+          else routeToInvestments()
         }}
       >
         <Paper

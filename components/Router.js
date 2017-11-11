@@ -4,6 +4,10 @@ export const routeToRoot = () => {
   Router.push('/')
 }
 
+export const routeToInvestments = () => {
+  Router.push('/investments')
+}
+
 export const routeToInvestment = investmentId => {
   Router.push(`/investment?id=${investmentId}`, `/investments/${investmentId}`)
 }
