@@ -10,9 +10,12 @@ import { Money, MoneyWithColor } from '../../components/Money'
 const totalId = 'Total'
 const selectStyle = { display: 'inline-block', marginLeft: 10 }
 
-const filterInvestment = (investment, type) => {
-  if (type === 'all') return true
-  return investment.type === type
+const filterInvestment = (investment, type, holder) => {
+  if (type === 'all' || investment.type === type) {
+    if (holder === 'all') return true
+    return investment.holder === holder
+  }
+  return false
 }
 
 class IncomesByMonth extends React.Component {
@@ -23,9 +26,10 @@ class IncomesByMonth extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
-    this.state = { currentYear: 2017, currentType: 'all' }
+    this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all' }
     this.onYearSelected = this.onYearSelected.bind(this)
     this.onTypeSelected = this.onTypeSelected.bind(this)
+    this.onHolderSelected = this.onHolderSelected.bind(this)
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
   }
 
@@ -35,6 +39,10 @@ class IncomesByMonth extends React.Component {
 
   onTypeSelected (event) {
     this.setState({ currentType: event.target.value })
+  }
+
+  onHolderSelected (event) {
+    this.setState({ currentHolder: event.target.value })
   }
 
   componentWillMount () {
@@ -47,15 +55,17 @@ class IncomesByMonth extends React.Component {
 
   generateInvestmentData (state) {
     const { investments } = this.props
-    const { currentYear, currentType } = state
+    const { currentYear, currentType, currentHolder } = state
 
     var investmentsByMonth = {}
     var investmentTypes = {}
+    var investmentHolders = {}
     var totalValue = 0
     investments.forEach(investment => {
       investmentTypes[investment.type] = null
+      investmentHolders[investment.holder] = null
     })
-    this.investments = investments.filter(investment => filterInvestment(investment, currentType))
+    this.investments = investments.filter(investment => filterInvestment(investment, currentType, currentHolder))
     this.investments.forEach(investment => {
       investment.incomes.filter(income => moment.utc(income.date).year() === currentYear).forEach(income => {
         var monthData = investmentsByMonth[income.date]
@@ -96,11 +106,12 @@ class IncomesByMonth extends React.Component {
     this.totalValue = totalValue
     this.investmentsByMonth = investmentsByMonth
     this.investmentTypes = investmentTypes
+    this.investmentHolders = investmentHolders
   }
 
   render () {
-    const { currentYear, currentType } = this.state
-    const { investments, investmentsByMonth, investmentTypes } = this
+    const { currentYear, currentType, currentHolder } = this.state
+    const { investments, investmentsByMonth, investmentTypes, investmentHolders } = this
     const valueColumnWidth = 100
 
     return (
@@ -130,8 +141,16 @@ class IncomesByMonth extends React.Component {
                   </option>
                 ))}
               </select>
+              <select style={selectStyle} value={currentHolder} onChange={this.onHolderSelected}>
+                <option value="all">Todos os titulares</option>
+                {Object.keys(investmentHolders).map(type => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
             </Row>
-            <Row>
+            <Row style={{ marginBottom: 30 }}>
               <Col lg={3}>
                 <Table selectable={false}>
                   <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -149,10 +168,12 @@ class IncomesByMonth extends React.Component {
                         </TableRowColumn>
                       </TableRow>
                     ))}
-                    <TableRowColumn>Total</TableRowColumn>
-                    <TableRowColumn>
-                      <Money value={this.totalValue} />
-                    </TableRowColumn>
+                    <TableRow key={0}>
+                      <TableRowColumn>Total</TableRowColumn>
+                      <TableRowColumn>
+                        <Money value={this.totalValue} />
+                      </TableRowColumn>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </Col>
