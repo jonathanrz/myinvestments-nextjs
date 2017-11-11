@@ -17,12 +17,31 @@ class IncomesByMonth extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
+    this.state = { currentYear: 2017 }
+    this.onYearSelected = this.onYearSelected.bind(this)
+    this.generateInvestmentData = this.generateInvestmentData.bind(this)
+  }
+
+  onYearSelected (event) {
+    this.setState({ currentYear: Number(event.target.value) })
+  }
+
+  componentWillMount () {
+    this.generateInvestmentData(this.state)
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    this.generateInvestmentData(nextState)
+  }
+
+  generateInvestmentData (state) {
     const { investments } = this.props
+    const { currentYear } = state
 
     var investmentsByMonth = {}
     var totalValue = 0
     investments.forEach(investment => {
-      investment.incomes.filter(income => moment(income.date).year() === 2017).forEach(income => {
+      investment.incomes.filter(income => moment.utc(income.date).year() === currentYear).forEach(income => {
         var monthData = investmentsByMonth[income.date]
         if (!monthData) monthData = []
         var investmentData = monthData[investment._id]
@@ -64,27 +83,44 @@ class IncomesByMonth extends React.Component {
 
   render () {
     const { investments } = this.props
+    const { currentYear } = this.state
     const { investmentsByMonth } = this
+    const valueColumnWidth = 100
 
     return (
       <Card>
         <CardHeader title="Recebimentos por mês" />
         <CardMedia>
           <Container>
+            <Row
+              style={{
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                marginRight: 30,
+                marginBottom: 10
+              }}
+            >
+              <select name="yearId" style={{ display: 'inline-block' }} value={currentYear} onChange={this.onYearSelected}>
+                <option value="2016">{2016}</option>
+                <option value="2017">{2017}</option>
+                <option value="2018">{2018}</option>
+                <option value="2019">{2019}</option>
+              </select>
+            </Row>
             <Row>
               <Col lg={3}>
                 <Table selectable={false}>
                   <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
                       <TableHeaderColumn>Nome</TableHeaderColumn>
-                      <TableHeaderColumn style={{ width: 100 }}>Valor</TableHeaderColumn>
+                      <TableHeaderColumn style={{ width: valueColumnWidth }}>Valor</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
                     {investments.map(investment => (
                       <TableRow key={investment._id}>
                         <TableRowColumn>{investment.name}</TableRowColumn>
-                        <TableRowColumn style={{ width: 100 }}>
+                        <TableRowColumn style={{ width: valueColumnWidth }}>
                           <Money value={investment.currentValue} />
                         </TableRowColumn>
                       </TableRow>
