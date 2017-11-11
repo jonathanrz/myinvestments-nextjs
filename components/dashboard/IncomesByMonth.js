@@ -8,6 +8,12 @@ import { Month } from '../../components/Date'
 import { Money, MoneyWithColor } from '../../components/Money'
 
 const totalId = 'Total'
+const selectStyle = { display: 'inline-block', marginLeft: 10 }
+
+const filterInvestment = (investment, type) => {
+  if (type === 'all') return true
+  return investment.type === type
+}
 
 class IncomesByMonth extends React.Component {
   static propTypes = {
@@ -17,13 +23,18 @@ class IncomesByMonth extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
-    this.state = { currentYear: 2017 }
+    this.state = { currentYear: 2017, currentType: 'all' }
     this.onYearSelected = this.onYearSelected.bind(this)
+    this.onTypeSelected = this.onTypeSelected.bind(this)
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
   }
 
   onYearSelected (event) {
     this.setState({ currentYear: Number(event.target.value) })
+  }
+
+  onTypeSelected (event) {
+    this.setState({ currentType: event.target.value })
   }
 
   componentWillMount () {
@@ -36,11 +47,16 @@ class IncomesByMonth extends React.Component {
 
   generateInvestmentData (state) {
     const { investments } = this.props
-    const { currentYear } = state
+    const { currentYear, currentType } = state
 
     var investmentsByMonth = {}
+    var investmentTypes = {}
     var totalValue = 0
     investments.forEach(investment => {
+      investmentTypes[investment.type] = null
+    })
+    this.investments = investments.filter(investment => filterInvestment(investment, currentType))
+    this.investments.forEach(investment => {
       investment.incomes.filter(income => moment.utc(income.date).year() === currentYear).forEach(income => {
         var monthData = investmentsByMonth[income.date]
         if (!monthData) monthData = []
@@ -79,12 +95,12 @@ class IncomesByMonth extends React.Component {
 
     this.totalValue = totalValue
     this.investmentsByMonth = investmentsByMonth
+    this.investmentTypes = investmentTypes
   }
 
   render () {
-    const { investments } = this.props
-    const { currentYear } = this.state
-    const { investmentsByMonth } = this
+    const { currentYear, currentType } = this.state
+    const { investments, investmentsByMonth, investmentTypes } = this
     const valueColumnWidth = 100
 
     return (
@@ -100,11 +116,19 @@ class IncomesByMonth extends React.Component {
                 marginBottom: 10
               }}
             >
-              <select name="yearId" style={{ display: 'inline-block' }} value={currentYear} onChange={this.onYearSelected}>
+              <select style={selectStyle} value={currentYear} onChange={this.onYearSelected}>
                 <option value="2016">{2016}</option>
                 <option value="2017">{2017}</option>
                 <option value="2018">{2018}</option>
                 <option value="2019">{2019}</option>
+              </select>
+              <select style={selectStyle} value={currentType} onChange={this.onTypeSelected}>
+                <option value="all">Todos os tipos</option>
+                {Object.keys(investmentTypes).map(type => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
               </select>
             </Row>
             <Row>
