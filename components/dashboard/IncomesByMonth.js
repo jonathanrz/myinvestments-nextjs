@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-grid-system'
 import moment from 'moment'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor } from '../../components/Money'
+import { PercentWithColor } from '../../components/Percent'
 
 const totalId = 'Total'
 const selectStyle = { display: 'inline-block', marginLeft: 10 }
@@ -26,10 +27,11 @@ class IncomesByMonth extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
-    this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all' }
+    this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all', showValues: true }
     this.onYearSelected = this.onYearSelected.bind(this)
     this.onTypeSelected = this.onTypeSelected.bind(this)
     this.onHolderSelected = this.onHolderSelected.bind(this)
+    this.onShowValuesToggle = this.onShowValuesToggle.bind(this)
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
   }
 
@@ -43,6 +45,10 @@ class IncomesByMonth extends React.Component {
 
   onHolderSelected (event) {
     this.setState({ currentHolder: event.target.value })
+  }
+
+  onShowValuesToggle () {
+    this.setState({ showValues: !this.state.showValues })
   }
 
   componentWillMount () {
@@ -110,8 +116,8 @@ class IncomesByMonth extends React.Component {
   }
 
   render () {
-    const { currentYear, currentType, currentHolder } = this.state
-    const { investments, investmentsByMonth, investmentTypes, investmentHolders } = this
+    const { currentYear, currentType, currentHolder, showValues } = this.state
+    const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue } = this
     const valueColumnWidth = 100
 
     return (
@@ -127,6 +133,9 @@ class IncomesByMonth extends React.Component {
                 marginBottom: 10
               }}
             >
+              <button style={selectStyle} onClick={this.onShowValuesToggle}>
+                {showValues ? '%' : 'R$'}{' '}
+              </button>
               <select style={selectStyle} value={currentYear} onChange={this.onYearSelected}>
                 <option value="2016">{2016}</option>
                 <option value="2017">{2017}</option>
@@ -164,15 +173,13 @@ class IncomesByMonth extends React.Component {
                       <TableRow key={investment._id}>
                         <TableRowColumn>{investment.name}</TableRowColumn>
                         <TableRowColumn style={{ width: valueColumnWidth }}>
-                          <Money value={investment.currentValue} />
+                          {showValues ? <Money value={investment.currentValue} /> : <PercentWithColor percent={investment.currentValue / totalValue} />}
                         </TableRowColumn>
                       </TableRow>
                     ))}
                     <TableRow key={0}>
                       <TableRowColumn>Total</TableRowColumn>
-                      <TableRowColumn>
-                        <Money value={this.totalValue} />
-                      </TableRowColumn>
+                      <TableRowColumn>{showValues ? <Money value={totalValue} /> : <PercentWithColor percent={1} />}</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -193,7 +200,11 @@ class IncomesByMonth extends React.Component {
                       <TableRow key={investment._id}>
                         {Object.keys(investmentsByMonth).map(month => (
                           <TableRowColumn key={month + investment._id}>
-                            <MoneyWithColor value={investmentsByMonth[month][investment._id].value} />
+                            {showValues ? (
+                              <MoneyWithColor value={investmentsByMonth[month][investment._id].value} />
+                            ) : (
+                              <PercentWithColor percent={investmentsByMonth[month][investment._id].perc} />
+                            )}
                           </TableRowColumn>
                         ))}
                       </TableRow>
@@ -201,7 +212,11 @@ class IncomesByMonth extends React.Component {
                     <TableRow key={0}>
                       {Object.keys(investmentsByMonth).map(month => (
                         <TableRowColumn key={month + totalId}>
-                          <MoneyWithColor value={investmentsByMonth[month][totalId].value} />
+                          {showValues ? (
+                            <MoneyWithColor value={investmentsByMonth[month][totalId].value} />
+                          ) : (
+                            <PercentWithColor percent={investmentsByMonth[month][totalId].perc} />
+                          )}
                         </TableRowColumn>
                       ))}
                     </TableRow>
