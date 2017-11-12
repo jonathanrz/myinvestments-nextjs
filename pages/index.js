@@ -4,6 +4,7 @@ import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
 import IncomesByMonth from '../components/dashboard/IncomesByMonth'
 import { getInvestments, getIncomes, getToken } from '../components/Api'
+import { incomeGain } from '../lib/income'
 
 class Index extends React.Component {
   static async getInitialProps ({ req }) {
@@ -35,10 +36,10 @@ class Index extends React.Component {
         .reverse()
         .map(item => {
           if (lastIncomeValue === 0) {
-            item.gain = item.value - (item.bought || 0)
+            item.gain = incomeGain(item)
             item.gainInPerc = item.gain / item.value
           } else {
-            item.gain = item.value - lastIncomeValue - (item.bought || 0)
+            item.gain = incomeGain(item) - lastIncomeValue
             item.gainInPerc = item.gain / lastIncomeValue
           }
           lastIncomeValue = item.value

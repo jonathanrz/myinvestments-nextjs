@@ -13,7 +13,8 @@ import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
 import { routeToInvestments, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
-import { formatMoney } from '../utils/number'
+import { formatMoney } from '../lib/number'
+import { incomeGain } from '../lib/income'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -32,10 +33,10 @@ class Index extends React.Component {
         .map(item => {
           totalBought += item.bought || 0
           if (lastIncomeValue === 0) {
-            item.gain = 0
-            item.gainInPerc = 0
+            item.gain = incomeGain(item)
+            item.gainInPerc = item.gain / item.value
           } else {
-            item.gain = item.value - lastIncomeValue - (item.bought || 0) - (item.fee || 0) - (item.ir || 0) + (item.gross || 0)
+            item.gain = incomeGain(item) - lastIncomeValue
             item.gainInPerc = item.gain / lastIncomeValue
           }
           lastIncomeValue = item.value
