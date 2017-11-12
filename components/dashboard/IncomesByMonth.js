@@ -7,6 +7,7 @@ import moment from 'moment'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
+import { hasGrossIROrFee } from '../../lib/income'
 
 const totalId = 'Total'
 const selectStyle = { display: 'inline-block', marginLeft: 10 }
@@ -27,6 +28,7 @@ class IncomesByMonth extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
+    this.id = 1
     this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all', showValues: true }
     this.onYearSelected = this.onYearSelected.bind(this)
     this.onTypeSelected = this.onTypeSelected.bind(this)
@@ -66,6 +68,7 @@ class IncomesByMonth extends React.Component {
     var investmentsByMonth = {}
     var investmentTypes = {}
     var investmentHolders = {}
+    var grossIrAndFees = []
     var totalValue = 0
     investments.forEach(investment => {
       investmentTypes[investment.type] = null
@@ -96,6 +99,17 @@ class IncomesByMonth extends React.Component {
         monthData[investment._id] = investmentData
         monthData[totalId] = totalData
         investmentsByMonth[income.date] = monthData
+
+        if (hasGrossIROrFee(income)) {
+          grossIrAndFees.push({
+            investment: investment.name,
+            date: income.date,
+            value: income.value,
+            gross: income.gross,
+            ir: income.ir,
+            fee: income.fee
+          })
+        }
       })
 
       totalValue += investment.currentValue
@@ -113,11 +127,12 @@ class IncomesByMonth extends React.Component {
     this.investmentsByMonth = investmentsByMonth
     this.investmentTypes = investmentTypes
     this.investmentHolders = investmentHolders
+    this.grossIrAndFees = grossIrAndFees
   }
 
   render () {
     const { currentYear, currentType, currentHolder, showValues } = this.state
-    const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue } = this
+    const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
     const valueColumnWidth = 100
 
     return (
@@ -220,6 +235,44 @@ class IncomesByMonth extends React.Component {
                         </TableRowColumn>
                       ))}
                     </TableRow>
+                  </TableBody>
+                </Table>
+              </Col>
+            </Row>
+            <Row style={{ marginBottom: 30 }}>
+              <Col>
+                <Table selectable={false}>
+                  <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                    <TableRow>
+                      <TableHeaderColumn>Investimento</TableHeaderColumn>
+                      <TableHeaderColumn>Date</TableHeaderColumn>
+                      <TableHeaderColumn>Valor</TableHeaderColumn>
+                      <TableHeaderColumn>Rendimento</TableHeaderColumn>
+                      <TableHeaderColumn>IR</TableHeaderColumn>
+                      <TableHeaderColumn>Taxa</TableHeaderColumn>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody displayRowCheckbox={false} showRowHover stripedRows>
+                    {grossIrAndFees.map(data => (
+                      <TableRow key={this.id++}>
+                        <TableRowColumn>{data.investment}</TableRowColumn>
+                        <TableRowColumn>
+                          <Month date={data.date} />
+                        </TableRowColumn>
+                        <TableRowColumn>
+                          <Money value={data.value} />
+                        </TableRowColumn>
+                        <TableRowColumn>
+                          <MoneyWithColor value={data.gross} />
+                        </TableRowColumn>
+                        <TableRowColumn>
+                          <MoneyWithColor value={data.ir} />
+                        </TableRowColumn>
+                        <TableRowColumn>
+                          <MoneyWithColor value={data.fee} />
+                        </TableRowColumn>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </Col>
