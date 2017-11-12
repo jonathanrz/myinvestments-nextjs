@@ -35,7 +35,7 @@ class Index extends React.Component {
             item.gain = 0
             item.gainInPerc = 0
           } else {
-            item.gain = item.value - lastIncomeValue - (item.bought || 0)
+            item.gain = item.value - lastIncomeValue - (item.bought || 0) - (item.fee || 0) - (item.ir || 0) + (item.gross || 0)
             item.gainInPerc = item.gain / lastIncomeValue
           }
           lastIncomeValue = item.value
@@ -110,6 +110,9 @@ class Index extends React.Component {
                   <TableHeaderColumn>Quantidade</TableHeaderColumn>
                   <TableHeaderColumn>Valor</TableHeaderColumn>
                   <TableHeaderColumn>Comprado</TableHeaderColumn>
+                  <TableHeaderColumn>Rendimento</TableHeaderColumn>
+                  <TableHeaderColumn>IR</TableHeaderColumn>
+                  <TableHeaderColumn>Taxa</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda %</TableHeaderColumn>
                 </TableRow>
@@ -126,6 +129,15 @@ class Index extends React.Component {
                     </TableRowColumn>
                     <TableRowColumn>
                       <Money value={item.bought} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.gross} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.ir} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.fee} />
                     </TableRowColumn>
                     <TableRowColumn>
                       <MoneyWithColor value={item.gain} />

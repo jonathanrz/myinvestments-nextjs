@@ -42,18 +42,46 @@ class Index extends React.Component {
       date: income ? new Date(new Date(income.date).getTime() + 3 * 60 * 60 * 1000) : new Date(),
       quantity: income ? income.quantity : lastIncome ? lastIncome.quantity : 0,
       value: income ? income.value : lastIncome ? lastIncome.value : 0,
-      bought: income ? income.bought : 0
+      bought: income ? income.bought : 0,
+      gross: income ? income.gross : 0,
+      ir: income ? income.ir : 0,
+      fee: income ? income.fee : 0
     }
 
     this.title = income ? `Alterar Recebimento de ${investment.name}` : `Novo Recebimento de ${investment.name}`
+
+    this.numericFields = [
+      {
+        name: 'quantity',
+        label: 'Quantidade'
+      },
+      {
+        name: 'value',
+        label: 'Valor'
+      },
+      {
+        name: 'bought',
+        label: 'Comprado'
+      },
+      {
+        name: 'gross',
+        label: 'Rendimento'
+      },
+      {
+        name: 'ir',
+        label: 'IR'
+      },
+      {
+        name: 'fee',
+        label: 'Taxa'
+      }
+    ]
 
     this.enableSubmit = this.enableSubmit.bind(this)
     this.disableSubmit = this.disableSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
-    this.handleQuantityChange = this.handleQuantityChange.bind(this)
-    this.handleValueChange = this.handleValueChange.bind(this)
-    this.handleBoughtChange = this.handleBoughtChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   enableSubmit () {
@@ -85,21 +113,15 @@ class Index extends React.Component {
     this.setState({ date: date })
   }
 
-  handleQuantityChange (event) {
-    this.setState({ quantity: event.target.value })
-  }
-
-  handleValueChange (event) {
-    this.setState({ value: event.target.value })
-  }
-
-  handleBoughtChange (event) {
-    this.setState({ bought: event.target.value })
+  handleChange (event, field) {
+    let state = this.state
+    state[field] = event.target.value
+    this.setState(state)
   }
 
   render () {
     const { investment } = this.props
-    const { date, quantity, value, bought } = this.state
+    const { date } = this.state
 
     return (
       <Layout
@@ -117,25 +139,20 @@ class Index extends React.Component {
         >
           <Formsy.Form onValid={this.enableSubmit} onInvalid={this.disableSubmit} onValidSubmit={this.submitForm}>
             <FormsyDate name="date" required floatingLabelText="Data" onChange={this.handleDateChange} value={date} />
-            <FormsyText
-              name="quantity"
-              required
-              validations="isNumeric"
-              floatingLabelText="Quantidade"
-              onChange={this.handleQuantityChange}
-              value={quantity}
-              style={{ display: 'block' }}
-            />
-            <FormsyText name="value" required validations="isNumeric" floatingLabelText="Valor" onChange={this.handleValueChange} value={value} style={{ display: 'block' }} />
-            <FormsyText
-              name="bought"
-              required
-              validations="isNumeric"
-              floatingLabelText="Comprado"
-              onChange={this.handleBoughtChange}
-              value={bought}
-              style={{ display: 'block' }}
-            />
+            {this.numericFields.map(field => (
+              <FormsyText
+                key={field.name}
+                name={field.name}
+                required
+                validations="isNumeric"
+                floatingLabelText={field.label}
+                onChange={e => {
+                  this.handleChange(field.name, e)
+                }}
+                value={this.state[field.name]}
+                style={{ display: 'block' }}
+              />
+            ))}
             <RaisedButton type="submit" label="Enviar" secondary={true} disabled={!this.state.canSubmit} style={{ display: 'block', margin: '32px 0', width: 256 }} />
           </Formsy.Form>
         </Paper>
