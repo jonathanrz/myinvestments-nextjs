@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { green800 as greenColor, red800 as redColor, grey900 as grey } from 'material-ui/styles/colors'
-import { formatMoney } from '../utils/number'
+import { formatMoney } from '../lib/number'
 
 export const Money = ({ value }) => <div>{formatMoney(value, 2)}</div>
 

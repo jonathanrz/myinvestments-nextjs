@@ -73,7 +73,10 @@ const buildIncomeBody = income => {
     date: moment(income.date).format('MM/YYYY'),
     quantity: income.quantity,
     value: income.value,
-    bought: income.bought
+    bought: income.bought,
+    gross: income.gross,
+    ir: income.ir,
+    fee: income.fee
   }
 }
 

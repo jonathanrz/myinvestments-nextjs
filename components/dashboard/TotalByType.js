@@ -4,7 +4,7 @@ import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { Container, Row, Col } from 'react-grid-system'
-import { formatMoney, formatPercent } from '../../utils/number'
+import { formatMoney, formatPercent } from '../../lib/number'
 
 const COLORS = ['#4eb8ea', '#ac92ec', '#96c823', '#ef5a31', '#FFC107', '#009688']
 

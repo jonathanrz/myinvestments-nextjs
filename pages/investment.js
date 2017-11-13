@@ -13,7 +13,8 @@ import { Money, MoneyWithColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
 import { routeToInvestments, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
-import { formatMoney } from '../utils/number'
+import { formatMoney } from '../lib/number'
+import { incomeGain } from '../lib/income'
 
 class Index extends React.Component {
   static async getInitialProps ({ query, req }) {
@@ -32,10 +33,10 @@ class Index extends React.Component {
         .map(item => {
           totalBought += item.bought || 0
           if (lastIncomeValue === 0) {
-            item.gain = 0
-            item.gainInPerc = 0
+            item.gain = incomeGain(item)
+            item.gainInPerc = item.gain / item.value
           } else {
-            item.gain = item.value - lastIncomeValue - (item.bought || 0)
+            item.gain = incomeGain(item) - lastIncomeValue
             item.gainInPerc = item.gain / lastIncomeValue
           }
           lastIncomeValue = item.value
@@ -110,6 +111,9 @@ class Index extends React.Component {
                   <TableHeaderColumn>Quantidade</TableHeaderColumn>
                   <TableHeaderColumn>Valor</TableHeaderColumn>
                   <TableHeaderColumn>Comprado</TableHeaderColumn>
+                  <TableHeaderColumn>Rendimento</TableHeaderColumn>
+                  <TableHeaderColumn>IR</TableHeaderColumn>
+                  <TableHeaderColumn>Taxa</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda</TableHeaderColumn>
                   <TableHeaderColumn>Ganho/Perda %</TableHeaderColumn>
                 </TableRow>
@@ -126,6 +130,15 @@ class Index extends React.Component {
                     </TableRowColumn>
                     <TableRowColumn>
                       <Money value={item.bought} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.gross} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.ir} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <MoneyWithColor value={item.fee} />
                     </TableRowColumn>
                     <TableRowColumn>
                       <MoneyWithColor value={item.gain} />
