@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
 import Layout from '../components/MyLayout.js'
 import Date from '../components/Date'
-import { Money, MoneyWithColor } from '../components/Money'
+import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../components/Money'
 import { PercentWithColor } from '../components/Percent'
 import { getInvestment, getIncomes, getToken } from '../components/Api'
 import { routeToInvestments, routeToEditInvestment, routeToNewIncome, routeToEditIncome } from '../components/Router.js'
@@ -135,10 +135,10 @@ class Index extends React.Component {
                       <MoneyWithColor value={item.gross} />
                     </TableRowColumn>
                     <TableRowColumn>
-                      <MoneyWithColor value={item.ir} />
+                      <MoneyWithInvertedColor value={item.ir} />
                     </TableRowColumn>
                     <TableRowColumn>
-                      <MoneyWithColor value={item.fee} />
+                      <MoneyWithInvertedColor value={item.fee} />
                     </TableRowColumn>
                     <TableRowColumn>
                       <MoneyWithColor value={item.gain} />

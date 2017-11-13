@@ -22,3 +22,17 @@ export const MoneyWithColor = ({ value }) => (
 MoneyWithColor.propTypes = {
   value: PropTypes.number.isRequired
 }
+
+export const MoneyWithInvertedColor = ({ value }) => (
+  <div
+    style={{
+      color: value < 0 ? greenColor : value > 0 ? redColor : grey
+    }}
+  >
+    {formatMoney(value, 2)}
+  </div>
+)
+
+MoneyWithInvertedColor.propTypes = {
+  value: PropTypes.number.isRequired
+}

@@ -5,7 +5,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowCol
 import { Container, Row, Col } from 'react-grid-system'
 import moment from 'moment'
 import { Month } from '../../components/Date'
-import { Money, MoneyWithColor } from '../../components/Money'
+import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
 import { hasGrossIROrFee } from '../../lib/income'
 
@@ -103,6 +103,7 @@ class IncomesByMonth extends React.Component {
         if (hasGrossIROrFee(income)) {
           grossIrAndFees.push({
             investment: investment.name,
+            holder: investment.holder,
             date: income.date,
             value: income.value,
             gross: income.gross,
@@ -127,13 +128,14 @@ class IncomesByMonth extends React.Component {
     this.investmentsByMonth = investmentsByMonth
     this.investmentTypes = investmentTypes
     this.investmentHolders = investmentHolders
-    this.grossIrAndFees = grossIrAndFees
+    this.grossIrAndFees = grossIrAndFees.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
   }
 
   render () {
     const { currentYear, currentType, currentHolder, showValues } = this.state
     const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
-    const valueColumnWidth = 100
+    const holderColumnStyle = { width: 150 }
+    const valueColumnStyle = { width: 100 }
 
     return (
       <Card>
@@ -174,20 +176,20 @@ class IncomesByMonth extends React.Component {
                 ))}
               </select>
             </Row>
-            <Row style={{ marginBottom: 30 }}>
+            <Row style={{ paddingBottom: 30 }}>
               <Col lg={3}>
                 <Table selectable={false}>
                   <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
                       <TableHeaderColumn>Nome</TableHeaderColumn>
-                      <TableHeaderColumn style={{ width: valueColumnWidth }}>Valor</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>Valor</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
                     {investments.map(investment => (
                       <TableRow key={investment._id}>
                         <TableRowColumn>{investment.name}</TableRowColumn>
-                        <TableRowColumn style={{ width: valueColumnWidth }}>
+                        <TableRowColumn style={valueColumnStyle}>
                           {showValues ? <Money value={investment.currentValue} /> : <PercentWithColor percent={investment.currentValue / totalValue} />}
                         </TableRowColumn>
                       </TableRow>
@@ -239,37 +241,40 @@ class IncomesByMonth extends React.Component {
                 </Table>
               </Col>
             </Row>
-            <Row style={{ marginBottom: 30 }}>
-              <Col>
+            <Row style={{ paddingTop: 30, paddingBottom: 30 }}>
+              <Col lg={10}>
+                Taxas e Rendimentos
                 <Table selectable={false}>
                   <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
                       <TableHeaderColumn>Investimento</TableHeaderColumn>
-                      <TableHeaderColumn>Date</TableHeaderColumn>
-                      <TableHeaderColumn>Valor</TableHeaderColumn>
-                      <TableHeaderColumn>Rendimento</TableHeaderColumn>
-                      <TableHeaderColumn>IR</TableHeaderColumn>
-                      <TableHeaderColumn>Taxa</TableHeaderColumn>
+                      <TableHeaderColumn style={holderColumnStyle}>Titular</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>Date</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>Valor</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>Rendimento</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>IR</TableHeaderColumn>
+                      <TableHeaderColumn style={valueColumnStyle}>Taxa</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
                     {grossIrAndFees.map(data => (
                       <TableRow key={this.id++}>
                         <TableRowColumn>{data.investment}</TableRowColumn>
-                        <TableRowColumn>
+                        <TableRowColumn style={holderColumnStyle}>{data.holder}</TableRowColumn>
+                        <TableRowColumn style={valueColumnStyle}>
                           <Month date={data.date} />
                         </TableRowColumn>
-                        <TableRowColumn>
+                        <TableRowColumn style={valueColumnStyle}>
                           <Money value={data.value} />
                         </TableRowColumn>
-                        <TableRowColumn>
+                        <TableRowColumn style={valueColumnStyle}>
                           <MoneyWithColor value={data.gross} />
                         </TableRowColumn>
-                        <TableRowColumn>
-                          <MoneyWithColor value={data.ir} />
+                        <TableRowColumn style={valueColumnStyle}>
+                          <MoneyWithInvertedColor value={data.ir} />
                         </TableRowColumn>
-                        <TableRowColumn>
-                          <MoneyWithColor value={data.fee} />
+                        <TableRowColumn style={valueColumnStyle}>
+                          <MoneyWithInvertedColor value={data.fee} />
                         </TableRowColumn>
                       </TableRow>
                     ))}
