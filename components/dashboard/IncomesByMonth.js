@@ -241,47 +241,49 @@ class IncomesByMonth extends React.Component {
                 </Table>
               </Col>
             </Row>
-            <Row style={{ paddingTop: 30, paddingBottom: 30 }}>
-              <Col lg={10}>
-                Taxas e Rendimentos
-                <Table selectable={false}>
-                  <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                    <TableRow>
-                      <TableHeaderColumn>Investimento</TableHeaderColumn>
-                      <TableHeaderColumn style={holderColumnStyle}>Titular</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>Date</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>Valor</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>Rendimento</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>IR</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>Taxa</TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                    {grossIrAndFees.map(data => (
-                      <TableRow key={this.id++}>
-                        <TableRowColumn>{data.investment}</TableRowColumn>
-                        <TableRowColumn style={holderColumnStyle}>{data.holder}</TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          <Month date={data.date} />
-                        </TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          <Money value={data.value} />
-                        </TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          <MoneyWithColor value={data.gross} />
-                        </TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          <MoneyWithInvertedColor value={data.ir} />
-                        </TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          <MoneyWithInvertedColor value={data.fee} />
-                        </TableRowColumn>
+            {grossIrAndFees.length > 0 && (
+              <Row style={{ paddingTop: 30, paddingBottom: 30 }}>
+                <Col lg={10}>
+                  Taxas e Rendimentos
+                  <Table selectable={false}>
+                    <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                      <TableRow>
+                        <TableHeaderColumn>Investimento</TableHeaderColumn>
+                        <TableHeaderColumn style={holderColumnStyle}>Titular</TableHeaderColumn>
+                        <TableHeaderColumn style={valueColumnStyle}>Date</TableHeaderColumn>
+                        <TableHeaderColumn style={valueColumnStyle}>Valor</TableHeaderColumn>
+                        <TableHeaderColumn style={valueColumnStyle}>Rendimento</TableHeaderColumn>
+                        <TableHeaderColumn style={valueColumnStyle}>IR</TableHeaderColumn>
+                        <TableHeaderColumn style={valueColumnStyle}>Taxa</TableHeaderColumn>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Col>
-            </Row>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover stripedRows>
+                      {grossIrAndFees.map(data => (
+                        <TableRow key={this.id++}>
+                          <TableRowColumn>{data.investment}</TableRowColumn>
+                          <TableRowColumn style={holderColumnStyle}>{data.holder}</TableRowColumn>
+                          <TableRowColumn style={valueColumnStyle}>
+                            <Month date={data.date} />
+                          </TableRowColumn>
+                          <TableRowColumn style={valueColumnStyle}>
+                            <Money value={data.value} />
+                          </TableRowColumn>
+                          <TableRowColumn style={valueColumnStyle}>
+                            <MoneyWithColor value={data.gross} />
+                          </TableRowColumn>
+                          <TableRowColumn style={valueColumnStyle}>
+                            <MoneyWithInvertedColor value={data.ir} />
+                          </TableRowColumn>
+                          <TableRowColumn style={valueColumnStyle}>
+                            <MoneyWithInvertedColor value={data.fee} />
+                          </TableRowColumn>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </Col>
+              </Row>
+            )}
           </Container>
         </CardMedia>
       </Card>

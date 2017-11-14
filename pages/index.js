@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
 import IncomesByMonth from '../components/dashboard/IncomesByMonth'
+import TotalBought from '../components/dashboard/TotalBought'
 import { getInvestments, getIncomes, getToken } from '../components/Api'
 import { incomeGain } from '../lib/income'
 
 class Index extends React.Component {
   static async getInitialProps ({ req }) {
     const res = await getInvestments(getToken(req))
-    const investments = res.data
+    const investments = res.data.sort((left, right) => left.holder.localeCompare(right.holder))
     var investmentsByType = {}
 
     for (let i = 0; i < investments.length; i++) {
@@ -73,6 +74,8 @@ class Index extends React.Component {
         <TotalByType investmentsByType={investmentsByType} />
         <div style={{ marginTop: 40 }} />
         <IncomesByMonth investments={investments} />
+        <div style={{ marginTop: 40 }} />
+        <TotalBought investments={investments} />
       </Layout>
     )
   }
