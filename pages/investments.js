@@ -5,6 +5,7 @@ import { Card, CardActions, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
+import TextField from 'material-ui/TextField'
 import Layout from '../components/MyLayout.js'
 import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
@@ -24,6 +25,10 @@ class Index extends React.Component {
 
     this.onInvestmentCell = this.onInvestmentCell.bind(this)
     this.onNewInvestment = this.onNewInvestment.bind(this)
+    this.onFilter = this.onFilter.bind(this)
+    this.filterInvestment = this.filterInvestment.bind(this)
+
+    this.state = { filter: '' }
   }
 
   onInvestmentCell (index) {
@@ -35,12 +40,28 @@ class Index extends React.Component {
     routeToNewInvestment()
   }
 
+  onFilter (e) {
+    this.setState({ filter: e.target.value })
+  }
+
+  filterInvestment (investment, filter) {
+    if (filter.length === 0) return true
+
+    filter = filter.toLowerCase()
+
+    return investment.name.toLowerCase().includes(filter) || investment.holder.toLowerCase().includes(filter) || investment.type.toLowerCase().includes(filter)
+  }
+
   render () {
     const { investments } = this.props
+    const { filter } = this.state
 
     return (
       <Layout title="Investimentos">
         <Card>
+          <CardMedia style={{ padding: '20px 50px' }}>
+            <TextField type="text" value={filter} onChange={this.onFilter} hintText="Filtrar por nome, titular ou tipo" />
+          </CardMedia>
           <CardMedia>
             <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -52,7 +73,7 @@ class Index extends React.Component {
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                {investments.map(item => (
+                {investments.filter(investment => this.filterInvestment(investment, filter)).map(item => (
                   <TableRow key={item._id}>
                     <TableRowColumn>{item.name}</TableRowColumn>
                     <TableRowColumn>{item.type}</TableRowColumn>
