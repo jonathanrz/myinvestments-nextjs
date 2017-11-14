@@ -5,6 +5,7 @@ import { Card, CardActions, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
+import TextField from 'material-ui/TextField'
 import Layout from '../components/MyLayout.js'
 import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
@@ -58,18 +59,10 @@ class Index extends React.Component {
     return (
       <Layout title="Investimentos">
         <Card>
+          <CardMedia style={{ padding: '20px 50px' }}>
+            <TextField type="text" value={filter} onChange={this.onFilter} hintText="Filtrar por nome, titular ou tipo" />
+          </CardMedia>
           <CardMedia>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                marginRight: 30,
-                marginBottom: 10
-              }}
-            >
-              <input type="text" value={filter} onChange={this.onFilter} />
-              Filtro:
-            </div>
             <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
