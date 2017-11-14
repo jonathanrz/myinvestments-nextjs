@@ -24,6 +24,10 @@ class Index extends React.Component {
 
     this.onInvestmentCell = this.onInvestmentCell.bind(this)
     this.onNewInvestment = this.onNewInvestment.bind(this)
+    this.onFilter = this.onFilter.bind(this)
+    this.filterInvestment = this.filterInvestment.bind(this)
+
+    this.state = { filter: '' }
   }
 
   onInvestmentCell (index) {
@@ -35,13 +39,37 @@ class Index extends React.Component {
     routeToNewInvestment()
   }
 
+  onFilter (e) {
+    this.setState({ filter: e.target.value })
+  }
+
+  filterInvestment (investment, filter) {
+    if (filter.length === 0) return true
+
+    filter = filter.toLowerCase()
+
+    return investment.name.toLowerCase().includes(filter) || investment.holder.toLowerCase().includes(filter) || investment.type.toLowerCase().includes(filter)
+  }
+
   render () {
     const { investments } = this.props
+    const { filter } = this.state
 
     return (
       <Layout title="Investimentos">
         <Card>
           <CardMedia>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                marginRight: 30,
+                marginBottom: 10
+              }}
+            >
+              <input type="text" value={filter} onChange={this.onFilter} />
+              Filtro:
+            </div>
             <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
@@ -52,7 +80,7 @@ class Index extends React.Component {
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                {investments.map(item => (
+                {investments.filter(investment => this.filterInvestment(investment, filter)).map(item => (
                   <TableRow key={item._id}>
                     <TableRowColumn>{item.name}</TableRowColumn>
                     <TableRowColumn>{item.type}</TableRowColumn>
