@@ -8,7 +8,8 @@
     "build": "next build",
     "heroku-postbuild": "next build",
     "start": "next start -p $PORT",
-    "lint": "eslint ./**/ --ignore-path .gitignore"
+    "lint": "eslint ./**/ --ignore-path .gitignore",
+    "precommit": "yarn lint"
   },
   "keywords": [],
   "author": "",
@@ -52,8 +53,5 @@
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3"
-  },
-  "pre-commit": [
-    "lint"
-  ]
+  }
 }
