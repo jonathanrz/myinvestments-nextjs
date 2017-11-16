@@ -4,7 +4,7 @@ import { parse } from 'cookie'
 import moment from 'moment'
 
 const server = axios.create({
-  baseURL: 'https://jonathanzanella-myinvestments.herokuapp.com/api',
+  baseURL: process.env.SERVER_API,
   timeout: 60000,
   headers: {
     Accept: 'application/json',
