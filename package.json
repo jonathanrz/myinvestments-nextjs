@@ -20,6 +20,7 @@
     "cookie-parser": "^1.4.3",
     "create-react-class": "^15.6.2",
     "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "express": "^4.16.2",
     "formsy-material-ui": "^0.6.3",
     "formsy-react": "^0.19.5",
@@ -51,5 +52,7 @@
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1"
   },
-  "pre-commit": ["lint"]
+  "pre-commit": [
+    "lint"
+  ]
 }
