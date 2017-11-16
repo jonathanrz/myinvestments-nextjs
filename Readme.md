@@ -1,1 +1,1 @@
-[![CircleCI](https://circleci.com/gh/jonathanrz/myinvestments-nextjs.svg?style=svg)](https://circleci.com/gh/jonathanrz/myinvestments-nextjs)
+[![CircleCI](https://circleci.com/gh/jonathanrz/myinvestments-nextjs.svg?style=shield)](https://circleci.com/gh/jonathanrz/myinvestments-nextjs)
