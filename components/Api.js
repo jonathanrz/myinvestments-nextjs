@@ -26,6 +26,11 @@ export const getInvestments = token => {
   return server.get('/investments')
 }
 
+export const getInvestmentsWithIncomes = token => {
+  server.defaults.headers.common['auth-token'] = token
+  return server.get('/investments?with_incomes=true')
+}
+
 export const getInvestment = (token, id) => {
   server.defaults.headers.common['auth-token'] = token
   return server.get(`/investments/${id}`)
