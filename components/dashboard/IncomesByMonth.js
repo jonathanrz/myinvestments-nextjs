@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
+import withRedux from 'next-redux-wrapper'
+import { bindActionCreators } from 'redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
-import moment from 'moment'
+
+import initStore from '../../state'
+import { setInvestmentType } from '../../state/filter/actions'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
@@ -22,14 +27,16 @@ const filterInvestment = (investment, type, holder) => {
 
 class IncomesByMonth extends React.Component {
   static propTypes = {
-    investments: PropTypes.array.isRequired
+    investments: PropTypes.array.isRequired,
+    investmentType: PropTypes.string.isRequired,
+    setInvestmentType: PropTypes.func.isRequired
   }
 
   constructor (ctx, props) {
     super(ctx, props)
 
     this.id = 1
-    this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all', showValues: true }
+    this.state = { currentYear: 2017, currentHolder: 'all', showValues: true }
     this.onYearSelected = this.onYearSelected.bind(this)
     this.onTypeSelected = this.onTypeSelected.bind(this)
     this.onHolderSelected = this.onHolderSelected.bind(this)
@@ -42,7 +49,7 @@ class IncomesByMonth extends React.Component {
   }
 
   onTypeSelected (event) {
-    this.setState({ currentType: event.target.value })
+    this.props.setInvestmentType(event.target.value)
   }
 
   onHolderSelected (event) {
@@ -132,7 +139,8 @@ class IncomesByMonth extends React.Component {
   }
 
   render () {
-    const { currentYear, currentType, currentHolder, showValues } = this.state
+    const { currentYear, currentHolder, showValues } = this.state
+    const { investmentType } = this.props
     const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
@@ -159,7 +167,7 @@ class IncomesByMonth extends React.Component {
                 <option value="2018">{2018}</option>
                 <option value="2019">{2019}</option>
               </select>
-              <select style={selectStyle} value={currentType} onChange={this.onTypeSelected}>
+              <select style={selectStyle} value={investmentType} onChange={this.onTypeSelected}>
                 <option value="all">Todos os tipos</option>
                 {Object.keys(investmentTypes).map(type => (
                   <option key={type} value={type}>
@@ -291,4 +299,7 @@ class IncomesByMonth extends React.Component {
   }
 }
 
-export default IncomesByMonth
+const mapStateToProps = state => ({ investmentType: state.filter.investmentType })
+const mapDispatchToProps = dispatch => ({ setInvestmentType: bindActionCreators(setInvestmentType, dispatch) })
+
+export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(IncomesByMonth)
