@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Provider } from 'react-redux'
+import initStore from '../state'
 
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
@@ -70,13 +72,15 @@ class Index extends React.Component {
     const { investmentsByType, investments } = this.props
 
     return (
-      <Layout title="Dashboard">
-        <TotalByType investmentsByType={investmentsByType} />
-        <div style={{ marginTop: 40 }} />
-        <IncomesByMonth investments={investments} />
-        <div style={{ marginTop: 40 }} />
-        <TotalBought investments={investments} />
-      </Layout>
+      <Provider store={initStore()}>
+        <Layout title="Dashboard">
+          <TotalByType investmentsByType={investmentsByType} />
+          <div style={{ marginTop: 40 }} />
+          <IncomesByMonth investments={investments} />
+          <div style={{ marginTop: 40 }} />
+          <TotalBought investments={investments} />
+        </Layout>
+      </Provider>
     )
   }
 }

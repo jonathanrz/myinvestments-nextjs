@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import withRedux from 'next-redux-wrapper'
+import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
 
-import initStore from '../../state'
 import { setInvestmentType } from '../../state/filter/actions'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
@@ -61,16 +60,16 @@ class IncomesByMonth extends React.Component {
   }
 
   componentWillMount () {
-    this.generateInvestmentData(this.state)
+    this.generateInvestmentData(this.state, this.props)
   }
 
   componentWillUpdate (nextProps, nextState) {
-    this.generateInvestmentData(nextState)
+    this.generateInvestmentData(nextState, nextProps)
   }
 
-  generateInvestmentData (state) {
-    const { investments } = this.props
-    const { currentYear, currentType, currentHolder } = state
+  generateInvestmentData (state, props) {
+    const { investments, investmentType } = props
+    const { currentYear, currentHolder } = state
 
     var investmentsByMonth = {}
     var investmentTypes = {}
@@ -81,7 +80,7 @@ class IncomesByMonth extends React.Component {
       investmentTypes[investment.type] = null
       investmentHolders[investment.holder] = null
     })
-    this.investments = investments.filter(investment => filterInvestment(investment, currentType, currentHolder))
+    this.investments = investments.filter(investment => filterInvestment(investment, investmentType, currentHolder))
     this.investments.forEach(investment => {
       investment.incomes.filter(income => moment.utc(income.date).year() === currentYear).forEach(income => {
         var monthData = investmentsByMonth[income.date]
@@ -302,4 +301,4 @@ class IncomesByMonth extends React.Component {
 const mapStateToProps = state => ({ investmentType: state.filter.investmentType })
 const mapDispatchToProps = dispatch => ({ setInvestmentType: bindActionCreators(setInvestmentType, dispatch) })
 
-export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(IncomesByMonth)
+export default connect(mapStateToProps, mapDispatchToProps)(IncomesByMonth)
