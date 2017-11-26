@@ -42,7 +42,7 @@ class Index extends React.Component {
   constructor (ctx, props) {
     super(ctx, props)
 
-    this.state = { investmentsByType: null, investmentTypes: null, investmentHolders: null }
+    this.state = { investmentTypes: null, investmentHolders: null }
   }
 
   componentWillMount () {
@@ -114,24 +114,19 @@ class Index extends React.Component {
     investmentsByType['Total'].investments = investments
     investmentsByType['Total'].value = totalValue
 
-    this.setState({ investmentsByType, investmentTypes, investmentHolders })
+    this.setState({ investmentTypes, investmentHolders })
     this.props.setFilteredInvestments({ investments: filteredInvestments, byType: investmentsByType })
   }
 
   render () {
-    const { investments } = this.props
-    const { investmentsByType, investmentTypes, investmentHolders } = this.state
+    const { investmentTypes, investmentHolders } = this.state
 
     return (
       <Layout title="Dashboard">
         {investmentTypes && investmentHolders && <Filter style={{ marginBottom: 40 }} investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
-        {investmentsByType && <TotalByType style={{ marginBottom: 40 }} />}
-        {investmentsByType && (
-          <div>
-            <IncomesByMonth style={{ marginBottom: 40 }} investments={investments} />
-            <TotalBought style={{ marginBottom: 40 }} investments={investments} />
-          </div>
-        )}
+        <TotalByType style={{ marginBottom: 40 }} />
+        <IncomesByMonth style={{ marginBottom: 40 }} />
+        <TotalBought style={{ marginBottom: 40 }} />
       </Layout>
     )
   }

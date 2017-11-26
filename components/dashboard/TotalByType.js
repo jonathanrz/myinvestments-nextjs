@@ -16,7 +16,15 @@ class TotalByType extends React.Component {
   }
 
   componentWillMount () {
-    const { investmentsByType } = this.props
+    this.generateInvestmentData(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.generateInvestmentData(nextProps)
+  }
+
+  generateInvestmentData = props => {
+    const { investmentsByType } = props
 
     this.investmentsByTypeChartData = []
     for (let type in investmentsByType) {
@@ -26,7 +34,7 @@ class TotalByType extends React.Component {
 
   render () {
     const { investmentsByType, style } = this.props
-    const totalValue = investmentsByType['Total'].value
+    const totalValue = investmentsByType && investmentsByType['Total'] ? investmentsByType['Total'].value : 0
 
     return (
       <Card containerStyle={style || {}}>
@@ -44,7 +52,7 @@ class TotalByType extends React.Component {
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                    {Object.keys(investmentsByType)
+                    {Object.keys(investmentsByType || {})
                       .sort()
                       .map(type => (
                         <TableRow key={type}>

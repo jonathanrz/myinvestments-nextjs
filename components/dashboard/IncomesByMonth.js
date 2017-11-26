@@ -39,14 +39,14 @@ class IncomesByMonth extends React.Component {
   }
 
   componentWillMount () {
-    this.generateInvestmentData(this.state, this.props)
+    this.generateInvestmentData(this.props)
   }
 
-  componentWillUpdate (nextProps, nextState) {
-    this.generateInvestmentData(nextState, nextProps)
+  componentWillReceiveProps (nextProps) {
+    this.generateInvestmentData(nextProps)
   }
 
-  generateInvestmentData (state, props) {
+  generateInvestmentData = props => {
     const { investments, investmentHolder, investmentType, year } = props
 
     var investmentsByMonth = {}
@@ -237,7 +237,8 @@ const mapStateToProps = state => ({
   investmentHolder: state.filter.investmentHolder,
   investmentType: state.filter.investmentType,
   year: state.filter.year,
-  showValues: state.filter.showValues
+  showValues: state.filter.showValues,
+  investments: state.data.filteredInvestments.investments
 })
 
 export default connect(mapStateToProps, null)(IncomesByMonth)

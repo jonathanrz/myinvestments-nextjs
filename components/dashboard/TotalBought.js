@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
@@ -12,10 +13,16 @@ class TotalBought extends React.Component {
     style: PropTypes.object
   }
 
-  constructor (ctx, props) {
-    super(ctx, props)
+  componentWillMount () {
+    this.prepareData(this.props)
+  }
 
-    const { investments } = this.props
+  componentWillReceiveProps (nextProps) {
+    this.prepareData(nextProps)
+  }
+
+  prepareData = props => {
+    const { investments } = props
 
     this.data = []
     this.totalBought = 0
@@ -117,4 +124,8 @@ class TotalBought extends React.Component {
   }
 }
 
-export default TotalBought
+const mapStateToProps = state => ({
+  investments: state.data.filteredInvestments.investments
+})
+
+export default connect(mapStateToProps, null)(TotalBought)
