@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import initStore from '../state'
 
+import Filter from '../components/Filter'
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
 import IncomesByMonth from '../components/dashboard/IncomesByMonth'
@@ -16,6 +17,8 @@ class Index extends React.Component {
     const res = await getInvestmentsWithIncomes(getToken(req))
     const investments = res.data.sort((left, right) => left.holder.localeCompare(right.holder))
     var investmentsByType = {}
+    var investmentTypes = {}
+    var investmentHolders = {}
 
     for (let i = 0; i < investments.length; i++) {
       const investment = investments[i]
@@ -24,6 +27,9 @@ class Index extends React.Component {
       } else {
         investment.currentValue = 0
       }
+
+      investmentTypes[investment.type] = null
+      investmentHolders[investment.holder] = null
 
       var type = investment.type
       if (!investmentsByType[type]) {
@@ -59,21 +65,26 @@ class Index extends React.Component {
 
     return {
       investments: investments,
-      investmentsByType: investmentsByType
+      investmentsByType: investmentsByType,
+      investmentTypes: investmentTypes,
+      investmentHolders: investmentHolders
     }
   }
 
   static propTypes = {
     investments: PropTypes.array.isRequired,
-    investmentsByType: PropTypes.object.isRequired
+    investmentsByType: PropTypes.object.isRequired,
+    investmentTypes: PropTypes.object.isRequired,
+    investmentHolders: PropTypes.object.isRequired
   }
 
   render () {
-    const { investmentsByType, investments } = this.props
+    const { investmentsByType, investments, investmentTypes, investmentHolders } = this.props
 
     return (
       <Provider store={initStore()}>
         <Layout title="Dashboard">
+          <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
           <TotalByType investmentsByType={investmentsByType} />
           <div style={{ marginTop: 40 }} />
           <IncomesByMonth investments={investments} />

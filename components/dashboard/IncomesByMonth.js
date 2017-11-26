@@ -6,7 +6,6 @@ import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
 
-import Filter from '../../components/Filter'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
@@ -50,14 +49,8 @@ class IncomesByMonth extends React.Component {
     const { investments, investmentHolder, investmentType, year } = props
 
     var investmentsByMonth = {}
-    var investmentTypes = {}
-    var investmentHolders = {}
     var grossIrAndFees = []
     var totalValue = 0
-    investments.forEach(investment => {
-      investmentTypes[investment.type] = null
-      investmentHolders[investment.holder] = null
-    })
     this.investments = investments.filter(investment => filterInvestment(investment, investmentType, investmentHolder))
     this.investments.forEach(investment => {
       investment.incomes.filter(income => moment.utc(income.date).year() === year).forEach(income => {
@@ -110,21 +103,18 @@ class IncomesByMonth extends React.Component {
 
     this.totalValue = totalValue
     this.investmentsByMonth = investmentsByMonth
-    this.investmentTypes = investmentTypes
-    this.investmentHolders = investmentHolders
     this.grossIrAndFees = grossIrAndFees.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
   }
 
   render () {
     const { showValues } = this.props
-    const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
+    const { investments, investmentsByMonth, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
 
     return (
       <Card>
         <CardHeader title="Recebimentos por mês" />
-        <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
         <CardMedia>
           <Container>
             <Row style={{ paddingBottom: 30 }}>
