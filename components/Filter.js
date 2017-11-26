@@ -20,7 +20,8 @@ class Filter extends React.Component {
     setInvestmentHolder: PropTypes.func.isRequired,
     setInvestmentType: PropTypes.func.isRequired,
     setYear: PropTypes.func.isRequired,
-    setShowValues: PropTypes.func.isRequired
+    setShowValues: PropTypes.func.isRequired,
+    style: PropTypes.object
   }
 
   constructor (ctx, props) {
@@ -49,10 +50,10 @@ class Filter extends React.Component {
   }
 
   render () {
-    const { investmentHolder, investmentType, year, showValues, investmentTypes, investmentHolders } = this.props
+    const { investmentHolder, investmentType, year, showValues, investmentTypes, investmentHolders, style } = this.props
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Filtros" />
         <CardMedia>
           <Container>

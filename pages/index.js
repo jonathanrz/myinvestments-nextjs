@@ -98,24 +98,12 @@ class Index extends React.Component {
 
     return (
       <Layout title="Dashboard">
-        {investmentTypes &&
-          investmentHolders && (
-            <div>
-              <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
-              <div style={{ marginTop: 40 }} />
-            </div>
-          )}
+        {investmentTypes && investmentHolders && <Filter style={{ marginBottom: 40 }} investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
+        {investmentsByType && <TotalByType style={{ marginBottom: 40 }} investmentsByType={investmentsByType} />}
         {investmentsByType && (
           <div>
-            <TotalByType investmentsByType={investmentsByType} />
-            <div style={{ marginTop: 40 }} />
-          </div>
-        )}
-        {investmentsByType && (
-          <div>
-            <IncomesByMonth investments={investments} />
-            <div style={{ marginTop: 40 }} />
-            <TotalBought investments={investments} />
+            <IncomesByMonth style={{ marginBottom: 40 }} investments={investments} />
+            <TotalBought style={{ marginBottom: 40 }} investments={investments} />
           </div>
         )}
       </Layout>

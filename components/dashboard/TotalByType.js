@@ -10,7 +10,8 @@ const COLORS = ['#4eb8ea', '#ac92ec', '#96c823', '#ef5a31', '#FFC107', '#009688'
 
 class TotalByType extends React.Component {
   static propTypes = {
-    investmentsByType: PropTypes.object.isRequired
+    investmentsByType: PropTypes.object.isRequired,
+    style: PropTypes.object
   }
 
   constructor (ctx, props) {
@@ -25,11 +26,11 @@ class TotalByType extends React.Component {
   }
 
   render () {
-    const { investmentsByType } = this.props
+    const { investmentsByType, style } = this.props
     const totalValue = investmentsByType['Total'].value
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Totais por tipo" />
         <CardMedia>
           <Container>

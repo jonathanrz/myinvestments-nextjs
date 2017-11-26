@@ -27,7 +27,8 @@ class IncomesByMonth extends React.Component {
     investmentHolder: PropTypes.string.isRequired,
     investmentType: PropTypes.string.isRequired,
     showValues: PropTypes.bool.isRequired,
-    year: PropTypes.string.isRequired
+    year: PropTypes.string.isRequired,
+    style: PropTypes.object
   }
 
   constructor (ctx, props) {
@@ -107,13 +108,13 @@ class IncomesByMonth extends React.Component {
   }
 
   render () {
-    const { showValues } = this.props
+    const { showValues, style } = this.props
     const { investments, investmentsByMonth, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Recebimentos por mês" />
         <CardMedia>
           <Container>

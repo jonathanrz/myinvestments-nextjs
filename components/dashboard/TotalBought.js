@@ -8,7 +8,8 @@ import { PercentWithColor } from '../../components/Percent'
 
 class TotalBought extends React.Component {
   static propTypes = {
-    investments: PropTypes.array.isRequired
+    investments: PropTypes.array.isRequired,
+    style: PropTypes.object
   }
 
   constructor (ctx, props) {
@@ -46,10 +47,11 @@ class TotalBought extends React.Component {
   }
 
   render () {
+    const { style } = this.props
     const { data, totalBought, totalGain, maxMonths } = this
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Total geral" />
         <CardMedia>
           <Container>
