@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Card, CardMedia } from 'material-ui/Card'
+import { Card, CardHeader, CardMedia } from 'material-ui/Card'
 import { Container, Row } from 'react-grid-system'
 
 import { setInvestmentHolder, setInvestmentType, setYear, setShowValues } from '../state/filter/actions'
@@ -53,6 +53,7 @@ class Filter extends React.Component {
 
     return (
       <Card>
+        <CardHeader title="Filtros" />
         <CardMedia>
           <Container>
             <Row

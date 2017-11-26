@@ -98,7 +98,13 @@ class Index extends React.Component {
 
     return (
       <Layout title="Dashboard">
-        {investmentTypes && investmentHolders && <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
+        {investmentTypes &&
+          investmentHolders && (
+            <div>
+              <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
+              <div style={{ marginTop: 40 }} />
+            </div>
+          )}
         {investmentsByType && (
           <div>
             <TotalByType investmentsByType={investmentsByType} />
