@@ -102,6 +102,7 @@ const mapStateToProps = state => ({
   year: state.filter.year,
   showValues: state.filter.showValues
 })
+
 const mapDispatchToProps = dispatch => ({
   setInvestmentHolder: bindActionCreators(setInvestmentHolder, dispatch),
   setInvestmentType: bindActionCreators(setInvestmentType, dispatch),

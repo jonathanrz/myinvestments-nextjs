@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
-import initStore from '../state'
+import withRedux from 'next-redux-wrapper'
 
+import initStore from '../state'
 import Filter from '../components/Filter'
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
@@ -78,22 +78,29 @@ class Index extends React.Component {
     investmentHolders: PropTypes.object.isRequired
   }
 
+  componentWillReceiveProps (nextProps) {}
+
   render () {
     const { investmentsByType, investments, investmentTypes, investmentHolders } = this.props
 
     return (
-      <Provider store={initStore()}>
-        <Layout title="Dashboard">
-          <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
-          <TotalByType investmentsByType={investmentsByType} />
-          <div style={{ marginTop: 40 }} />
-          <IncomesByMonth investments={investments} />
-          <div style={{ marginTop: 40 }} />
-          <TotalBought investments={investments} />
-        </Layout>
-      </Provider>
+      <Layout title="Dashboard">
+        <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
+        <TotalByType investmentsByType={investmentsByType} />
+        <div style={{ marginTop: 40 }} />
+        <IncomesByMonth investments={investments} />
+        <div style={{ marginTop: 40 }} />
+        <TotalBought investments={investments} />
+      </Layout>
     )
   }
 }
 
-export default Index
+const mapStateToProps = state => ({
+  investmentHolder: state.filter.investmentHolder,
+  investmentType: state.filter.investmentType,
+  year: state.filter.year,
+  showValues: state.filter.showValues
+})
+
+export default withRedux(initStore, mapStateToProps, null)(Index)
