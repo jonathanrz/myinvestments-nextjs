@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
+import { bindActionCreators } from 'redux'
 
 import initStore from '../state'
+import { setInvestments } from '../state/data/actions'
 import Filter from '../components/Filter'
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
@@ -12,10 +14,34 @@ import { getInvestmentsWithIncomes, getToken } from '../components/Api'
 
 import { incomeGain } from '../lib/income'
 
+const compareHolder = (left, right) => left.holder.localeCompare(right.holder)
+
 class Index extends React.Component {
-  static async getInitialProps ({ req }) {
-    const res = await getInvestmentsWithIncomes(getToken(req))
-    const investments = res.data.sort((left, right) => left.holder.localeCompare(right.holder))
+  static propTypes = {
+    investments: PropTypes.array.isRequired,
+    investmentsByType: PropTypes.object.isRequired,
+    investmentTypes: PropTypes.object.isRequired,
+    investmentHolders: PropTypes.object.isRequired,
+    setInvestments: PropTypes.func.isRequired
+  }
+
+  constructor (ctx, props) {
+    super(ctx, props)
+
+    this.state = { investmentsByType: null, investmentTypes: null, investmentHolders: null }
+  }
+
+  componentWillMount () {
+    getInvestmentsWithIncomes(getToken()).then(response => this.props.setInvestments(response.data.sort(compareHolder)))
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.prepareData(nextProps)
+  }
+
+  prepareData = props => {
+    const { investments } = props
+
     var investmentsByType = {}
     var investmentTypes = {}
     var investmentHolders = {}
@@ -63,34 +89,29 @@ class Index extends React.Component {
     investmentsByType['Total'].investments = investments
     investmentsByType['Total'].value = totalValue
 
-    return {
-      investments: investments,
-      investmentsByType: investmentsByType,
-      investmentTypes: investmentTypes,
-      investmentHolders: investmentHolders
-    }
+    this.setState({ investmentsByType, investmentTypes, investmentHolders })
   }
-
-  static propTypes = {
-    investments: PropTypes.array.isRequired,
-    investmentsByType: PropTypes.object.isRequired,
-    investmentTypes: PropTypes.object.isRequired,
-    investmentHolders: PropTypes.object.isRequired
-  }
-
-  componentWillReceiveProps (nextProps) {}
 
   render () {
-    const { investmentsByType, investments, investmentTypes, investmentHolders } = this.props
+    const { investments } = this.props
+    const { investmentsByType, investmentTypes, investmentHolders } = this.state
 
     return (
       <Layout title="Dashboard">
-        <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
-        <TotalByType investmentsByType={investmentsByType} />
-        <div style={{ marginTop: 40 }} />
-        <IncomesByMonth investments={investments} />
-        <div style={{ marginTop: 40 }} />
-        <TotalBought investments={investments} />
+        {investmentTypes && investmentHolders && <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
+        {investmentsByType && (
+          <div>
+            <TotalByType investmentsByType={investmentsByType} />
+            <div style={{ marginTop: 40 }} />
+          </div>
+        )}
+        {investmentsByType && (
+          <div>
+            <IncomesByMonth investments={investments} />
+            <div style={{ marginTop: 40 }} />
+            <TotalBought investments={investments} />
+          </div>
+        )}
       </Layout>
     )
   }
@@ -100,7 +121,12 @@ const mapStateToProps = state => ({
   investmentHolder: state.filter.investmentHolder,
   investmentType: state.filter.investmentType,
   year: state.filter.year,
-  showValues: state.filter.showValues
+  showValues: state.filter.showValues,
+  investments: state.data.investments
 })
 
-export default withRedux(initStore, mapStateToProps, null)(Index)
+const mapDispatchToProps = dispatch => ({
+  setInvestments: bindActionCreators(setInvestments, dispatch)
+})
+
+export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(Index)
