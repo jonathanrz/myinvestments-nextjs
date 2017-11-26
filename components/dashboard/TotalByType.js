@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
@@ -14,9 +15,7 @@ class TotalByType extends React.Component {
     style: PropTypes.object
   }
 
-  constructor (ctx, props) {
-    super(ctx, props)
-
+  componentWillMount () {
     const { investmentsByType } = this.props
 
     this.investmentsByTypeChartData = []
@@ -75,4 +74,8 @@ class TotalByType extends React.Component {
   }
 }
 
-export default TotalByType
+const mapStateToProps = state => ({
+  investmentsByType: state.data.filteredInvestments.byType
+})
+
+export default connect(mapStateToProps, null)(TotalByType)

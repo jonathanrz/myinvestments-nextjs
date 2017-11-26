@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
+import moment from 'moment'
 
 import initStore from '../state'
-import { setInvestments } from '../state/data/actions'
+import { setInvestments, setFilteredInvestments } from '../state/data/actions'
 import Filter from '../components/Filter'
 import Layout from '../components/MyLayout'
 import TotalByType from '../components/dashboard/TotalByType'
@@ -16,13 +17,26 @@ import { incomeGain } from '../lib/income'
 
 const compareHolder = (left, right) => left.holder.localeCompare(right.holder)
 
+const filterInvestment = (investment, type, holder) => {
+  if (!type) return true
+
+  if (type === 'all' || investment.type === type) {
+    if (!holder || holder === 'all') return true
+    return investment.holder === holder
+  }
+
+  return false
+}
+
 class Index extends React.Component {
   static propTypes = {
     investments: PropTypes.array.isRequired,
     investmentsByType: PropTypes.object.isRequired,
-    investmentTypes: PropTypes.object.isRequired,
-    investmentHolders: PropTypes.object.isRequired,
-    setInvestments: PropTypes.func.isRequired
+    investmentType: PropTypes.object.isRequired,
+    investmentHolder: PropTypes.object.isRequired,
+    year: PropTypes.number.isRequired,
+    setInvestments: PropTypes.func.isRequired,
+    setFilteredInvestments: PropTypes.func.isRequired
   }
 
   constructor (ctx, props) {
@@ -32,7 +46,11 @@ class Index extends React.Component {
   }
 
   componentWillMount () {
-    getInvestmentsWithIncomes(getToken()).then(response => this.props.setInvestments(response.data.sort(compareHolder)))
+    getInvestmentsWithIncomes(getToken()).then(response => {
+      const investments = response.data
+      investments.sort(compareHolder)
+      this.props.setInvestments(investments)
+    })
   }
 
   componentWillReceiveProps (nextProps) {
@@ -40,22 +58,29 @@ class Index extends React.Component {
   }
 
   prepareData = props => {
-    const { investments } = props
+    const { investments, investmentType, investmentHolder, year } = props
 
-    var investmentsByType = {}
     var investmentTypes = {}
     var investmentHolders = {}
 
-    for (let i = 0; i < investments.length; i++) {
-      const investment = investments[i]
+    investments.forEach(investment => {
+      investmentTypes[investment.type] = null
+      investmentHolders[investment.holder] = null
+    })
+
+    const filteredInvestments = investments
+      .filter(investment => filterInvestment(investment, investmentType, investmentHolder))
+      .map(investment => ({ ...investment, incomes: investment.incomes.filter(income => moment.utc(income.date).year() === year) }))
+
+    var investmentsByType = {}
+
+    for (let i = 0; i < filteredInvestments.length; i++) {
+      const investment = filteredInvestments[i]
       if (investment.incomes.length > 0) {
         investment.currentValue = investment.incomes[0].value
       } else {
         investment.currentValue = 0
       }
-
-      investmentTypes[investment.type] = null
-      investmentHolders[investment.holder] = null
 
       var type = investment.type
       if (!investmentsByType[type]) {
@@ -83,13 +108,14 @@ class Index extends React.Component {
         .reverse()
     }
 
-    const totalValue = investments.reduce((acum, investment) => acum + investment.currentValue, 0)
+    const totalValue = filteredInvestments.reduce((acum, investment) => acum + investment.currentValue, 0)
 
     investmentsByType['Total'] = {}
     investmentsByType['Total'].investments = investments
     investmentsByType['Total'].value = totalValue
 
     this.setState({ investmentsByType, investmentTypes, investmentHolders })
+    this.props.setFilteredInvestments({ investments: filteredInvestments, byType: investmentsByType })
   }
 
   render () {
@@ -99,7 +125,7 @@ class Index extends React.Component {
     return (
       <Layout title="Dashboard">
         {investmentTypes && investmentHolders && <Filter style={{ marginBottom: 40 }} investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
-        {investmentsByType && <TotalByType style={{ marginBottom: 40 }} investmentsByType={investmentsByType} />}
+        {investmentsByType && <TotalByType style={{ marginBottom: 40 }} />}
         {investmentsByType && (
           <div>
             <IncomesByMonth style={{ marginBottom: 40 }} investments={investments} />
@@ -120,7 +146,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setInvestments: bindActionCreators(setInvestments, dispatch)
+  setInvestments: bindActionCreators(setInvestments, dispatch),
+  setFilteredInvestments: bindActionCreators(setFilteredInvestments, dispatch)
 })
 
 export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(Index)
