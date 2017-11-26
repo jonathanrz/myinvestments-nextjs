@@ -2,19 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
 
-import { setInvestmentHolder, setInvestmentType, setYear } from '../../state/filter/actions'
+import Filter from '../../components/Filter'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
 import { hasGrossIROrFee } from '../../lib/income'
 
 const totalId = 'Total'
-const selectStyle = { display: 'inline-block', marginLeft: 10 }
 
 const filterInvestment = (investment, type, holder) => {
   if (type === 'all' || investment.type === type) {
@@ -29,38 +27,15 @@ class IncomesByMonth extends React.Component {
     investments: PropTypes.array.isRequired,
     investmentHolder: PropTypes.string.isRequired,
     investmentType: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    setInvestmentHolder: PropTypes.func.isRequired,
-    setInvestmentType: PropTypes.func.isRequired,
-    setYear: PropTypes.func.isRequired
+    showValues: PropTypes.bool.isRequired,
+    year: PropTypes.string.isRequired
   }
 
   constructor (ctx, props) {
     super(ctx, props)
 
     this.id = 1
-    this.state = { currentYear: 2017, currentHolder: 'all', showValues: true }
-    this.onHolderSelected = this.onHolderSelected.bind(this)
-    this.onTypeSelected = this.onTypeSelected.bind(this)
-    this.onYearSelected = this.onYearSelected.bind(this)
-    this.onShowValuesToggle = this.onShowValuesToggle.bind(this)
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
-  }
-
-  onHolderSelected (event) {
-    this.props.setInvestmentHolder(event.target.value)
-  }
-
-  onTypeSelected (event) {
-    this.props.setInvestmentType(event.target.value)
-  }
-
-  onYearSelected (event) {
-    this.props.setYear(Number(event.target.value))
-  }
-
-  onShowValuesToggle () {
-    this.setState({ showValues: !this.state.showValues })
   }
 
   componentWillMount () {
@@ -141,8 +116,7 @@ class IncomesByMonth extends React.Component {
   }
 
   render () {
-    const { showValues } = this.state
-    const { investmentHolder, investmentType, year } = this.props
+    const { showValues } = this.props
     const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
@@ -150,42 +124,9 @@ class IncomesByMonth extends React.Component {
     return (
       <Card>
         <CardHeader title="Recebimentos por mês" />
+        <Filter investmentTypes={investmentTypes} investmentHolders={investmentHolders} />
         <CardMedia>
           <Container>
-            <Row
-              style={{
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                marginRight: 30,
-                marginBottom: 10
-              }}
-            >
-              <button style={selectStyle} onClick={this.onShowValuesToggle}>
-                {showValues ? '%' : 'R$'}{' '}
-              </button>
-              <select style={selectStyle} value={year} onChange={this.onYearSelected}>
-                <option value="2016">{2016}</option>
-                <option value="2017">{2017}</option>
-                <option value="2018">{2018}</option>
-                <option value="2019">{2019}</option>
-              </select>
-              <select style={selectStyle} value={investmentType} onChange={this.onTypeSelected}>
-                <option value="all">Todos os tipos</option>
-                {Object.keys(investmentTypes).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-              <select style={selectStyle} value={investmentHolder} onChange={this.onHolderSelected}>
-                <option value="all">Todos os titulares</option>
-                {Object.keys(investmentHolders).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </Row>
             <Row style={{ paddingBottom: 30 }}>
               <Col lg={3}>
                 <Table selectable={false}>
@@ -304,12 +245,8 @@ class IncomesByMonth extends React.Component {
 const mapStateToProps = state => ({
   investmentHolder: state.filter.investmentHolder,
   investmentType: state.filter.investmentType,
-  year: state.filter.year
-})
-const mapDispatchToProps = dispatch => ({
-  setInvestmentHolder: bindActionCreators(setInvestmentHolder, dispatch),
-  setInvestmentType: bindActionCreators(setInvestmentType, dispatch),
-  setYear: bindActionCreators(setYear, dispatch)
+  year: state.filter.year,
+  showValues: state.filter.showValues
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(IncomesByMonth)
+export default connect(mapStateToProps, null)(IncomesByMonth)

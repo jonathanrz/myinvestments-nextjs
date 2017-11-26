@@ -1,9 +1,10 @@
-import { SET_INVESTMENT_HOLDER, SET_INVESTMENT_TYPE, SET_YEAR } from './actions'
+import { SET_INVESTMENT_HOLDER, SET_INVESTMENT_TYPE, SET_YEAR, SET_SHOW_VALUES } from './actions'
 
 export const initialState = {
   investmentHolder: 'all',
   investmentType: 'all',
-  year: 2017
+  year: 2017,
+  showValues: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, investmentType: action.data }
     case SET_YEAR:
       return { ...state, year: action.data }
+    case SET_SHOW_VALUES:
+      return { ...state, showValues: action.data }
     default:
       return state
   }
