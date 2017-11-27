@@ -4,16 +4,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import moment from 'moment'
 
-import { setInvestments, setFilteredInvestments } from '../../state/data/actions'
+import { setFilteredInvestments } from '../../state/data/actions'
 import Filter from '../Filter'
 import TotalByType from './TotalByType'
 import IncomesByMonth from './IncomesByMonth'
 import TotalBought from './TotalBought'
-import { getInvestmentsWithIncomes, getToken } from '../../components/Api'
 
 import { incomeGain } from '../../lib/income'
-
-const compareHolder = (left, right) => left.holder.localeCompare(right.holder)
 
 const filterInvestment = (investment, type, holder) => {
   if (!type) return true
@@ -33,7 +30,6 @@ class Index extends React.Component {
     investmentType: PropTypes.object.isRequired,
     investmentHolder: PropTypes.object.isRequired,
     year: PropTypes.number.isRequired,
-    setInvestments: PropTypes.func.isRequired,
     setFilteredInvestments: PropTypes.func.isRequired
   }
 
@@ -41,14 +37,6 @@ class Index extends React.Component {
     super(ctx, props)
 
     this.state = { investmentTypes: null, investmentHolders: null }
-  }
-
-  componentWillMount () {
-    getInvestmentsWithIncomes(getToken()).then(response => {
-      const investments = response.data
-      investments.sort(compareHolder)
-      this.props.setInvestments(investments)
-    })
   }
 
   componentWillReceiveProps (nextProps) {
@@ -139,7 +127,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setInvestments: bindActionCreators(setInvestments, dispatch),
   setFilteredInvestments: bindActionCreators(setFilteredInvestments, dispatch)
 })
 

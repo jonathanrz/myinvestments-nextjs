@@ -1,22 +1,19 @@
 import React from 'react'
-import Date from '../components/Date'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import { Card, CardActions, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
 import TextField from 'material-ui/TextField'
+
+import Date from '../components/Date'
 import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
-import { getInvestments, getToken } from '../components/Api'
 
 class Investments extends React.Component {
-  static async getInitialProps ({ req }) {
-    const res = await getInvestments(getToken(req))
-    const data = res.data
-
-    return {
-      investments: data
-    }
+  static propTypes = {
+    investments: PropTypes.array.isRequired
   }
 
   constructor (props) {
@@ -99,8 +96,8 @@ class Investments extends React.Component {
   }
 }
 
-Investments.propTypes = {
-  investments: PropTypes.element.isRequired
-}
+const mapStateToProps = state => ({
+  investments: state.data.investments
+})
 
-export default Investments
+export default connect(mapStateToProps, null)(Investments)
