@@ -6,7 +6,6 @@ import moment from 'moment'
 
 import { setInvestments, setFilteredInvestments } from '../../state/data/actions'
 import Filter from '../Filter'
-import Layout from '../MyLayout'
 import TotalByType from './TotalByType'
 import IncomesByMonth from './IncomesByMonth'
 import TotalBought from './TotalBought'
@@ -121,12 +120,12 @@ class Index extends React.Component {
     const { investmentTypes, investmentHolders } = this.state
 
     return (
-      <Layout title="Dashboard">
+      <div>
         {investmentTypes && investmentHolders && <Filter style={{ marginBottom: 40 }} investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
         <TotalByType style={{ marginBottom: 40 }} />
         <IncomesByMonth style={{ marginBottom: 40 }} />
         <TotalBought style={{ marginBottom: 40 }} />
-      </Layout>
+      </div>
     )
   }
 }

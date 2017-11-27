@@ -6,7 +6,6 @@ import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowCol
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
 import TextField from 'material-ui/TextField'
-import Layout from '../components/MyLayout.js'
 import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
 import { getInvestments, getToken } from '../components/Api'
 
@@ -57,47 +56,45 @@ class Investments extends React.Component {
     const { filter } = this.state
 
     return (
-      <Layout title="Investimentos">
-        <Card>
-          <CardMedia style={{ padding: '20px 50px' }}>
-            <TextField type="text" value={filter} onChange={this.onFilter} hintText="Filtrar por nome, titular ou tipo" />
-          </CardMedia>
-          <CardMedia>
-            <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
-              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                <TableRow>
-                  <TableHeaderColumn>Nome</TableHeaderColumn>
-                  <TableHeaderColumn>Tipo</TableHeaderColumn>
-                  <TableHeaderColumn>Titular</TableHeaderColumn>
-                  <TableHeaderColumn>Vencimento</TableHeaderColumn>
-                </TableRow>
-              </TableHeader>
-              <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                {investments &&
-                  investments.filter(investment => this.filterInvestment(investment, filter)).map(item => (
-                    <TableRow key={item._id}>
-                      <TableRowColumn>{item.name}</TableRowColumn>
-                      <TableRowColumn>{item.type}</TableRowColumn>
-                      <TableRowColumn>{item.holder}</TableRowColumn>
-                      <TableRowColumn>{item.due_date && <Date date={item.due_date} />}</TableRowColumn>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </CardMedia>
-          <Divider style={{ marginTop: 20 }} />
-          <CardActions>
-            <RaisedButton
-              label="Novo Investimento"
-              secondary={true}
-              onClick={this.onNewInvestment}
-              style={{
-                margin: 12
-              }}
-            />
-          </CardActions>
-        </Card>
-      </Layout>
+      <Card>
+        <CardMedia style={{ padding: '20px 50px' }}>
+          <TextField type="text" value={filter} onChange={this.onFilter} hintText="Filtrar por nome, titular ou tipo" />
+        </CardMedia>
+        <CardMedia>
+          <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
+            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+              <TableRow>
+                <TableHeaderColumn>Nome</TableHeaderColumn>
+                <TableHeaderColumn>Tipo</TableHeaderColumn>
+                <TableHeaderColumn>Titular</TableHeaderColumn>
+                <TableHeaderColumn>Vencimento</TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody displayRowCheckbox={false} showRowHover stripedRows>
+              {investments &&
+                investments.filter(investment => this.filterInvestment(investment, filter)).map(item => (
+                  <TableRow key={item._id}>
+                    <TableRowColumn>{item.name}</TableRowColumn>
+                    <TableRowColumn>{item.type}</TableRowColumn>
+                    <TableRowColumn>{item.holder}</TableRowColumn>
+                    <TableRowColumn>{item.due_date && <Date date={item.due_date} />}</TableRowColumn>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </CardMedia>
+        <Divider style={{ marginTop: 20 }} />
+        <CardActions>
+          <RaisedButton
+            label="Novo Investimento"
+            secondary={true}
+            onClick={this.onNewInvestment}
+            style={{
+              margin: 12
+            }}
+          />
+        </CardActions>
+      </Card>
     )
   }
 }
