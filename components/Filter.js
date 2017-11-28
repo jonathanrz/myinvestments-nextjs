@@ -15,8 +15,8 @@ class Filter extends React.Component {
     investmentType: PropTypes.string.isRequired,
     showValues: PropTypes.bool.isRequired,
     year: PropTypes.string.isRequired,
-    investmentTypes: PropTypes.object.isRequired,
-    investmentHolders: PropTypes.object.isRequired,
+    types: PropTypes.object.isRequired,
+    holders: PropTypes.object.isRequired,
     setInvestmentHolder: PropTypes.func.isRequired,
     setInvestmentType: PropTypes.func.isRequired,
     setYear: PropTypes.func.isRequired,
@@ -50,7 +50,7 @@ class Filter extends React.Component {
   }
 
   render () {
-    const { investmentHolder, investmentType, year, showValues, investmentTypes, investmentHolders, style } = this.props
+    const { investmentHolder, investmentType, year, showValues, types, holders, style } = this.props
 
     return (
       <Card containerStyle={style || {}}>
@@ -76,19 +76,21 @@ class Filter extends React.Component {
               </select>
               <select style={selectStyle} value={investmentType} onChange={this.onTypeSelected}>
                 <option value="all">Todos os tipos</option>
-                {Object.keys(investmentTypes).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
+                {types &&
+                  Object.keys(types).map(type => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
               </select>
               <select style={selectStyle} value={investmentHolder} onChange={this.onHolderSelected}>
                 <option value="all">Todos os titulares</option>
-                {Object.keys(investmentHolders).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
+                {holders &&
+                  Object.keys(holders).map(type => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
               </select>
             </Row>
           </Container>
@@ -102,7 +104,9 @@ const mapStateToProps = state => ({
   investmentHolder: state.filter.investmentHolder,
   investmentType: state.filter.investmentType,
   year: state.filter.year,
-  showValues: state.filter.showValues
+  showValues: state.filter.showValues,
+  types: state.data.types,
+  holders: state.data.holders
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 import moment from 'moment'
 
 import { setFilteredInvestments } from '../../state/data/actions'
-import Filter from '../Filter'
 import TotalByType from './TotalByType'
 import IncomesByMonth from './IncomesByMonth'
 import TotalBought from './TotalBought'
@@ -33,26 +32,12 @@ class Index extends React.Component {
     setFilteredInvestments: PropTypes.func.isRequired
   }
 
-  constructor (ctx, props) {
-    super(ctx, props)
-
-    this.state = { investmentTypes: null, investmentHolders: null }
-  }
-
   componentWillReceiveProps (nextProps) {
     this.prepareData(nextProps)
   }
 
   prepareData = props => {
     const { investments, investmentType, investmentHolder, year } = props
-
-    var investmentTypes = {}
-    var investmentHolders = {}
-
-    investments.forEach(investment => {
-      investmentTypes[investment.type] = null
-      investmentHolders[investment.holder] = null
-    })
 
     const filteredInvestments = investments
       .filter(investment => filterInvestment(investment, investmentType, investmentHolder))
@@ -100,16 +85,12 @@ class Index extends React.Component {
     investmentsByType['Total'].investments = investments
     investmentsByType['Total'].value = totalValue
 
-    this.setState({ investmentTypes, investmentHolders })
     this.props.setFilteredInvestments({ investments: filteredInvestments, byType: investmentsByType })
   }
 
   render () {
-    const { investmentTypes, investmentHolders } = this.state
-
     return (
       <div>
-        {investmentTypes && investmentHolders && <Filter style={{ marginBottom: 40 }} investmentTypes={investmentTypes} investmentHolders={investmentHolders} />}
         <TotalByType style={{ marginBottom: 40 }} />
         <IncomesByMonth style={{ marginBottom: 40 }} />
         <TotalBought style={{ marginBottom: 40 }} />
