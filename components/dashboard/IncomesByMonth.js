@@ -98,8 +98,8 @@ class IncomesByMonth extends React.Component {
   }
 
   render () {
-    const { showValues, style } = this.props
-    const { investments, investmentsByMonth, totalValue, grossIrAndFees } = this
+    const { investments, showValues, style } = this.props
+    const { investmentsByMonth, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
 
