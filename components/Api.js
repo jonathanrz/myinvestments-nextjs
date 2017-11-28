@@ -14,11 +14,10 @@ const server = axios.create({
 
 export const setToken = token => {
   Cookie.set('token', token)
-  window.localStorage.setItem('token', token)
 }
 
 export const getToken = req => {
-  return req ? parse(req.headers.cookie).token : window.localStorage.getItem('token')
+  return req ? parse(req.headers.cookie).token : Cookie.get('token')
 }
 
 export const getInvestments = token => {

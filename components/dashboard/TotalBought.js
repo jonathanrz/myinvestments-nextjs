@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
@@ -8,13 +9,20 @@ import { PercentWithColor } from '../../components/Percent'
 
 class TotalBought extends React.Component {
   static propTypes = {
-    investments: PropTypes.array.isRequired
+    investments: PropTypes.array.isRequired,
+    style: PropTypes.object
   }
 
-  constructor (ctx, props) {
-    super(ctx, props)
+  componentWillMount () {
+    this.prepareData(this.props)
+  }
 
-    const { investments } = this.props
+  componentWillReceiveProps (nextProps) {
+    this.prepareData(nextProps)
+  }
+
+  prepareData = props => {
+    const { investments } = props
 
     this.data = []
     this.totalBought = 0
@@ -46,10 +54,11 @@ class TotalBought extends React.Component {
   }
 
   render () {
+    const { style } = this.props
     const { data, totalBought, totalGain, maxMonths } = this
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Total geral" />
         <CardMedia>
           <Container>
@@ -115,4 +124,8 @@ class TotalBought extends React.Component {
   }
 }
 
-export default TotalBought
+const mapStateToProps = state => ({
+  investments: state.data.filteredInvestments.investments
+})
+
+export default connect(mapStateToProps, null)(TotalBought)

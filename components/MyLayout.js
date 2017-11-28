@@ -18,9 +18,10 @@ Router.onRouteChangeError = () => NProgress.done()
 class Layout extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    detail: PropTypes.bool.isRequired,
+    onDrawerItemClicked: PropTypes.func,
+    detail: PropTypes.bool,
+    children: PropTypes.element,
     onNavigationClose: PropTypes.func,
-    children: PropTypes.element.isRequired,
     rightElements: PropTypes.func
   }
 
@@ -68,8 +69,8 @@ class Layout extends React.Component {
             <div>
               <Drawer width={drawerWidth} open={this.state.drawerOpen}>
                 <AppBar iconElementLeft={<IconButton />} />
-                <MenuItem primaryText="Dashboard" leftIcon={<SettingsInputSvideo />} onClick={() => Router.push('/')} />
-                <MenuItem primaryText="Investimentos" leftIcon={<CardTravel />} onClick={() => Router.push('/investments')} />
+                <MenuItem primaryText="Dashboard" leftIcon={<SettingsInputSvideo />} onClick={() => this.props.onDrawerItemClicked('Dashboard')} />
+                <MenuItem primaryText="Investimentos" leftIcon={<CardTravel />} onClick={() => this.props.onDrawerItemClicked('Investimentos')} />
               </Drawer>
               <AppBar title={title} onLeftIconButtonTouchTap={this.handleMenuToggle} />
             </div>

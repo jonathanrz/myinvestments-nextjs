@@ -1,82 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
+import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { Container, Row, Col } from 'react-grid-system'
-import moment from 'moment'
+
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
 import { hasGrossIROrFee } from '../../lib/income'
 
 const totalId = 'Total'
-const selectStyle = { display: 'inline-block', marginLeft: 10 }
-
-const filterInvestment = (investment, type, holder) => {
-  if (type === 'all' || investment.type === type) {
-    if (holder === 'all') return true
-    return investment.holder === holder
-  }
-  return false
-}
 
 class IncomesByMonth extends React.Component {
   static propTypes = {
-    investments: PropTypes.array.isRequired
+    investments: PropTypes.array.isRequired,
+    showValues: PropTypes.bool.isRequired,
+    style: PropTypes.object
   }
 
   constructor (ctx, props) {
     super(ctx, props)
 
     this.id = 1
-    this.state = { currentYear: 2017, currentType: 'all', currentHolder: 'all', showValues: true }
-    this.onYearSelected = this.onYearSelected.bind(this)
-    this.onTypeSelected = this.onTypeSelected.bind(this)
-    this.onHolderSelected = this.onHolderSelected.bind(this)
-    this.onShowValuesToggle = this.onShowValuesToggle.bind(this)
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
-  }
-
-  onYearSelected (event) {
-    this.setState({ currentYear: Number(event.target.value) })
-  }
-
-  onTypeSelected (event) {
-    this.setState({ currentType: event.target.value })
-  }
-
-  onHolderSelected (event) {
-    this.setState({ currentHolder: event.target.value })
-  }
-
-  onShowValuesToggle () {
-    this.setState({ showValues: !this.state.showValues })
+    this.investmentsByMonth = {}
+    this.investments = []
   }
 
   componentWillMount () {
-    this.generateInvestmentData(this.state)
+    this.generateInvestmentData(this.props)
   }
 
-  componentWillUpdate (nextProps, nextState) {
-    this.generateInvestmentData(nextState)
+  componentWillReceiveProps (nextProps) {
+    this.generateInvestmentData(nextProps)
   }
 
-  generateInvestmentData (state) {
-    const { investments } = this.props
-    const { currentYear, currentType, currentHolder } = state
+  generateInvestmentData = props => {
+    const { investments } = props
 
     var investmentsByMonth = {}
-    var investmentTypes = {}
-    var investmentHolders = {}
     var grossIrAndFees = []
     var totalValue = 0
     investments.forEach(investment => {
-      investmentTypes[investment.type] = null
-      investmentHolders[investment.holder] = null
-    })
-    this.investments = investments.filter(investment => filterInvestment(investment, currentType, currentHolder))
-    this.investments.forEach(investment => {
-      investment.incomes.filter(income => moment.utc(income.date).year() === currentYear).forEach(income => {
+      investment.incomes.forEach(income => {
         var monthData = investmentsByMonth[income.date]
         if (!monthData) monthData = []
         var investmentData = monthData[investment._id]
@@ -126,56 +94,20 @@ class IncomesByMonth extends React.Component {
 
     this.totalValue = totalValue
     this.investmentsByMonth = investmentsByMonth
-    this.investmentTypes = investmentTypes
-    this.investmentHolders = investmentHolders
     this.grossIrAndFees = grossIrAndFees.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
   }
 
   render () {
-    const { currentYear, currentType, currentHolder, showValues } = this.state
-    const { investments, investmentsByMonth, investmentTypes, investmentHolders, totalValue, grossIrAndFees } = this
+    const { showValues, style } = this.props
+    const { investments, investmentsByMonth, totalValue, grossIrAndFees } = this
     const holderColumnStyle = { width: 150 }
     const valueColumnStyle = { width: 100 }
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Recebimentos por mês" />
         <CardMedia>
           <Container>
-            <Row
-              style={{
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                marginRight: 30,
-                marginBottom: 10
-              }}
-            >
-              <button style={selectStyle} onClick={this.onShowValuesToggle}>
-                {showValues ? '%' : 'R$'}{' '}
-              </button>
-              <select style={selectStyle} value={currentYear} onChange={this.onYearSelected}>
-                <option value="2016">{2016}</option>
-                <option value="2017">{2017}</option>
-                <option value="2018">{2018}</option>
-                <option value="2019">{2019}</option>
-              </select>
-              <select style={selectStyle} value={currentType} onChange={this.onTypeSelected}>
-                <option value="all">Todos os tipos</option>
-                {Object.keys(investmentTypes).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-              <select style={selectStyle} value={currentHolder} onChange={this.onHolderSelected}>
-                <option value="all">Todos os titulares</option>
-                {Object.keys(investmentHolders).map(type => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </Row>
             <Row style={{ paddingBottom: 30 }}>
               <Col lg={3}>
                 <Table selectable={false}>
@@ -291,4 +223,9 @@ class IncomesByMonth extends React.Component {
   }
 }
 
-export default IncomesByMonth
+const mapStateToProps = state => ({
+  showValues: state.filter.showValues,
+  investments: state.data.filteredInvestments.investments
+})
+
+export default connect(mapStateToProps, null)(IncomesByMonth)

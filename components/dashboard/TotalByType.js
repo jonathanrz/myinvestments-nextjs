@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
@@ -10,13 +11,20 @@ const COLORS = ['#4eb8ea', '#ac92ec', '#96c823', '#ef5a31', '#FFC107', '#009688'
 
 class TotalByType extends React.Component {
   static propTypes = {
-    investmentsByType: PropTypes.object.isRequired
+    investmentsByType: PropTypes.object.isRequired,
+    style: PropTypes.object
   }
 
-  constructor (ctx, props) {
-    super(ctx, props)
+  componentWillMount () {
+    this.generateInvestmentData(this.props)
+  }
 
-    const { investmentsByType } = this.props
+  componentWillReceiveProps (nextProps) {
+    this.generateInvestmentData(nextProps)
+  }
+
+  generateInvestmentData = props => {
+    const { investmentsByType } = props
 
     this.investmentsByTypeChartData = []
     for (let type in investmentsByType) {
@@ -25,11 +33,11 @@ class TotalByType extends React.Component {
   }
 
   render () {
-    const { investmentsByType } = this.props
-    const totalValue = investmentsByType['Total'].value
+    const { investmentsByType, style } = this.props
+    const totalValue = investmentsByType && investmentsByType['Total'] ? investmentsByType['Total'].value : 0
 
     return (
-      <Card>
+      <Card containerStyle={style || {}}>
         <CardHeader title="Totais por tipo" />
         <CardMedia>
           <Container>
@@ -44,7 +52,7 @@ class TotalByType extends React.Component {
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                    {Object.keys(investmentsByType)
+                    {Object.keys(investmentsByType || {})
                       .sort()
                       .map(type => (
                         <TableRow key={type}>
@@ -74,4 +82,8 @@ class TotalByType extends React.Component {
   }
 }
 
-export default TotalByType
+const mapStateToProps = state => ({
+  investmentsByType: state.data.filteredInvestments.byType
+})
+
+export default connect(mapStateToProps, null)(TotalByType)
