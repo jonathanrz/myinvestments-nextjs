@@ -13,21 +13,10 @@ import { hasGrossIROrFee } from '../../lib/income'
 
 const totalId = 'Total'
 
-const filterInvestment = (investment, type, holder) => {
-  if (type === 'all' || investment.type === type) {
-    if (holder === 'all') return true
-    return investment.holder === holder
-  }
-  return false
-}
-
 class IncomesByMonth extends React.Component {
   static propTypes = {
     investments: PropTypes.array.isRequired,
-    investmentHolder: PropTypes.string.isRequired,
-    investmentType: PropTypes.string.isRequired,
     showValues: PropTypes.bool.isRequired,
-    year: PropTypes.string.isRequired,
     style: PropTypes.object
   }
 
@@ -36,6 +25,8 @@ class IncomesByMonth extends React.Component {
 
     this.id = 1
     this.generateInvestmentData = this.generateInvestmentData.bind(this)
+    this.investmentsByMonth = {}
+    this.investments = []
   }
 
   componentWillMount () {
@@ -47,14 +38,13 @@ class IncomesByMonth extends React.Component {
   }
 
   generateInvestmentData = props => {
-    const { investments, investmentHolder, investmentType, year } = props
+    const { investments } = props
 
     var investmentsByMonth = {}
     var grossIrAndFees = []
     var totalValue = 0
-    this.investments = investments.filter(investment => filterInvestment(investment, investmentType, investmentHolder))
-    this.investments.forEach(investment => {
-      investment.incomes.filter(income => moment.utc(income.date).year() === year).forEach(income => {
+    investments.forEach(investment => {
+      investment.incomes.forEach(income => {
         var monthData = investmentsByMonth[income.date]
         if (!monthData) monthData = []
         var investmentData = monthData[investment._id]
@@ -234,9 +224,6 @@ class IncomesByMonth extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  investmentHolder: state.filter.investmentHolder,
-  investmentType: state.filter.investmentType,
-  year: state.filter.year,
   showValues: state.filter.showValues,
   investments: state.data.filteredInvestments.investments
 })

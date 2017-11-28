@@ -6,7 +6,6 @@ import { Card, CardActions, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/FlatButton'
-import TextField from 'material-ui/TextField'
 
 import Date from '../components/Date'
 import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
@@ -16,47 +15,20 @@ class Investments extends React.Component {
     investments: PropTypes.array.isRequired
   }
 
-  constructor (props) {
-    super(props)
-
-    this.onInvestmentCell = this.onInvestmentCell.bind(this)
-    this.onNewInvestment = this.onNewInvestment.bind(this)
-    this.onFilter = this.onFilter.bind(this)
-    this.filterInvestment = this.filterInvestment.bind(this)
-
-    this.state = { filter: '' }
-  }
-
-  onInvestmentCell (index) {
+  onInvestmentCell = index => {
     const investment = this.props.investments[index]
     routeToInvestment(investment._id)
   }
 
-  onNewInvestment () {
+  onNewInvestment = () => {
     routeToNewInvestment()
-  }
-
-  onFilter (e) {
-    this.setState({ filter: e.target.value })
-  }
-
-  filterInvestment (investment, filter) {
-    if (filter.length === 0) return true
-
-    filter = filter.toLowerCase()
-
-    return investment.name.toLowerCase().includes(filter) || investment.holder.toLowerCase().includes(filter) || investment.type.toLowerCase().includes(filter)
   }
 
   render () {
     const { investments } = this.props
-    const { filter } = this.state
 
     return (
       <Card>
-        <CardMedia style={{ padding: '20px 50px' }}>
-          <TextField type="text" value={filter} onChange={this.onFilter} hintText="Filtrar por nome, titular ou tipo" />
-        </CardMedia>
         <CardMedia>
           <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -69,7 +41,7 @@ class Investments extends React.Component {
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover stripedRows>
               {investments &&
-                investments.filter(investment => this.filterInvestment(investment, filter)).map(item => (
+                investments.map(item => (
                   <TableRow key={item._id}>
                     <TableRowColumn>{item.name}</TableRowColumn>
                     <TableRowColumn>{item.type}</TableRowColumn>
@@ -97,7 +69,7 @@ class Investments extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  investments: state.data.investments
+  investments: state.data.filteredInvestments.investments
 })
 
 export default connect(mapStateToProps, null)(Investments)
