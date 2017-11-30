@@ -10,6 +10,7 @@ import Filter from '../components/Filter'
 import Dashboard from '../components/dashboard'
 import Layout from '../components/MyLayout'
 import Investments from '../components/Investments'
+import MonthIncomes from '../components/MonthIncomes'
 
 import { getInvestmentsWithIncomes, getToken } from '../components/Api'
 
@@ -120,6 +121,7 @@ class Index extends React.Component {
         <Filter style={{ marginBottom: 40 }} />
         {currentItem === 'Dashboard' && <Dashboard />}
         {currentItem === 'Investimentos' && <Investments />}
+        {currentItem === 'Rendimentos do Mês' && <MonthIncomes />}
       </Layout>
     )
   }

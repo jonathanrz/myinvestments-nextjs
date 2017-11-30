@@ -7,6 +7,7 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import MenuItem from 'material-ui/MenuItem'
 import SettingsInputSvideo from 'material-ui/svg-icons/action/settings-input-svideo'
 import CardTravel from 'material-ui/svg-icons/action/card-travel'
+import DateRange from 'material-ui/svg-icons/action/date-range'
 import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
@@ -41,7 +42,7 @@ class Layout extends React.Component {
     const { detail, title, children, onNavigationClose, rightElements } = this.props
     const { drawerOpen } = this.state
 
-    const drawerWidth = detail || !drawerOpen ? 0 : 200
+    const drawerWidth = detail || !drawerOpen ? 0 : 300
     const pageStyle = {
       marginLeft: drawerWidth - 8,
       marginTop: -8,
@@ -71,6 +72,7 @@ class Layout extends React.Component {
                 <AppBar iconElementLeft={<IconButton />} />
                 <MenuItem primaryText="Dashboard" leftIcon={<SettingsInputSvideo />} onClick={() => this.props.onDrawerItemClicked('Dashboard')} />
                 <MenuItem primaryText="Investimentos" leftIcon={<CardTravel />} onClick={() => this.props.onDrawerItemClicked('Investimentos')} />
+                <MenuItem primaryText="Rendimentos do Mês" leftIcon={<DateRange />} onClick={() => this.props.onDrawerItemClicked('Rendimentos do Mês')} />
               </Drawer>
               <AppBar title={title} onLeftIconButtonTouchTap={this.handleMenuToggle} />
             </div>
