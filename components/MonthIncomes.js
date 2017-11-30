@@ -1,42 +1,76 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
-import { Card, CardActions, CardMedia } from 'material-ui/Card'
+import Snackbar from 'material-ui/Snackbar'
+import { Card, CardMedia } from 'material-ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
-import Divider from 'material-ui/Divider'
+import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/FlatButton'
+import Divider from 'material-ui/Divider'
 
-import Date from '../components/Date'
-import { routeToInvestment, routeToNewInvestment } from '../components/Router.js'
+import { formatMoney } from '../lib/number'
+import { newIncome, getToken } from '../components/Api'
 
 class MonthIncomes extends React.Component {
   static propTypes = {
     investments: PropTypes.array.isRequired
   }
 
-  onInvestmentCell = index => {
-    const investment = this.props.investments[index]
-    routeToInvestment(investment._id)
+  constructor (ctx, props) {
+    super(ctx, props)
+
+    this.state = { message: '', snackbarOpen: false }
   }
 
-  onNewInvestment = () => {
-    routeToNewInvestment()
+  createNewIncome = investment => {
+    const lastIncome = investment.incomes[0]
+
+    const data = {
+      date: moment(),
+      quantity: lastIncome.quantity,
+      value: investment.newValue,
+      bought: 0,
+      gross: 0,
+      ir: 0,
+      fee: 0
+    }
+
+    const that = this
+
+    newIncome(getToken(), investment._id, data)
+      .then(response => {
+        if (response.status === 200) {
+          that.setState({ message: `Rendimento ${response.data._id} criado com sucesso`, snackbarOpen: true })
+        } else {
+          that.setState({ message: `Erro ao criar o rendimento, response: ${response.statusText}`, snackbarOpen: true })
+        }
+      })
+      .catch(function (error) {
+        if (error.response) {
+          that.setState({ message: `Erro ao criar o rendimento, response: ${JSON.stringify(error.response.data)}`, snackbarOpen: true })
+        } else {
+          that.setState({ message: `Erro ao criar o rendimento, erro: ${error}`, snackbarOpen: true })
+        }
+      })
   }
 
   render () {
-    const { investments } = this.props
+    const investments = this.props.investments.filter(investment => investment.incomes.length > 0)
+    const { message, snackbarOpen } = this.state
 
     return (
       <Card>
         <CardMedia>
-          <Table fixedHeader selectable={false} onCellClick={this.onInvestmentCell}>
+          <Table fixedHeader selectable={false}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
                 <TableHeaderColumn>Nome</TableHeaderColumn>
                 <TableHeaderColumn>Tipo</TableHeaderColumn>
                 <TableHeaderColumn>Titular</TableHeaderColumn>
-                <TableHeaderColumn>Vencimento</TableHeaderColumn>
+                <TableHeaderColumn>Rendimento</TableHeaderColumn>
+                <TableHeaderColumn>Confirmar</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover stripedRows>
@@ -46,23 +80,33 @@ class MonthIncomes extends React.Component {
                     <TableRowColumn>{item.name}</TableRowColumn>
                     <TableRowColumn>{item.type}</TableRowColumn>
                     <TableRowColumn>{item.holder}</TableRowColumn>
-                    <TableRowColumn>{item.due_date && <Date date={item.due_date} />}</TableRowColumn>
+                    <TableRowColumn>
+                      <TextField
+                        hintText={formatMoney(item.incomes[0].value, 2)}
+                        onChange={(event, newValue) => {
+                          item.newValue = Number(newValue)
+                        }}
+                      />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <RaisedButton type="submit" label="Enviar" secondary={true} onClick={() => this.createNewIncome(item)} />
+                    </TableRowColumn>
                   </TableRow>
                 ))}
             </TableBody>
           </Table>
         </CardMedia>
         <Divider style={{ marginTop: 20 }} />
-        <CardActions>
-          <RaisedButton
-            label="Novo Investimento"
-            secondary={true}
-            onClick={this.onNewInvestment}
-            style={{
-              margin: 12
+        <CardMedia>
+          <Snackbar
+            open={snackbarOpen}
+            message={message}
+            autoHideDuration={5000}
+            onRequestClose={() => {
+              this.setState({ snackbarOpen: false })
             }}
           />
-        </CardActions>
+        </CardMedia>
       </Card>
     )
   }
