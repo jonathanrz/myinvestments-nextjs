@@ -13,6 +13,19 @@ import Divider from 'material-ui/Divider'
 import { formatMoney } from '../lib/number'
 import { newIncome, getToken } from '../components/Api'
 
+const today = moment.utc()
+
+const filterInvestment = investment => {
+  if (investment.incomes.length === 0) return false
+
+  const lastIncomeDate = moment.utc(investment.incomes[0].date)
+  if (lastIncomeDate.year() > today.year()) return false
+  if (lastIncomeDate.year() < today.year()) return true
+  if (lastIncomeDate.month() >= today.month()) return false
+
+  return true
+}
+
 class MonthIncomes extends React.Component {
   static propTypes = {
     investments: PropTypes.array.isRequired
@@ -57,7 +70,7 @@ class MonthIncomes extends React.Component {
   }
 
   render () {
-    const investments = this.props.investments.filter(investment => investment.incomes.length > 0)
+    const investments = this.props.investments.filter(investment => filterInvestment(investment))
     const { message, snackbarOpen } = this.state
 
     return (
