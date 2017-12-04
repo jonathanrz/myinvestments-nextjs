@@ -67,7 +67,10 @@ class Index extends React.Component {
 
   componentWillMount () {
     getInvestmentsWithIncomes(getToken()).then(response => {
-      const investments = response.data
+      const investments = response.data.map(investment => ({
+        ...investment,
+        incomes: investment.incomes.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
+      }))
       investments.sort(compareHolder)
       this.props.setInvestments(investments)
       this.setState({ loading: false })
