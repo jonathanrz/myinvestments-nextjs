@@ -5,7 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import moment from 'moment'
 
 import initStore from '../state'
-import { setInvestments, setFilteredInvestments } from '../state/data/actions'
+import { setInvestments, setFilteredInvestments, setSelectedMenuItem } from '../state/data/actions'
 import Filter from '../components/Filter'
 import Dashboard from '../components/dashboard'
 import Layout from '../components/MyLayout'
@@ -35,14 +35,10 @@ class Index extends React.Component {
     type: PropTypes.object.isRequired,
     holder: PropTypes.object.isRequired,
     year: PropTypes.number.isRequired,
+    selectedMenuItem: PropTypes.string.isRequired,
     setInvestments: PropTypes.func.isRequired,
-    setFilteredInvestments: PropTypes.func.isRequired
-  }
-
-  constructor (ctx, props) {
-    super(ctx, props)
-
-    this.state = { currentItem: 'Dashboard' }
+    setFilteredInvestments: PropTypes.func.isRequired,
+    setSelectedMenuItem: PropTypes.func.isRequired
   }
 
   componentWillMount () {
@@ -110,18 +106,18 @@ class Index extends React.Component {
   }
 
   onDrawerItemClicked = item => {
-    this.setState({ currentItem: item })
+    this.props.setSelectedMenuItem(item)
   }
 
   render () {
-    const { currentItem } = this.state
+    const { selectedMenuItem } = this.props
 
     return (
-      <Layout title={currentItem} onDrawerItemClicked={this.onDrawerItemClicked}>
+      <Layout title={selectedMenuItem} onDrawerItemClicked={this.onDrawerItemClicked}>
         <Filter style={{ marginBottom: 40 }} />
-        {currentItem === 'Dashboard' && <Dashboard />}
-        {currentItem === 'Investimentos' && <Investments />}
-        {currentItem === 'Rendimentos do Mês' && <MonthIncomes />}
+        {selectedMenuItem === 'Dashboard' && <Dashboard />}
+        {selectedMenuItem === 'Investimentos' && <Investments />}
+        {selectedMenuItem === 'Rendimentos do Mês' && <MonthIncomes />}
       </Layout>
     )
   }
@@ -131,12 +127,14 @@ const mapStateToProps = state => ({
   type: state.filter.type,
   holder: state.filter.holder,
   year: state.filter.year,
-  investments: state.data.investments
+  investments: state.data.investments,
+  selectedMenuItem: state.data.selectedMenuItem
 })
 
 const mapDispatchToProps = dispatch => ({
   setInvestments: bindActionCreators(setInvestments, dispatch),
-  setFilteredInvestments: bindActionCreators(setFilteredInvestments, dispatch)
+  setFilteredInvestments: bindActionCreators(setFilteredInvestments, dispatch),
+  setSelectedMenuItem: bindActionCreators(setSelectedMenuItem, dispatch)
 })
 
 export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(Index)

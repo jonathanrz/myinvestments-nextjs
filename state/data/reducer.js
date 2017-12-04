@@ -1,10 +1,11 @@
-import { SET_INVESTMENTS, SET_FILTERED_INVESTMENTS } from './actions'
+import { SET_INVESTMENTS, SET_FILTERED_INVESTMENTS, SET_SELECTED_MENU_ITEM } from './actions'
 
 export const initialState = {
   investments: [],
   types: {},
   holders: {},
-  filteredInvestments: { investments: [], byType: {} }
+  filteredInvestments: { investments: [], byType: {} },
+  selectedMenuItem: 'Dashboard'
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,8 @@ const reducer = (state = initialState, action) => {
     }
     case SET_FILTERED_INVESTMENTS:
       return { ...state, filteredInvestments: action.data }
+    case SET_SELECTED_MENU_ITEM:
+      return { ...state, selectedMenuItem: action.data }
     default:
       return state
   }
