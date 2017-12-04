@@ -33,11 +33,11 @@ class TotalBought extends React.Component {
       var total = {
         name: investment.name,
         holder: investment.holder,
-        months: investment.filteredIncomes.length || 0,
+        months: investment.incomes.length || 0,
         bought: 0,
         gain: 0
       }
-      investment.filteredIncomes.forEach(income => {
+      investment.incomes.forEach(income => {
         total.bought += income.bought || 0
         total.gain += income.gain
       })

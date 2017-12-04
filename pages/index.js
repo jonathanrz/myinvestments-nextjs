@@ -27,6 +27,24 @@ const filterInvestment = (investment, type, holder) => {
   return false
 }
 
+const calculateIncomesGains = incomes => {
+  var lastIncomeValue = 0
+  return incomes
+    .reverse()
+    .map(item => {
+      if (lastIncomeValue === 0) {
+        item.gain = incomeGain(item)
+        item.gainInPerc = item.gain / item.value
+      } else {
+        item.gain = incomeGain(item) - lastIncomeValue
+        item.gainInPerc = item.gain / lastIncomeValue
+      }
+      lastIncomeValue = item.value
+      return item
+    })
+    .reverse()
+}
+
 const compareHolder = (left, right) => left.holder.localeCompare(right.holder)
 
 class Index extends React.Component {
@@ -79,21 +97,8 @@ class Index extends React.Component {
       investmentsByType[investmentType].investments.push(investment)
       investmentsByType[investmentType].value += investment.currentValue
 
-      var lastIncomeValue = 0
-      investment.incomes = investment.incomes
-        .reverse()
-        .map(item => {
-          if (lastIncomeValue === 0) {
-            item.gain = incomeGain(item)
-            item.gainInPerc = item.gain / item.value
-          } else {
-            item.gain = incomeGain(item) - lastIncomeValue
-            item.gainInPerc = item.gain / lastIncomeValue
-          }
-          lastIncomeValue = item.value
-          return item
-        })
-        .reverse()
+      investment.incomes = calculateIncomesGains(investment.incomes)
+      investment.filteredIncomes = calculateIncomesGains(investment.filteredIncomes)
     }
 
     const totalValue = filteredInvestments.reduce((acum, investment) => acum + investment.currentValue, 0)
