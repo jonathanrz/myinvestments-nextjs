@@ -30,8 +30,8 @@ const filterInvestment = (investment, type, holder) => {
 
 const calculateIncomesGains = incomes => {
   var lastIncomeValue = 0
-  return incomes
-    .reverse()
+  const newIncomes = incomes
+    .sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
     .map(item => {
       if (lastIncomeValue === 0) {
         item.gain = incomeGain(item)
@@ -44,6 +44,7 @@ const calculateIncomesGains = incomes => {
       return item
     })
     .reverse()
+  return newIncomes
 }
 
 const compareHolder = (left, right) => left.holder.localeCompare(right.holder)
@@ -67,10 +68,7 @@ class Index extends React.Component {
 
   componentWillMount () {
     getInvestmentsWithIncomes(getToken()).then(response => {
-      const investments = response.data.map(investment => ({
-        ...investment,
-        incomes: investment.incomes.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
-      }))
+      const investments = response.data
       investments.sort(compareHolder)
       this.props.setInvestments(investments)
       this.setState({ loading: false })
@@ -86,6 +84,7 @@ class Index extends React.Component {
 
     const filteredInvestments = investments
       .filter(investment => filterInvestment(investment, type, holder))
+      .map(investment => ({ ...investment, incomes: calculateIncomesGains(investment.incomes) }))
       .map(investment => ({ ...investment, filteredIncomes: investment.incomes.filter(income => moment.utc(income.date).year() === year) }))
 
     var investmentsByType = {}
@@ -106,9 +105,6 @@ class Index extends React.Component {
       }
       investmentsByType[investmentType].investments.push(investment)
       investmentsByType[investmentType].value += investment.currentValue
-
-      investment.incomes = calculateIncomesGains(investment.incomes)
-      investment.filteredIncomes = calculateIncomesGains(investment.filteredIncomes)
     }
 
     const totalValue = filteredInvestments.reduce((acum, investment) => acum + investment.currentValue, 0)

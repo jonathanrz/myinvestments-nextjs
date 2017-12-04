@@ -92,8 +92,17 @@ class IncomesByMonth extends React.Component {
       })
     })
 
+    const investmentsByMonthArray = []
+
+    Object.keys(investmentsByMonth).map(month => {
+      investmentsByMonthArray.push({
+        month: month,
+        investments: investmentsByMonth[month]
+      })
+    })
+
     this.totalValue = totalValue
-    this.investmentsByMonth = investmentsByMonth
+    this.investmentsByMonth = investmentsByMonthArray
     this.grossIrAndFees = grossIrAndFees.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
   }
 
@@ -137,7 +146,7 @@ class IncomesByMonth extends React.Component {
                 <Table selectable={false}>
                   <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
-                      {Object.keys(investmentsByMonth).map(month => (
+                      {investmentsByMonth.map(({ month, investments }) => (
                         <TableHeaderColumn key={month}>
                           <Month date={month} />
                         </TableHeaderColumn>
@@ -147,25 +156,17 @@ class IncomesByMonth extends React.Component {
                   <TableBody displayRowCheckbox={false} showRowHover stripedRows>
                     {investments.map(investment => (
                       <TableRow key={investment._id}>
-                        {Object.keys(investmentsByMonth).map(month => (
+                        {investmentsByMonth.map(({ month, investments }) => (
                           <TableRowColumn key={month + investment._id}>
-                            {showValues ? (
-                              <MoneyWithColor value={investmentsByMonth[month][investment._id].value} />
-                            ) : (
-                              <PercentWithColor percent={investmentsByMonth[month][investment._id].perc} />
-                            )}
+                            {showValues ? <MoneyWithColor value={investments[investment._id].value} /> : <PercentWithColor percent={investments[investment._id].perc} />}
                           </TableRowColumn>
                         ))}
                       </TableRow>
                     ))}
                     <TableRow key={0}>
-                      {Object.keys(investmentsByMonth).map(month => (
+                      {investmentsByMonth.map(({ month, investments }) => (
                         <TableRowColumn key={month + totalId}>
-                          {showValues ? (
-                            <MoneyWithColor value={investmentsByMonth[month][totalId].value} />
-                          ) : (
-                            <PercentWithColor percent={investmentsByMonth[month][totalId].perc} />
-                          )}
+                          {showValues ? <MoneyWithColor value={investments[totalId].value} /> : <PercentWithColor percent={investments[totalId].perc} />}
                         </TableRowColumn>
                       ))}
                     </TableRow>
