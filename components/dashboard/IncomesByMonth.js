@@ -44,7 +44,7 @@ class IncomesByMonth extends React.Component {
     var grossIrAndFees = []
     var totalValue = 0
     investments.forEach(investment => {
-      investment.incomes.forEach(income => {
+      investment.filteredIncomes.forEach(income => {
         var monthData = investmentsByMonth[income.date]
         if (!monthData) monthData = []
         var investmentData = monthData[investment._id]

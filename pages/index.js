@@ -62,7 +62,7 @@ class Index extends React.Component {
 
     const filteredInvestments = investments
       .filter(investment => filterInvestment(investment, type, holder))
-      .map(investment => ({ ...investment, incomes: investment.incomes.filter(income => moment.utc(income.date).year() === year) }))
+      .map(investment => ({ ...investment, filteredIncomes: investment.incomes.filter(income => moment.utc(income.date).year() === year) }))
 
     var investmentsByType = {}
 
