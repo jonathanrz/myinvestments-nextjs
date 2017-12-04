@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
+import ReactLoading from 'react-loading'
 import moment from 'moment'
 
 import initStore from '../state'
@@ -59,11 +60,17 @@ class Index extends React.Component {
     setSelectedMenuItem: PropTypes.func.isRequired
   }
 
+  constructor (props) {
+    super(props)
+    this.state = { loading: true }
+  }
+
   componentWillMount () {
     getInvestmentsWithIncomes(getToken()).then(response => {
       const investments = response.data
       investments.sort(compareHolder)
       this.props.setInvestments(investments)
+      this.setState({ loading: false })
     })
   }
 
@@ -115,14 +122,21 @@ class Index extends React.Component {
   }
 
   render () {
+    const { loading } = this.state
     const { selectedMenuItem } = this.props
 
     return (
       <Layout title={selectedMenuItem} onDrawerItemClicked={this.onDrawerItemClicked}>
-        <Filter style={{ marginBottom: 40 }} />
-        {selectedMenuItem === 'Dashboard' && <Dashboard />}
-        {selectedMenuItem === 'Investimentos' && <Investments />}
-        {selectedMenuItem === 'Rendimentos do Mês' && <MonthIncomes />}
+        {loading ? (
+          <ReactLoading type={'bars'} color={'#000000'} height="300px" width="300px" />
+        ) : (
+          <div>
+            <Filter style={{ marginBottom: 40 }} />
+            {selectedMenuItem === 'Dashboard' && <Dashboard />}
+            {selectedMenuItem === 'Investimentos' && <Investments />}
+            {selectedMenuItem === 'Rendimentos do Mês' && <MonthIncomes />}
+          </div>
+        )}
       </Layout>
     )
   }
