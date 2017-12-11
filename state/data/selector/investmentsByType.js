@@ -1,3 +1,8 @@
+const getInvestmentCurrentValue = investment => {
+  if (investment.incomes && investment.incomes.length > 0) return investment.incomes[0].value
+  return 0
+}
+
 const getInvestmentsByType = state => {
   const investments = state.data.filteredInvestments.investments
   var investmentsByType = {}
@@ -12,10 +17,10 @@ const getInvestmentsByType = state => {
       investmentsByType[investmentType].value = 0
     }
     investmentsByType[investmentType].investments.push(investment)
-    investmentsByType[investmentType].value += investment.currentValue
+    investmentsByType[investmentType].value += getInvestmentCurrentValue(investment)
   }
 
-  const totalValue = investments.reduce((acum, investment) => acum + investment.currentValue, 0)
+  const totalValue = investments.reduce((acum, investment) => acum + getInvestmentCurrentValue(investment), 0)
 
   investmentsByType['Total'] = {}
   investmentsByType['Total'].investments = investments
@@ -24,4 +29,4 @@ const getInvestmentsByType = state => {
   return investmentsByType
 }
 
-export { getInvestmentsByType }
+export default getInvestmentsByType

@@ -1,4 +1,4 @@
-import { getInvestmentsByType } from './selector'
+import getInvestmentsByType from './investmentsByType'
 
 const investments = [
   {
@@ -27,8 +27,7 @@ const investments = [
         value: 1000,
         quantity: 1,
         date: '2017-11-01T00:00:00.000Z',
-        investment: '5b0cdf5bc15e16201f282eb9',
-        __v: 0
+        investment: '5b0cdf5bc15e16201f282eb9'
       }
     ]
   },
@@ -47,8 +46,7 @@ const investments = [
         value: 1550,
         quantity: 100,
         date: '2017-12-01T00:00:00.000Z',
-        investment: '5a17579f15c4da021g21a43a',
-        __v: 0
+        investment: '5a17579f15c4da021g21a43a'
       }
     ]
   }
@@ -60,8 +58,26 @@ describe('investments by type selector', () => {
       filteredInvestments: { investments }
     }
     const state = { data: dataState }
-    const expectedInvestmentsByType = {}
     const investmentsByType = getInvestmentsByType(state)
-    expect(investmentsByType).toEqual(expectedInvestmentsByType)
+    expect(Object.keys(investmentsByType)).toEqual(['CDB', 'monetary action', 'Total'])
+
+    const cdb = investmentsByType['CDB']
+    expect(cdb.value).toEqual(1020)
+    expect(cdb.investments.length).toEqual(1)
+
+    const cdbIncomes = cdb.investments[0].incomes
+    expect(cdbIncomes.length).toEqual(2)
+
+    expect(cdbIncomes[0].date).toEqual('2017-12-01T00:00:00.000Z')
+    expect(cdbIncomes[1].date).toEqual('2017-11-01T00:00:00.000Z')
+
+    const monetaryAction = investmentsByType['monetary action']
+    expect(monetaryAction.value).toEqual(1550)
+
+    const total = investmentsByType['Total']
+    expect(total.value).toEqual(2570)
+    expect(total.investments.length).toEqual(2)
+    expect(total.investments[0].type).toEqual('CDB')
+    expect(total.investments[1].type).toEqual('monetary action')
   })
 })
