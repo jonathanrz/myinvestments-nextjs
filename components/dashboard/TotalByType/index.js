@@ -49,7 +49,7 @@ export class TotalByType extends React.Component {
               <Col lg={3}>
                 <ResponsiveContainer>
                   <PieChart>
-                    <Pie data={this.investmentsByTypeChartData} innerRadius={90} outerRadius={110} fill="#8884d8">
+                    <Pie dataKey="value" data={this.investmentsByTypeChartData} innerRadius={90} outerRadius={110} fill="#8884d8">
                       {this.investmentsByTypeChartData.map((entry, index) => <Cell key={entry} fill={COLORS[index % COLORS.length]} />)}
                     </Pie>
                     <Tooltip formatter={value => formatMoney(value, 2)} />

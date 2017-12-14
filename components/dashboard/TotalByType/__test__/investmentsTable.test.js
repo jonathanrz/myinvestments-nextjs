@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import React from 'react'
 import { TableRow, TableRowColumn } from 'material-ui/Table'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import InvestmentsTable from './investmentsTable'
+import InvestmentsTable from '../investmentsTable'
 
 const investmentsByType = {
   CDB: { value: 10 },
