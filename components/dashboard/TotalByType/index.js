@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
-import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableRowColumn } from 'material-ui/Table'
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { Container, Row, Col } from 'react-grid-system'
-import { formatMoney, formatPercent } from '../../lib/number'
+import { formatMoney } from '../../../lib/number'
+
+import InvestmentsTable from './investmentsTable'
 
 const COLORS = ['#4eb8ea', '#ac92ec', '#96c823', '#ef5a31', '#FFC107', '#009688']
 
-class TotalByType extends React.Component {
+export class TotalByType extends React.Component {
   static propTypes = {
     investmentsByType: PropTypes.object.isRequired,
     style: PropTypes.object
@@ -43,26 +44,7 @@ class TotalByType extends React.Component {
           <Container>
             <Row style={{ marginBottom: 30 }}>
               <Col lg={9}>
-                <Table fixedHeader selectable={false}>
-                  <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                    <TableRow>
-                      <TableHeaderColumn>Tipo</TableHeaderColumn>
-                      <TableHeaderColumn>Total</TableHeaderColumn>
-                      <TableHeaderColumn>Perc</TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                    {Object.keys(investmentsByType || {})
-                      .sort()
-                      .map(type => (
-                        <TableRow key={type}>
-                          <TableRowColumn>{type}</TableRowColumn>
-                          <TableRowColumn>{formatMoney(investmentsByType[type].value, 2)}</TableRowColumn>
-                          <TableRowColumn>{formatPercent(investmentsByType[type].value / totalValue, 2)}</TableRowColumn>
-                        </TableRow>
-                      ))}
-                  </TableBody>
-                </Table>
+                <InvestmentsTable investmentsByType={investmentsByType} totalValue={totalValue} />
               </Col>
               <Col lg={3}>
                 <ResponsiveContainer>
