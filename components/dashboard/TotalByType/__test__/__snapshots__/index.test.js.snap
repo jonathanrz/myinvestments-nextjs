@@ -1121,123 +1121,553 @@ exports[`TotalByType render equal last time 1`] = `
                                 }
                               }
                             >
-                              <ResponsiveContainer
-                                debounce={0}
-                                height="100%"
-                                width="100%"
+                              <PieChart
+                                barCategoryGap="10%"
+                                barGap={4}
+                                cx="50%"
+                                cy="50%"
+                                endAngle={360}
+                                height={220}
+                                innerRadius={0}
+                                layout="centric"
+                                margin={
+                                  Object {
+                                    "bottom": 5,
+                                    "left": 5,
+                                    "right": 5,
+                                    "top": 5,
+                                  }
+                                }
+                                outerRadius="80%"
+                                reverseStackOrder={false}
+                                stackOffset="none"
+                                startAngle={0}
+                                width={220}
                               >
                                 <div
-                                  className="recharts-responsive-container"
+                                  className="recharts-wrapper"
                                   style={
                                     Object {
-                                      "height": "100%",
-                                      "maxHeight": undefined,
-                                      "minHeight": undefined,
-                                      "minWidth": undefined,
-                                      "width": "100%",
+                                      "cursor": "default",
+                                      "height": 220,
+                                      "position": "relative",
+                                      "width": 220,
                                     }
                                   }
                                 >
-                                  <PieChart
-                                    barCategoryGap="10%"
-                                    barGap={4}
-                                    cx="50%"
-                                    cy="50%"
-                                    endAngle={360}
-                                    height={0}
-                                    innerRadius={0}
-                                    layout="centric"
-                                    margin={
+                                  <Surface
+                                    height={220}
+                                    width={220}
+                                  >
+                                    <svg
+                                      className="recharts-surface"
+                                      height={220}
+                                      version="1.1"
+                                      viewBox="0 0 220 220"
+                                      width={220}
+                                    >
+                                      <Pie
+                                        angleAxis={
+                                          Object {
+                                            "angleAxisId": 0,
+                                            "axisLine": true,
+                                            "axisType": "angleAxis",
+                                            "cx": 110,
+                                            "cy": 110,
+                                            "domain": Array [
+                                              0,
+                                              1,
+                                            ],
+                                            "endAngle": 360,
+                                            "hide": true,
+                                            "innerRadius": 0,
+                                            "isCategorial": true,
+                                            "layout": "centric",
+                                            "orientation": undefined,
+                                            "originalDomain": Array [
+                                              0,
+                                              "auto",
+                                            ],
+                                            "outerRadius": 84,
+                                            "radius": 84,
+                                            "realScaleType": "band",
+                                            "scale": [Function],
+                                            "startAngle": 0,
+                                            "tick": true,
+                                            "tickLine": true,
+                                            "type": "category",
+                                          }
+                                        }
+                                        animationBegin={400}
+                                        animationDuration={1500}
+                                        animationEasing="ease"
+                                        animationId={0}
+                                        cx={110}
+                                        cy={110}
+                                        data={
+                                          Array [
+                                            Object {
+                                              "name": "CDB",
+                                              "value": 1020,
+                                            },
+                                            Object {
+                                              "name": "monetary action",
+                                              "value": 1550,
+                                            },
+                                          ]
+                                        }
+                                        dataKey="value"
+                                        endAngle={360}
+                                        fill="#8884d8"
+                                        hide={false}
+                                        innerRadius={90}
+                                        isAnimationActive={true}
+                                        key="item-0"
+                                        labelLine={true}
+                                        legendType="rect"
+                                        maxRadius={148.49242404917499}
+                                        minAngle={0}
+                                        nameKey="name"
+                                        onMouseEnter={[Function]}
+                                        onMouseLeave={[Function]}
+                                        outerRadius={110}
+                                        paddingAngle={0}
+                                        radiusAxis={
+                                          Object {
+                                            "allowDataOverflow": false,
+                                            "angle": 0,
+                                            "axisLine": true,
+                                            "axisType": "radiusAxis",
+                                            "cx": 110,
+                                            "cy": 110,
+                                            "domain": Array [
+                                              0,
+                                              1550,
+                                            ],
+                                            "endAngle": 360,
+                                            "hide": true,
+                                            "innerRadius": 0,
+                                            "isCategorial": false,
+                                            "layout": "centric",
+                                            "niceTicks": Array [
+                                              0,
+                                              400,
+                                              800,
+                                              1200,
+                                              1600,
+                                            ],
+                                            "orientation": undefined,
+                                            "originalDomain": Array [
+                                              0,
+                                              "auto",
+                                            ],
+                                            "outerRadius": 84,
+                                            "radius": 84,
+                                            "radiusAxisId": 0,
+                                            "realScaleType": "linear",
+                                            "scale": [Function],
+                                            "startAngle": 0,
+                                            "stroke": "#ccc",
+                                            "tick": true,
+                                            "tickCount": 5,
+                                            "type": "number",
+                                          }
+                                        }
+                                        sectors={
+                                          Array [
+                                            Object {
+                                              "cornerRadius": undefined,
+                                              "cx": 110,
+                                              "cy": 110,
+                                              "endAngle": 142.87937743190662,
+                                              "fill": "#4eb8ea",
+                                              "innerRadius": 90,
+                                              "maxRadius": 148.49242404917499,
+                                              "midAngle": 71.43968871595331,
+                                              "middleRadius": 100,
+                                              "name": "CDB",
+                                              "outerRadius": 110,
+                                              "paddingAngle": 0,
+                                              "payload": Object {
+                                                "fill": "#4eb8ea",
+                                                "name": "CDB",
+                                                "payload": Object {
+                                                  "name": "CDB",
+                                                  "value": 1020,
+                                                },
+                                                "stroke": "#fff",
+                                                "value": 1020,
+                                              },
+                                              "percent": 0.3968871595330739,
+                                              "startAngle": 0,
+                                              "stroke": "#fff",
+                                              "tooltipPayload": Array [
+                                                Object {
+                                                  "name": "CDB",
+                                                  "payload": Object {
+                                                    "fill": "#4eb8ea",
+                                                    "name": "CDB",
+                                                    "payload": Object {
+                                                      "name": "CDB",
+                                                      "value": 1020,
+                                                    },
+                                                    "stroke": "#fff",
+                                                    "value": 1020,
+                                                  },
+                                                  "value": 1020,
+                                                },
+                                              ],
+                                              "tooltipPosition": Object {
+                                                "x": 141.830271481603,
+                                                "y": 15.201087467168435,
+                                              },
+                                              "value": 1020,
+                                            },
+                                            Object {
+                                              "cornerRadius": undefined,
+                                              "cx": 110,
+                                              "cy": 110,
+                                              "endAngle": 360,
+                                              "fill": "#ac92ec",
+                                              "innerRadius": 90,
+                                              "maxRadius": 148.49242404917499,
+                                              "midAngle": 251.4396887159533,
+                                              "middleRadius": 100,
+                                              "name": "monetary action",
+                                              "outerRadius": 110,
+                                              "paddingAngle": 0,
+                                              "payload": Object {
+                                                "fill": "#ac92ec",
+                                                "name": "monetary action",
+                                                "payload": Object {
+                                                  "name": "monetary action",
+                                                  "value": 1550,
+                                                },
+                                                "stroke": "#fff",
+                                                "value": 1550,
+                                              },
+                                              "percent": 0.603112840466926,
+                                              "startAngle": 142.87937743190662,
+                                              "stroke": "#fff",
+                                              "tooltipPayload": Array [
+                                                Object {
+                                                  "name": "monetary action",
+                                                  "payload": Object {
+                                                    "fill": "#ac92ec",
+                                                    "name": "monetary action",
+                                                    "payload": Object {
+                                                      "name": "monetary action",
+                                                      "value": 1550,
+                                                    },
+                                                    "stroke": "#fff",
+                                                    "value": 1550,
+                                                  },
+                                                  "value": 1550,
+                                                },
+                                              ],
+                                              "tooltipPosition": Object {
+                                                "x": 78.16972851839698,
+                                                "y": 204.79891253283157,
+                                              },
+                                              "value": 1550,
+                                            },
+                                          ]
+                                        }
+                                        startAngle={0}
+                                        stroke="#fff"
+                                      >
+                                        <Layer
+                                          className="recharts-pie"
+                                        >
+                                          <g
+                                            className="recharts-layer recharts-pie"
+                                          >
+                                            <g
+                                              clipPath="url(#recharts-pie-2)"
+                                            >
+                                              <Animate
+                                                attributeName=""
+                                                begin={400}
+                                                canBegin={true}
+                                                duration={1500}
+                                                easing="ease"
+                                                from={
+                                                  Object {
+                                                    "t": 0,
+                                                  }
+                                                }
+                                                isActive={true}
+                                                key="pie-0"
+                                                onAnimationEnd={[Function]}
+                                                onAnimationStart={[Function]}
+                                                steps={Array []}
+                                                to={
+                                                  Object {
+                                                    "t": 1,
+                                                  }
+                                                }
+                                              >
+                                                <Layer>
+                                                  <g
+                                                    className="recharts-layer"
+                                                  >
+                                                    <Layer
+                                                      className="recharts-pie-sector"
+                                                      key="sector-0"
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                    >
+                                                      <g
+                                                        className="recharts-layer recharts-pie-sector"
+                                                        onMouseEnter={[Function]}
+                                                        onMouseLeave={[Function]}
+                                                      >
+                                                        <Sector
+                                                          cornerRadius={0}
+                                                          cx={110}
+                                                          cy={110}
+                                                          endAngle={0}
+                                                          fill="#4eb8ea"
+                                                          innerRadius={90}
+                                                          maxRadius={148.49242404917499}
+                                                          midAngle={71.43968871595331}
+                                                          middleRadius={100}
+                                                          name="CDB"
+                                                          outerRadius={110}
+                                                          paddingAngle={0}
+                                                          payload={
+                                                            Object {
+                                                              "fill": "#4eb8ea",
+                                                              "name": "CDB",
+                                                              "payload": Object {
+                                                                "name": "CDB",
+                                                                "value": 1020,
+                                                              },
+                                                              "stroke": "#fff",
+                                                              "value": 1020,
+                                                            }
+                                                          }
+                                                          percent={0.3968871595330739}
+                                                          startAngle={0}
+                                                          stroke="#fff"
+                                                          tooltipPayload={
+                                                            Array [
+                                                              Object {
+                                                                "name": "CDB",
+                                                                "payload": Object {
+                                                                  "fill": "#4eb8ea",
+                                                                  "name": "CDB",
+                                                                  "payload": Object {
+                                                                    "name": "CDB",
+                                                                    "value": 1020,
+                                                                  },
+                                                                  "stroke": "#fff",
+                                                                  "value": 1020,
+                                                                },
+                                                                "value": 1020,
+                                                              },
+                                                            ]
+                                                          }
+                                                          tooltipPosition={
+                                                            Object {
+                                                              "x": 141.830271481603,
+                                                              "y": 15.201087467168435,
+                                                            }
+                                                          }
+                                                          value={1020}
+                                                        />
+                                                      </g>
+                                                    </Layer>
+                                                    <Layer
+                                                      className="recharts-pie-sector"
+                                                      key="sector-1"
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                    >
+                                                      <g
+                                                        className="recharts-layer recharts-pie-sector"
+                                                        onMouseEnter={[Function]}
+                                                        onMouseLeave={[Function]}
+                                                      >
+                                                        <Sector
+                                                          cornerRadius={0}
+                                                          cx={110}
+                                                          cy={110}
+                                                          endAngle={0}
+                                                          fill="#ac92ec"
+                                                          innerRadius={90}
+                                                          maxRadius={148.49242404917499}
+                                                          midAngle={251.4396887159533}
+                                                          middleRadius={100}
+                                                          name="monetary action"
+                                                          outerRadius={110}
+                                                          paddingAngle={0}
+                                                          payload={
+                                                            Object {
+                                                              "fill": "#ac92ec",
+                                                              "name": "monetary action",
+                                                              "payload": Object {
+                                                                "name": "monetary action",
+                                                                "value": 1550,
+                                                              },
+                                                              "stroke": "#fff",
+                                                              "value": 1550,
+                                                            }
+                                                          }
+                                                          percent={0.603112840466926}
+                                                          startAngle={0}
+                                                          stroke="#fff"
+                                                          tooltipPayload={
+                                                            Array [
+                                                              Object {
+                                                                "name": "monetary action",
+                                                                "payload": Object {
+                                                                  "fill": "#ac92ec",
+                                                                  "name": "monetary action",
+                                                                  "payload": Object {
+                                                                    "name": "monetary action",
+                                                                    "value": 1550,
+                                                                  },
+                                                                  "stroke": "#fff",
+                                                                  "value": 1550,
+                                                                },
+                                                                "value": 1550,
+                                                              },
+                                                            ]
+                                                          }
+                                                          tooltipPosition={
+                                                            Object {
+                                                              "x": 78.16972851839698,
+                                                              "y": 204.79891253283157,
+                                                            }
+                                                          }
+                                                          value={1550}
+                                                        />
+                                                      </g>
+                                                    </Layer>
+                                                  </g>
+                                                </Layer>
+                                              </Animate>
+                                            </g>
+                                          </g>
+                                        </Layer>
+                                      </Pie>
+                                    </svg>
+                                  </Surface>
+                                  <Tooltip
+                                    active={false}
+                                    animationDuration={400}
+                                    animationEasing="ease"
+                                    coordinate={
+                                      Object {
+                                        "x": 0,
+                                        "y": 0,
+                                      }
+                                    }
+                                    cursor={true}
+                                    cursorStyle={Object {}}
+                                    filterNull={true}
+                                    formatter={[Function]}
+                                    isAnimationActive={true}
+                                    itemSorter={[Function]}
+                                    itemStyle={Object {}}
+                                    labelStyle={Object {}}
+                                    offset={10}
+                                    payload={Array []}
+                                    separator=" : "
+                                    viewBox={
                                       Object {
                                         "bottom": 5,
+                                        "brushBottom": 5,
+                                        "height": 210,
                                         "left": 5,
                                         "right": 5,
                                         "top": 5,
+                                        "width": 210,
+                                        "x": 5,
+                                        "y": 5,
                                       }
                                     }
-                                    outerRadius="80%"
-                                    reverseStackOrder={false}
-                                    stackOffset="none"
-                                    startAngle={0}
-                                    width={0}
-                                  />
-                                  <ResizeDetector
-                                    handleHeight={true}
-                                    handleWidth={true}
-                                    onResize={[Function]}
+                                    wrapperStyle={Object {}}
                                   >
                                     <div
+                                      className="recharts-tooltip-wrapper"
                                       style={
                                         Object {
-                                          "bottom": 0,
-                                          "left": 0,
-                                          "overflow": "hidden",
+                                          "MozTransform": "translate(undefinedpx, undefinedpx)",
+                                          "OTransform": "translate(undefinedpx, undefinedpx)",
+                                          "WebkitTransform": "translate(undefinedpx, undefinedpx)",
+                                          "msTransform": "translate(undefinedpx, undefinedpx)",
+                                          "pointerEvents": "none",
                                           "position": "absolute",
-                                          "right": 0,
                                           "top": 0,
+                                          "transform": "translate(undefinedpx, undefinedpx)",
                                           "visibility": "hidden",
-                                          "zIndex": -1,
                                         }
                                       }
                                     >
-                                      <div
-                                        onScroll={[Function]}
-                                        style={
+                                      <DefaultTooltipContent
+                                        active={false}
+                                        animationDuration={400}
+                                        animationEasing="ease"
+                                        coordinate={
                                           Object {
-                                            "bottom": 0,
-                                            "left": 0,
-                                            "overflow": "hidden",
-                                            "position": "absolute",
-                                            "right": 0,
-                                            "top": 0,
-                                            "visibility": "hidden",
-                                            "zIndex": -1,
+                                            "x": 0,
+                                            "y": 0,
                                           }
                                         }
-                                      >
-                                        <div
-                                          style={
-                                            Object {
-                                              "height": 10,
-                                              "left": 0,
-                                              "position": "absolute",
-                                              "top": 0,
-                                              "width": 10,
-                                            }
-                                          }
-                                        />
-                                      </div>
-                                      <div
-                                        onScroll={[Function]}
-                                        style={
+                                        cursor={true}
+                                        cursorStyle={Object {}}
+                                        filterNull={true}
+                                        formatter={[Function]}
+                                        isAnimationActive={true}
+                                        itemSorter={[Function]}
+                                        itemStyle={Object {}}
+                                        labelStyle={Object {}}
+                                        offset={10}
+                                        payload={Array []}
+                                        separator=" : "
+                                        viewBox={
                                           Object {
-                                            "bottom": 0,
-                                            "left": 0,
-                                            "overflow": "hidden",
-                                            "position": "absolute",
-                                            "right": 0,
-                                            "top": 0,
-                                            "visibility": "hidden",
-                                            "zIndex": -1,
+                                            "bottom": 5,
+                                            "brushBottom": 5,
+                                            "height": 210,
+                                            "left": 5,
+                                            "right": 5,
+                                            "top": 5,
+                                            "width": 210,
+                                            "x": 5,
+                                            "y": 5,
                                           }
                                         }
+                                        wrapperStyle={Object {}}
                                       >
                                         <div
+                                          className="recharts-default-tooltip"
                                           style={
                                             Object {
-                                              "height": "200%",
-                                              "left": 0,
-                                              "position": "absolute",
-                                              "top": 0,
-                                              "width": "200%",
+                                              "backgroundColor": "#fff",
+                                              "border": "1px solid #ccc",
+                                              "margin": 0,
+                                              "padding": 10,
+                                              "whiteSpace": "nowrap",
                                             }
                                           }
-                                        />
-                                      </div>
+                                        >
+                                          <p
+                                            className="recharts-tooltip-label"
+                                            style={
+                                              Object {
+                                                "margin": 0,
+                                              }
+                                            }
+                                          />
+                                        </div>
+                                      </DefaultTooltipContent>
                                     </div>
-                                  </ResizeDetector>
+                                  </Tooltip>
                                 </div>
-                              </ResponsiveContainer>
+                              </PieChart>
                             </div>
                           </Col>
                           <ClearFix

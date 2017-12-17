@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { Container, Row, Col } from 'react-grid-system'
 import { formatMoney } from '../../../lib/number'
 
@@ -47,14 +47,12 @@ export class TotalByType extends React.Component {
                 <InvestmentsTable investmentsByType={investmentsByType} totalValue={totalValue} />
               </Col>
               <Col lg={3}>
-                <ResponsiveContainer>
-                  <PieChart>
-                    <Pie dataKey="value" data={this.investmentsByTypeChartData} innerRadius={90} outerRadius={110} fill="#8884d8">
-                      {this.investmentsByTypeChartData.map((entry, index) => <Cell key={entry} fill={COLORS[index % COLORS.length]} />)}
-                    </Pie>
-                    <Tooltip formatter={value => formatMoney(value, 2)} />
-                  </PieChart>
-                </ResponsiveContainer>
+                <PieChart width={220} height={220}>
+                  <Pie dataKey="value" data={this.investmentsByTypeChartData} innerRadius={90} outerRadius={110} fill="#8884d8">
+                    {this.investmentsByTypeChartData.map((entry, index) => <Cell key={entry} fill={COLORS[index % COLORS.length]} />)}
+                  </Pie>
+                  <Tooltip formatter={value => formatMoney(value, 2)} />
+                </PieChart>
               </Col>
             </Row>
           </Container>
