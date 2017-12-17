@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { Container, Row, Col } from 'react-grid-system'
-import { formatMoney } from '../../../lib/number'
 
+import { formatMoney } from '../../../lib/number'
 import InvestmentsTable from './investmentsTable'
+import { getInvestmentsByType } from '../../../state/data/selector'
 
 const COLORS = ['#4eb8ea', '#ac92ec', '#96c823', '#ef5a31', '#FFC107', '#009688']
 
@@ -63,7 +64,7 @@ export class TotalByType extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  investmentsByType: state.data.filteredInvestments.byType
+  investmentsByType: getInvestmentsByType(state)
 })
 
 export default connect(mapStateToProps, null)(TotalByType)
