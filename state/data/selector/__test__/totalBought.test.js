@@ -1,5 +1,5 @@
-import getTotalBought from './totalBought'
-import { investments } from '../../../fixtures/investments'
+import getTotalBought from '../totalBought'
+import { investments } from '../../../../fixtures/investments'
 
 describe('total bought selector', () => {
   it('returns data of total bought', () => {

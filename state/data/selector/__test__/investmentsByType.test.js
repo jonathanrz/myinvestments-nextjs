@@ -1,5 +1,5 @@
-import getInvestmentsByType from './investmentsByType'
-import { investments } from '../../../fixtures/investments'
+import getInvestmentsByType from '../investmentsByType'
+import { investments } from '../../../../fixtures/investments'
 
 describe('investments by type selector', () => {
   it('returns investments grouped by type', () => {
