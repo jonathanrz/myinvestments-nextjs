@@ -12,17 +12,6 @@ exports[`TotalByType render equal last time 1`] = `
               "holder": "Holder",
               "incomes": Array [
                 Object {
-                  "_id": "5a17590153c4ca001f21f43d",
-                  "bought": 0,
-                  "date": "2017-12-01T00:00:00.000Z",
-                  "fee": 0,
-                  "gross": 0,
-                  "investment": "5b0cdf5bc15e16201f282eb9",
-                  "ir": 0,
-                  "quantity": 1,
-                  "value": 1020,
-                },
-                Object {
                   "_id": "5a1cda7bb15b16001f282eba",
                   "bought": 1000,
                   "date": "2017-11-01T00:00:00.000Z",
@@ -33,12 +22,23 @@ exports[`TotalByType render equal last time 1`] = `
                   "quantity": 1,
                   "value": 1000,
                 },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
+                },
               ],
               "name": "Test",
               "type": "CDB",
             },
           ],
-          "value": 1020,
+          "value": 1000,
         },
         "Total": Object {
           "investments": Array [
@@ -47,17 +47,6 @@ exports[`TotalByType render equal last time 1`] = `
               "holder": "Holder",
               "incomes": Array [
                 Object {
-                  "_id": "5a17590153c4ca001f21f43d",
-                  "bought": 0,
-                  "date": "2017-12-01T00:00:00.000Z",
-                  "fee": 0,
-                  "gross": 0,
-                  "investment": "5b0cdf5bc15e16201f282eb9",
-                  "ir": 0,
-                  "quantity": 1,
-                  "value": 1020,
-                },
-                Object {
                   "_id": "5a1cda7bb15b16001f282eba",
                   "bought": 1000,
                   "date": "2017-11-01T00:00:00.000Z",
@@ -67,6 +56,17 @@ exports[`TotalByType render equal last time 1`] = `
                   "ir": 0,
                   "quantity": 1,
                   "value": 1000,
+                },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
                 },
               ],
               "name": "Test",
@@ -92,7 +92,7 @@ exports[`TotalByType render equal last time 1`] = `
               "type": "monetary action",
             },
           ],
-          "value": 2570,
+          "value": 2550,
         },
         "monetary action": Object {
           "investments": Array [
@@ -334,17 +334,6 @@ exports[`TotalByType render equal last time 1`] = `
                                           "holder": "Holder",
                                           "incomes": Array [
                                             Object {
-                                              "_id": "5a17590153c4ca001f21f43d",
-                                              "bought": 0,
-                                              "date": "2017-12-01T00:00:00.000Z",
-                                              "fee": 0,
-                                              "gross": 0,
-                                              "investment": "5b0cdf5bc15e16201f282eb9",
-                                              "ir": 0,
-                                              "quantity": 1,
-                                              "value": 1020,
-                                            },
-                                            Object {
                                               "_id": "5a1cda7bb15b16001f282eba",
                                               "bought": 1000,
                                               "date": "2017-11-01T00:00:00.000Z",
@@ -355,12 +344,23 @@ exports[`TotalByType render equal last time 1`] = `
                                               "quantity": 1,
                                               "value": 1000,
                                             },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
+                                            },
                                           ],
                                           "name": "Test",
                                           "type": "CDB",
                                         },
                                       ],
-                                      "value": 1020,
+                                      "value": 1000,
                                     },
                                     "Total": Object {
                                       "investments": Array [
@@ -369,17 +369,6 @@ exports[`TotalByType render equal last time 1`] = `
                                           "holder": "Holder",
                                           "incomes": Array [
                                             Object {
-                                              "_id": "5a17590153c4ca001f21f43d",
-                                              "bought": 0,
-                                              "date": "2017-12-01T00:00:00.000Z",
-                                              "fee": 0,
-                                              "gross": 0,
-                                              "investment": "5b0cdf5bc15e16201f282eb9",
-                                              "ir": 0,
-                                              "quantity": 1,
-                                              "value": 1020,
-                                            },
-                                            Object {
                                               "_id": "5a1cda7bb15b16001f282eba",
                                               "bought": 1000,
                                               "date": "2017-11-01T00:00:00.000Z",
@@ -389,6 +378,17 @@ exports[`TotalByType render equal last time 1`] = `
                                               "ir": 0,
                                               "quantity": 1,
                                               "value": 1000,
+                                            },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
                                             },
                                           ],
                                           "name": "Test",
@@ -414,7 +414,7 @@ exports[`TotalByType render equal last time 1`] = `
                                           "type": "monetary action",
                                         },
                                       ],
-                                      "value": 2570,
+                                      "value": 2550,
                                     },
                                     "monetary action": Object {
                                       "investments": Array [
@@ -442,7 +442,7 @@ exports[`TotalByType render equal last time 1`] = `
                                     },
                                   }
                                 }
-                                totalValue={2570}
+                                totalValue={2550}
                               >
                                 <Table
                                   allRowsSelected={false}
@@ -773,7 +773,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                         }
                                                       }
                                                     >
-                                                      R$ 1.020,00
+                                                      R$ 1.000,00
                                                     </td>
                                                   </TableRowColumn>
                                                   <TableRowColumn
@@ -808,7 +808,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                         }
                                                       }
                                                     >
-                                                      39.69%
+                                                      39.22%
                                                     </td>
                                                   </TableRowColumn>
                                                 </tr>
@@ -906,7 +906,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                         }
                                                       }
                                                     >
-                                                      R$ 2.570,00
+                                                      R$ 2.550,00
                                                     </td>
                                                   </TableRowColumn>
                                                   <TableRowColumn
@@ -1074,7 +1074,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                         }
                                                       }
                                                     >
-                                                      60.31%
+                                                      60.78%
                                                     </td>
                                                   </TableRowColumn>
                                                 </tr>
@@ -1208,7 +1208,7 @@ exports[`TotalByType render equal last time 1`] = `
                                           Array [
                                             Object {
                                               "name": "CDB",
-                                              "value": 1020,
+                                              "value": 1000,
                                             },
                                             Object {
                                               "name": "monetary action",
@@ -1279,11 +1279,11 @@ exports[`TotalByType render equal last time 1`] = `
                                               "cornerRadius": undefined,
                                               "cx": 110,
                                               "cy": 110,
-                                              "endAngle": 142.87937743190662,
+                                              "endAngle": 141.1764705882353,
                                               "fill": "#4eb8ea",
                                               "innerRadius": 90,
                                               "maxRadius": 148.49242404917499,
-                                              "midAngle": 71.43968871595331,
+                                              "midAngle": 70.58823529411765,
                                               "middleRadius": 100,
                                               "name": "CDB",
                                               "outerRadius": 110,
@@ -1293,12 +1293,12 @@ exports[`TotalByType render equal last time 1`] = `
                                                 "name": "CDB",
                                                 "payload": Object {
                                                   "name": "CDB",
-                                                  "value": 1020,
+                                                  "value": 1000,
                                                 },
                                                 "stroke": "#fff",
-                                                "value": 1020,
+                                                "value": 1000,
                                               },
-                                              "percent": 0.3968871595330739,
+                                              "percent": 0.39215686274509803,
                                               "startAngle": 0,
                                               "stroke": "#fff",
                                               "tooltipPayload": Array [
@@ -1309,19 +1309,19 @@ exports[`TotalByType render equal last time 1`] = `
                                                     "name": "CDB",
                                                     "payload": Object {
                                                       "name": "CDB",
-                                                      "value": 1020,
+                                                      "value": 1000,
                                                     },
                                                     "stroke": "#fff",
-                                                    "value": 1020,
+                                                    "value": 1000,
                                                   },
-                                                  "value": 1020,
+                                                  "value": 1000,
                                                 },
                                               ],
                                               "tooltipPosition": Object {
-                                                "x": 141.830271481603,
-                                                "y": 15.201087467168435,
+                                                "x": 143.23547994796596,
+                                                "y": 15.684556552872252,
                                               },
-                                              "value": 1020,
+                                              "value": 1000,
                                             },
                                             Object {
                                               "cornerRadius": undefined,
@@ -1331,7 +1331,7 @@ exports[`TotalByType render equal last time 1`] = `
                                               "fill": "#ac92ec",
                                               "innerRadius": 90,
                                               "maxRadius": 148.49242404917499,
-                                              "midAngle": 251.4396887159533,
+                                              "midAngle": 250.58823529411765,
                                               "middleRadius": 100,
                                               "name": "monetary action",
                                               "outerRadius": 110,
@@ -1346,8 +1346,8 @@ exports[`TotalByType render equal last time 1`] = `
                                                 "stroke": "#fff",
                                                 "value": 1550,
                                               },
-                                              "percent": 0.603112840466926,
-                                              "startAngle": 142.87937743190662,
+                                              "percent": 0.6078431372549019,
+                                              "startAngle": 141.1764705882353,
                                               "stroke": "#fff",
                                               "tooltipPayload": Array [
                                                 Object {
@@ -1366,8 +1366,8 @@ exports[`TotalByType render equal last time 1`] = `
                                                 },
                                               ],
                                               "tooltipPosition": Object {
-                                                "x": 78.16972851839698,
-                                                "y": 204.79891253283157,
+                                                "x": 76.76452005203403,
+                                                "y": 204.31544344712773,
                                               },
                                               "value": 1550,
                                             },
@@ -1430,7 +1430,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                           fill="#4eb8ea"
                                                           innerRadius={90}
                                                           maxRadius={148.49242404917499}
-                                                          midAngle={71.43968871595331}
+                                                          midAngle={70.58823529411765}
                                                           middleRadius={100}
                                                           name="CDB"
                                                           outerRadius={110}
@@ -1441,13 +1441,13 @@ exports[`TotalByType render equal last time 1`] = `
                                                               "name": "CDB",
                                                               "payload": Object {
                                                                 "name": "CDB",
-                                                                "value": 1020,
+                                                                "value": 1000,
                                                               },
                                                               "stroke": "#fff",
-                                                              "value": 1020,
+                                                              "value": 1000,
                                                             }
                                                           }
-                                                          percent={0.3968871595330739}
+                                                          percent={0.39215686274509803}
                                                           startAngle={0}
                                                           stroke="#fff"
                                                           tooltipPayload={
@@ -1459,22 +1459,22 @@ exports[`TotalByType render equal last time 1`] = `
                                                                   "name": "CDB",
                                                                   "payload": Object {
                                                                     "name": "CDB",
-                                                                    "value": 1020,
+                                                                    "value": 1000,
                                                                   },
                                                                   "stroke": "#fff",
-                                                                  "value": 1020,
+                                                                  "value": 1000,
                                                                 },
-                                                                "value": 1020,
+                                                                "value": 1000,
                                                               },
                                                             ]
                                                           }
                                                           tooltipPosition={
                                                             Object {
-                                                              "x": 141.830271481603,
-                                                              "y": 15.201087467168435,
+                                                              "x": 143.23547994796596,
+                                                              "y": 15.684556552872252,
                                                             }
                                                           }
-                                                          value={1020}
+                                                          value={1000}
                                                         />
                                                       </g>
                                                     </Layer>
@@ -1497,7 +1497,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                           fill="#ac92ec"
                                                           innerRadius={90}
                                                           maxRadius={148.49242404917499}
-                                                          midAngle={251.4396887159533}
+                                                          midAngle={250.58823529411765}
                                                           middleRadius={100}
                                                           name="monetary action"
                                                           outerRadius={110}
@@ -1514,7 +1514,7 @@ exports[`TotalByType render equal last time 1`] = `
                                                               "value": 1550,
                                                             }
                                                           }
-                                                          percent={0.603112840466926}
+                                                          percent={0.6078431372549019}
                                                           startAngle={0}
                                                           stroke="#fff"
                                                           tooltipPayload={
@@ -1537,8 +1537,8 @@ exports[`TotalByType render equal last time 1`] = `
                                                           }
                                                           tooltipPosition={
                                                             Object {
-                                                              "x": 78.16972851839698,
-                                                              "y": 204.79891253283157,
+                                                              "x": 76.76452005203403,
+                                                              "y": 204.31544344712773,
                                                             }
                                                           }
                                                           value={1550}

@@ -1,4 +1,4 @@
-import { getInvestmentsByType } from '../state/data/selector'
+import { getInvestmentsByType, getTotalBought } from '../state/data/selector'
 
 export const investments = [
   {
@@ -57,4 +57,5 @@ const dataState = {
 }
 const state = { data: dataState }
 
+export const totalBoughtData = getTotalBought(state)
 export const investmentsByType = getInvestmentsByType(state)
