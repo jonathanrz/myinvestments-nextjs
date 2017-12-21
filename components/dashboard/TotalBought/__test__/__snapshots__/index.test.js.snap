@@ -16,7 +16,7 @@ exports[`TotalBought render equal last time 1`] = `
           },
           Object {
             "bought": 0,
-            "gain": 1550,
+            "gain": 1650,
             "holder": "broker",
             "months": 1,
             "name": "HGTX3",
@@ -24,7 +24,7 @@ exports[`TotalBought render equal last time 1`] = `
         ],
         "maxMonths": 2,
         "totalBought": 1000,
-        "totalGain": 1570,
+        "totalGain": 1670,
       }
     }
   >
@@ -243,7 +243,7 @@ exports[`TotalBought render equal last time 1`] = `
                                     },
                                     Object {
                                       "bought": 0,
-                                      "gain": 1550,
+                                      "gain": 1650,
                                       "holder": "broker",
                                       "months": 1,
                                       "name": "HGTX3",
@@ -252,7 +252,7 @@ exports[`TotalBought render equal last time 1`] = `
                                 }
                                 maxMonths={2}
                                 totalBought={1000}
-                                totalGain={1570}
+                                totalGain={1670}
                               >
                                 <Table
                                   allRowsSelected={false}
@@ -1158,7 +1158,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                       }
                                                     >
                                                       <MoneyWithColor
-                                                        value={1550}
+                                                        value={1650}
                                                       >
                                                         <div
                                                           style={
@@ -1167,7 +1167,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                             }
                                                           }
                                                         >
-                                                          R$ 1.550,00
+                                                          R$ 1.650,00
                                                         </div>
                                                       </MoneyWithColor>
                                                     </td>
@@ -1471,7 +1471,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                       }
                                                     >
                                                       <MoneyWithColor
-                                                        value={1570}
+                                                        value={1670}
                                                       >
                                                         <div
                                                           style={
@@ -1480,7 +1480,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                             }
                                                           }
                                                         >
-                                                          R$ 1.570,00
+                                                          R$ 1.670,00
                                                         </div>
                                                       </MoneyWithColor>
                                                     </td>
@@ -1518,7 +1518,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                       }
                                                     >
                                                       <PercentWithColor
-                                                        percent={1.57}
+                                                        percent={1.67}
                                                       >
                                                         <div
                                                           style={
@@ -1527,7 +1527,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                             }
                                                           }
                                                         >
-                                                          157.00%
+                                                          167.00%
                                                         </div>
                                                       </PercentWithColor>
                                                     </td>
@@ -1565,7 +1565,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                       }
                                                     >
                                                       <PercentWithColor
-                                                        percent={0.785}
+                                                        percent={0.835}
                                                       >
                                                         <div
                                                           style={
@@ -1574,7 +1574,7 @@ exports[`TotalBought render equal last time 1`] = `
                                                             }
                                                           }
                                                         >
-                                                          78.50%
+                                                          83.50%
                                                         </div>
                                                       </PercentWithColor>
                                                     </td>
