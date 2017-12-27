@@ -1,14 +1,25 @@
 import getIncomesByMonth from '../incomesByMonth'
-import { investments } from '../../../../fixtures/investments'
+import { investments as investmentData } from '../../../../fixtures/investments'
 
 describe('incomes by month selector', () => {
-  it('returns data of incomes by month', () => {
-    const dataState = {
-      filteredInvestments: { investments }
-    }
-    const state = { data: dataState }
+  const dataState = {
+    filteredInvestments: { investments: investmentData }
+  }
+  const state = { data: dataState }
 
-    const { totalValue, investmentsByMonth, grossIrAndFees } = getIncomesByMonth(state)
+  const { investments, totalValue, investmentsByMonth, grossIrAndFees } = getIncomesByMonth(state)
+
+  it('returns investments current value', () => {
+    expect(investments).toHaveLength(2)
+    const cdb = investments[0]
+    expect(cdb.name).toEqual('Test')
+    expect(cdb.currentValue).toEqual(1020)
+    const monetaryAction = investments[1]
+    expect(monetaryAction.name).toEqual('HGTX3')
+    expect(monetaryAction.currentValue).toEqual(1550)
+  })
+
+  it('returns data of incomes by month', () => {
     expect(investmentsByMonth).toHaveLength(2)
 
     const decemberData = investmentsByMonth[0]

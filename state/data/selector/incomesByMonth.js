@@ -4,7 +4,7 @@ import moment from 'moment'
 const totalId = 'Total'
 
 const getIncomesByMonth = state => {
-  const investments = state.data.filteredInvestments.investments
+  const investments = [...state.data.filteredInvestments.investments]
 
   const investmentsByMonth = {}
   const grossIrAndFees = []
@@ -42,7 +42,9 @@ const getIncomesByMonth = state => {
       }
     })
 
-    if (incomesGains.length > 0) totalValue += incomesGains[0].value
+    investment.currentValue = incomesGains.length > 0 ? incomesGains[0].value : 0
+
+    totalValue += investment.currentValue
   })
 
   Object.keys(investmentsByMonth).map(month => {
@@ -64,6 +66,7 @@ const getIncomesByMonth = state => {
 
   return {
     totalValue: totalValue,
+    investments: investments,
     investmentsByMonth: investmentsByMonthArray,
     grossIrAndFees: grossIrAndFees.sort((left, right) => moment.utc(left.date).diff(moment.utc(right.date)))
   }
