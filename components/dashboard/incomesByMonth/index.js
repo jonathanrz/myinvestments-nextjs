@@ -9,6 +9,7 @@ import { Container, Row, Col } from 'react-grid-system'
 import { Month } from '../../components/Date'
 import { Money, MoneyWithColor, MoneyWithInvertedColor } from '../../components/Money'
 import { PercentWithColor } from '../../components/Percent'
+import InvestmentsTable from './investmentsTable'
 import { hasGrossIROrFee } from '../../lib/income'
 
 const totalId = 'Total'
@@ -119,28 +120,7 @@ class IncomesByMonth extends React.Component {
           <Container>
             <Row style={{ paddingBottom: 30 }}>
               <Col lg={3}>
-                <Table selectable={false}>
-                  <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                    <TableRow>
-                      <TableHeaderColumn>Nome</TableHeaderColumn>
-                      <TableHeaderColumn style={valueColumnStyle}>Valor</TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody displayRowCheckbox={false} showRowHover stripedRows>
-                    {investments.map(investment => (
-                      <TableRow key={investment._id}>
-                        <TableRowColumn>{investment.name}</TableRowColumn>
-                        <TableRowColumn style={valueColumnStyle}>
-                          {showValues ? <Money value={investment.currentValue} /> : <PercentWithColor percent={investment.currentValue / totalValue} />}
-                        </TableRowColumn>
-                      </TableRow>
-                    ))}
-                    <TableRow key={0}>
-                      <TableRowColumn>Total</TableRowColumn>
-                      <TableRowColumn>{showValues ? <Money value={totalValue} /> : <PercentWithColor percent={1} />}</TableRowColumn>
-                    </TableRow>
-                  </TableBody>
-                </Table>
+                <InvestmentsTable investments={investments} showValues={showValues} totalValue={totalValue} />
               </Col>
               <Col lg={9}>
                 <Table selectable={false}>
