@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Card, CardMedia, CardHeader } from 'material-ui/Card'
 import { Container, Row, Col } from 'react-grid-system'
 import InvestmentsTable from './investmentsTable'
-import { totalBoughtData } from '../../../fixtures/investments'
+import { getTotalBought } from '../../../state/data/selector'
 
 class TotalBought extends React.Component {
   render () {
@@ -38,7 +38,7 @@ TotalBought.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  totalBoughtData: totalBoughtData(state)
+  totalBoughtData: getTotalBought(state)
 })
 
 export default connect(mapStateToProps, null)(TotalBought)
