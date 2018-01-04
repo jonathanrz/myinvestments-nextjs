@@ -5,14 +5,15 @@ const totalId = 'Total'
 
 const getIncomesByMonth = state => {
   const investments = [...state.data.filteredInvestments]
+  const { year } = state.filter
 
   const investmentsByMonth = {}
   const grossIrAndFees = []
   var totalValue = 0
 
   investments.forEach(investment => {
-    const incomesGains = calculateIncomesGains(investment.filteredIncomes)
-    incomesGains.forEach(income => {
+    const incomesGains = calculateIncomesGains(investment.incomes)
+    incomesGains.filter(income => moment.utc(income.date).year() === year).forEach(income => {
       const monthData = investmentsByMonth[income.date] || {}
       const investmentData = monthData[investment._id] || {}
 

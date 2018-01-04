@@ -5,7 +5,10 @@ describe('incomes by month selector', () => {
   const dataState = {
     filteredInvestments: investmentData
   }
-  const state = { data: dataState }
+  const filterState = {
+    year: 2017
+  }
+  const state = { data: dataState, filter: filterState }
 
   const { investments, totalValue, investmentsByMonth, grossIrAndFees } = getIncomesByMonth(state)
 
@@ -40,5 +43,45 @@ describe('incomes by month selector', () => {
 
     expect(totalValue).toEqual(2570)
     expect(grossIrAndFees).toEqual([{ date: '2017-12-01T00:00:00.000Z', fee: 0, gross: 100, holder: 'broker', investment: 'HGTX3', ir: 0, value: 1550 }])
+  })
+})
+
+describe('incomes by month of next year', () => {
+  const dataState = {
+    filteredInvestments: [
+      {
+        _id: 'id',
+        name: 'name',
+        incomes: [
+          {
+            date: '2017-12-01T00:00:00.000Z',
+            value: 1000,
+            bought: 1000
+          },
+          {
+            date: '2018-01-01T00:00:00.000Z',
+            value: 1100,
+            bought: 0
+          }
+        ]
+      }
+    ]
+  }
+  const filterState = {
+    year: 2018
+  }
+  const state = { data: dataState, filter: filterState }
+
+  const { investmentsByMonth } = getIncomesByMonth(state)
+
+  it('returns data of january correctly', () => {
+    expect(investmentsByMonth).toHaveLength(1)
+
+    const januaryData = investmentsByMonth[0]
+    expect(januaryData.month).toEqual('2018-01-01T00:00:00.000Z')
+    expect(januaryData.investments).toEqual({
+      id: { perc: 0.1, value: 100 },
+      Total: { perc: 0.05, value: 100 }
+    })
   })
 })
