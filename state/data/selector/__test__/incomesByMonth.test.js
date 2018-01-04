@@ -3,7 +3,7 @@ import { investments as investmentData } from '../../../../fixtures/investments'
 
 describe('incomes by month selector', () => {
   const dataState = {
-    filteredInvestments: { investments: investmentData }
+    filteredInvestments: investmentData
   }
   const state = { data: dataState }
 

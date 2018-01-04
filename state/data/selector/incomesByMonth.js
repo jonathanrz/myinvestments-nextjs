@@ -4,7 +4,7 @@ import moment from 'moment'
 const totalId = 'Total'
 
 const getIncomesByMonth = state => {
-  const investments = [...state.data.filteredInvestments.investments]
+  const investments = [...state.data.filteredInvestments]
 
   const investmentsByMonth = {}
   const grossIrAndFees = []

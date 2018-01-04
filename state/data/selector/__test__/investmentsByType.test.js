@@ -4,7 +4,7 @@ import { investments } from '../../../../fixtures/investments'
 describe('investments by type selector', () => {
   it('returns investments grouped by type', () => {
     const dataState = {
-      filteredInvestments: { investments }
+      filteredInvestments: investments
     }
     const state = { data: dataState }
     const investmentsByType = getInvestmentsByType(state)

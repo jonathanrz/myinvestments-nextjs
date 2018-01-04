@@ -4,7 +4,7 @@ import { investments } from '../../../../fixtures/investments'
 describe('total bought selector', () => {
   it('returns data of total bought', () => {
     const dataState = {
-      filteredInvestments: { investments }
+      filteredInvestments: investments
     }
     const state = { data: dataState }
     const { data, maxMonths, totalBought, totalGain } = getTotalBought(state)

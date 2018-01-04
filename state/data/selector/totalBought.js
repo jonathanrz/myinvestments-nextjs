@@ -2,7 +2,7 @@ import moment from 'moment'
 import { incomeGain } from '../../../lib/income'
 
 const getTotalBought = state => {
-  const investments = state.data.filteredInvestments.investments
+  const investments = state.data.filteredInvestments
   const data = []
   let totalBought = 0
   let totalGain = 0

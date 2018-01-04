@@ -59,7 +59,7 @@ export const investments = [
 ]
 
 const dataState = {
-  filteredInvestments: { investments }
+  filteredInvestments: investments
 }
 const state = { data: dataState }
 
