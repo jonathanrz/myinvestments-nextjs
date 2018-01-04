@@ -3,7 +3,7 @@ import { SET_INVESTMENT_HOLDER, SET_INVESTMENT_TYPE, SET_YEAR, SET_SHOW_VALUES }
 export const initialState = {
   holder: 'all',
   type: 'all',
-  year: 2017,
+  year: 2018,
   showValues: true
 }
 
