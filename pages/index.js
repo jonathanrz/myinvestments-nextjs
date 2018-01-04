@@ -87,8 +87,6 @@ class Index extends React.Component {
       .map(investment => ({ ...investment, incomes: calculateIncomesGains(investment.incomes) }))
       .map(investment => ({ ...investment, filteredIncomes: investment.incomes.filter(income => moment.utc(income.date).year() === year) }))
 
-    var investmentsByType = {}
-
     for (let i = 0; i < filteredInvestments.length; i++) {
       const investment = filteredInvestments[i]
       if (investment.incomes.length > 0) {
@@ -96,24 +94,9 @@ class Index extends React.Component {
       } else {
         investment.currentValue = 0
       }
-
-      var investmentType = investment.type
-      if (!investmentsByType[investmentType]) {
-        investmentsByType[investmentType] = {}
-        investmentsByType[investmentType].investments = []
-        investmentsByType[investmentType].value = 0
-      }
-      investmentsByType[investmentType].investments.push(investment)
-      investmentsByType[investmentType].value += investment.currentValue
     }
 
-    const totalValue = filteredInvestments.reduce((acum, investment) => acum + investment.currentValue, 0)
-
-    investmentsByType['Total'] = {}
-    investmentsByType['Total'].investments = investments
-    investmentsByType['Total'].value = totalValue
-
-    this.props.setFilteredInvestments({ investments: filteredInvestments, byType: investmentsByType })
+    this.props.setFilteredInvestments(filteredInvestments)
   }
 
   onDrawerItemClicked = item => {

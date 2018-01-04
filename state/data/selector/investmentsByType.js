@@ -4,7 +4,7 @@ const getInvestmentCurrentValue = investment => {
 }
 
 const getInvestmentsByType = state => {
-  const investments = state.data.filteredInvestments.investments
+  const investments = state.data.filteredInvestments
   var investmentsByType = {}
 
   for (let i = 0; i < investments.length; i++) {

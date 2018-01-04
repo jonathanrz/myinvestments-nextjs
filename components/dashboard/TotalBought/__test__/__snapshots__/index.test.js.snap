@@ -1,0 +1,1651 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotalBought render equal last time 1`] = `
+<MuiThemeProvider>
+  <TotalBought
+    style={Object {}}
+    totalBoughtData={
+      Object {
+        "data": Array [
+          Object {
+            "bought": 1000,
+            "gain": 20,
+            "holder": "Holder",
+            "months": 2,
+            "name": "Test",
+          },
+          Object {
+            "bought": 0,
+            "gain": 1650,
+            "holder": "broker",
+            "months": 1,
+            "name": "HGTX3",
+          },
+        ],
+        "maxMonths": 2,
+        "totalBought": 1000,
+        "totalGain": 1670,
+      }
+    }
+  >
+    <Card
+      containerStyle={Object {}}
+      expandable={false}
+      expanded={null}
+      initiallyExpanded={false}
+    >
+      <Paper
+        circle={false}
+        rounded={true}
+        style={
+          Object {
+            "zIndex": 1,
+          }
+        }
+        transitionEnabled={true}
+        zDepth={1}
+      >
+        <div
+          style={
+            Object {
+              "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+              "backgroundColor": "#ffffff",
+              "borderRadius": 2,
+              "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+         0 1px 4px rgba(0, 0, 0, 0.12)",
+              "boxSizing": "border-box",
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto, sans-serif",
+              "muiPrepared": true,
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              "zIndex": 1,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "paddingBottom": 0,
+              }
+            }
+          >
+            <CardHeader
+              avatar={null}
+              key=".0"
+              title="Total geral"
+            >
+              <div
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "fontWeight": 500,
+                    "muiPrepared": true,
+                    "padding": 16,
+                    "position": "relative",
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "muiPrepared": true,
+                      "paddingRight": "90px",
+                      "verticalAlign": "top",
+                      "whiteSpace": "normal",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "display": "block",
+                        "fontSize": 15,
+                        "muiPrepared": true,
+                      }
+                    }
+                  >
+                    Total geral
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                        "display": "block",
+                        "fontSize": 14,
+                        "muiPrepared": true,
+                      }
+                    }
+                  />
+                </div>
+              </div>
+            </CardHeader>
+            <CardMedia
+              key=".1"
+            >
+              <div
+                style={
+                  Object {
+                    "muiPrepared": true,
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "muiPrepared": true,
+                    }
+                  }
+                >
+                  <Container
+                    fluid={false}
+                    key=".0"
+                    lg={false}
+                    md={false}
+                    sm={false}
+                    style={
+                      Object {
+                        "maxWidth": "100%",
+                        "minWidth": "100%",
+                        "muiPrepared": true,
+                        "verticalAlign": "top",
+                        "width": "100%",
+                      }
+                    }
+                    xl={false}
+                    xs={false}
+                  >
+                    <div
+                      style={
+                        Object {
+                          "boxSizing": "border-box",
+                          "marginLeft": "auto",
+                          "marginRight": "auto",
+                          "maxWidth": "960px",
+                          "minWidth": "100%",
+                          "muiPrepared": true,
+                          "paddingLeft": "15px",
+                          "paddingRight": "15px",
+                          "position": "relative",
+                          "verticalAlign": "top",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Row
+                        align="normal"
+                        debug={false}
+                        nogutter={false}
+                        style={
+                          Object {
+                            "marginBottom": 30,
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "alignItems": "normal",
+                              "display": "flex",
+                              "flexGrow": 0,
+                              "flexShrink": 0,
+                              "flexWrap": "wrap",
+                              "marginBottom": 30,
+                              "marginLeft": "-15px",
+                              "marginRight": "-15px",
+                            }
+                          }
+                        >
+                          <Col
+                            debug={false}
+                            lg={null}
+                            md={null}
+                            offset={Object {}}
+                            pull={Object {}}
+                            push={Object {}}
+                            sm={null}
+                            style={Object {}}
+                            xl={null}
+                            xs={null}
+                          >
+                            <div
+                              style={
+                                Object {
+                                  "boxSizing": "border-box",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 0,
+                                  "left": "auto",
+                                  "marginLeft": "0%",
+                                  "maxWidth": "100%",
+                                  "minHeight": "1px",
+                                  "overflow": "hidden",
+                                  "paddingLeft": "15px",
+                                  "paddingRight": "15px",
+                                  "position": "relative",
+                                  "right": "auto",
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <InvestmentsTable
+                                data={
+                                  Array [
+                                    Object {
+                                      "bought": 1000,
+                                      "gain": 20,
+                                      "holder": "Holder",
+                                      "months": 2,
+                                      "name": "Test",
+                                    },
+                                    Object {
+                                      "bought": 0,
+                                      "gain": 1650,
+                                      "holder": "broker",
+                                      "months": 1,
+                                      "name": "HGTX3",
+                                    },
+                                  ]
+                                }
+                                maxMonths={2}
+                                totalBought={1000}
+                                totalGain={1670}
+                              >
+                                <Table
+                                  allRowsSelected={false}
+                                  fixedFooter={true}
+                                  fixedHeader={true}
+                                  height="inherit"
+                                  multiSelectable={false}
+                                  selectable={false}
+                                >
+                                  <div
+                                    style={
+                                      Object {
+                                        "height": "auto",
+                                        "muiPrepared": true,
+                                        "overflow": "auto",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      style={
+                                        Object {
+                                          "muiPrepared": true,
+                                        }
+                                      }
+                                    >
+                                      <table
+                                        style={
+                                          Object {
+                                            "backgroundColor": "#ffffff",
+                                            "borderCollapse": "collapse",
+                                            "borderSpacing": 0,
+                                            "fontFamily": "Roboto, sans-serif",
+                                            "tableLayout": "fixed",
+                                            "width": "100%",
+                                          }
+                                        }
+                                      >
+                                        <TableHeader
+                                          adjustForCheckbox={false}
+                                          displaySelectAll={false}
+                                          enableSelectAll={false}
+                                          onSelectAll={[Function]}
+                                          selectAllSelected={false}
+                                        >
+                                          <thead
+                                            style={
+                                              Object {
+                                                "borderBottom": "1px solid #e0e0e0",
+                                                "muiPrepared": true,
+                                              }
+                                            }
+                                          >
+                                            <TableRow
+                                              displayBorder={true}
+                                              hoverable={false}
+                                              hovered={false}
+                                              key="h1"
+                                              rowNumber={1}
+                                              selectable={true}
+                                              striped={false}
+                                            >
+                                              <tr
+                                                style={
+                                                  Object {
+                                                    "borderBottom": "1px solid #e0e0e0",
+                                                    "color": "rgba(0, 0, 0, 0.87)",
+                                                    "height": 48,
+                                                    "muiPrepared": true,
+                                                  }
+                                                }
+                                              >
+                                                <TableHeaderColumn
+                                                  columnNumber={1}
+                                                  hoverable={false}
+                                                  key="1-1/.1"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Investimento
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={2}
+                                                  hoverable={false}
+                                                  key="1-2/.2"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Titular
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={3}
+                                                  hoverable={false}
+                                                  key="1-3/.3"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Meses
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={4}
+                                                  hoverable={false}
+                                                  key="1-4/.4"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Comprado
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={5}
+                                                  hoverable={false}
+                                                  key="1-5/.5"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Ganho
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={6}
+                                                  hoverable={false}
+                                                  key="1-6/.6"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    % Geral
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={7}
+                                                  hoverable={false}
+                                                  key="1-7/.7"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    % Mês
+                                                  </th>
+                                                </TableHeaderColumn>
+                                              </tr>
+                                            </TableRow>
+                                          </thead>
+                                        </TableHeader>
+                                      </table>
+                                    </div>
+                                    <div
+                                      style={
+                                        Object {
+                                          "height": "inherit",
+                                          "muiPrepared": true,
+                                          "overflowX": "hidden",
+                                          "overflowY": "auto",
+                                        }
+                                      }
+                                    >
+                                      <table
+                                        style={
+                                          Object {
+                                            "backgroundColor": "#ffffff",
+                                            "borderCollapse": "collapse",
+                                            "borderSpacing": 0,
+                                            "fontFamily": "Roboto, sans-serif",
+                                            "tableLayout": "fixed",
+                                            "width": "100%",
+                                          }
+                                        }
+                                      >
+                                        <TableBody
+                                          allRowsSelected={false}
+                                          deselectOnClickaway={true}
+                                          displayRowCheckbox={false}
+                                          multiSelectable={false}
+                                          onCellClick={[Function]}
+                                          onCellHover={[Function]}
+                                          onCellHoverExit={[Function]}
+                                          onRowHover={[Function]}
+                                          onRowHoverExit={[Function]}
+                                          onRowSelection={[Function]}
+                                          preScanRows={true}
+                                          selectable={false}
+                                          showRowHover={true}
+                                          stripedRows={true}
+                                          style={Object {}}
+                                        >
+                                          <ClickAwayListener
+                                            onClickAway={[Function]}
+                                          >
+                                            <tbody
+                                              style={
+                                                Object {
+                                                  "muiPrepared": true,
+                                                }
+                                              }
+                                            >
+                                              <TableRow
+                                                displayBorder={true}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".0:$Test-Holder"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={0}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={true}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": "1px solid #e0e0e0",
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="0-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      Test
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="0-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      Holder
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="0-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      2
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={4}
+                                                    hoverable={true}
+                                                    key="0-4/.4"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <Money
+                                                        value={1000}
+                                                      >
+                                                        <div>
+                                                          R$ 1.000,00
+                                                        </div>
+                                                      </Money>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={5}
+                                                    hoverable={true}
+                                                    key="0-5/.5"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <MoneyWithColor
+                                                        value={20}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          R$ 20,00
+                                                        </div>
+                                                      </MoneyWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={6}
+                                                    hoverable={true}
+                                                    key="0-6/.6"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={0.02}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          2.00%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={7}
+                                                    hoverable={true}
+                                                    key="0-7/.7"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={0.01}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          1.00%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                              <TableRow
+                                                displayBorder={true}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".0:$HGTX3-broker"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={1}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={false}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": "1px solid #e0e0e0",
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="1-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      HGTX3
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="1-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      broker
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="1-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      1
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={4}
+                                                    hoverable={true}
+                                                    key="1-4/.4"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <Money
+                                                        value={0}
+                                                      >
+                                                        <div>
+                                                          R$ 0,00
+                                                        </div>
+                                                      </Money>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={5}
+                                                    hoverable={true}
+                                                    key="1-5/.5"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <MoneyWithColor
+                                                        value={1650}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          R$ 1.650,00
+                                                        </div>
+                                                      </MoneyWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={6}
+                                                    hoverable={true}
+                                                    key="1-6/.6"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={Infinity}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          Infinity%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={7}
+                                                    hoverable={true}
+                                                    key="1-7/.7"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={Infinity}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          Infinity%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                              <TableRow
+                                                displayBorder={false}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".$Total"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={2}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={true}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": false,
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="2-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      Total
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="2-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    />
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="2-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      2
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={4}
+                                                    hoverable={true}
+                                                    key="2-4/.4"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <Money
+                                                        value={1000}
+                                                      >
+                                                        <div>
+                                                          R$ 1.000,00
+                                                        </div>
+                                                      </Money>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={5}
+                                                    hoverable={true}
+                                                    key="2-5/.5"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <MoneyWithColor
+                                                        value={1670}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          R$ 1.670,00
+                                                        </div>
+                                                      </MoneyWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={6}
+                                                    hoverable={true}
+                                                    key="2-6/.6"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={1.67}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          167.00%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={7}
+                                                    hoverable={true}
+                                                    key="2-7/.7"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      <PercentWithColor
+                                                        percent={0.835}
+                                                      >
+                                                        <div
+                                                          style={
+                                                            Object {
+                                                              "color": "#2e7d32",
+                                                            }
+                                                          }
+                                                        >
+                                                          83.50%
+                                                        </div>
+                                                      </PercentWithColor>
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                            </tbody>
+                                          </ClickAwayListener>
+                                        </TableBody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </Table>
+                              </InvestmentsTable>
+                            </div>
+                          </Col>
+                          <ClearFix
+                            lg={true}
+                            md={true}
+                            sm={true}
+                            xl={true}
+                            xs={true}
+                          >
+                            <Visible
+                              lg={true}
+                              md={true}
+                              sm={true}
+                              xl={true}
+                              xs={true}
+                            >
+                              <RenderAny>
+                                <div
+                                  style={
+                                    Object {
+                                      "clear": "both",
+                                      "display": "table",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    style={
+                                      Object {
+                                        "display": "none",
+                                      }
+                                    }
+                                  >
+                                     
+                                  </span>
+                                </div>
+                              </RenderAny>
+                            </Visible>
+                          </ClearFix>
+                        </div>
+                      </Row>
+                      <span
+                        style={
+                          Object {
+                            "clear": "both",
+                            "display": "table",
+                          }
+                        }
+                      />
+                    </div>
+                  </Container>
+                </div>
+              </div>
+            </CardMedia>
+          </div>
+        </div>
+      </Paper>
+    </Card>
+  </TotalBought>
+</MuiThemeProvider>
+`;

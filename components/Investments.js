@@ -69,7 +69,7 @@ class Investments extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  investments: state.data.filteredInvestments.investments
+  investments: state.data.filteredInvestments
 })
 
 export default connect(mapStateToProps, null)(Investments)

@@ -57,6 +57,9 @@
     "babel-eslint": "^8.0.1",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
@@ -68,12 +71,22 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "jest-cli": "^21.2.1",
+    "jest-enzyme": "^4.0.1",
+    "react-test-renderer": "^16.2.0",
     "standard": "^10.0.3"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/.history/"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "setupFiles": [
+      "raf/polyfill",
+      "./lib/setup-enzyme.js"
     ]
   }
 }

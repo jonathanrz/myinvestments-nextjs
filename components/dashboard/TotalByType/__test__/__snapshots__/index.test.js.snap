@@ -1,0 +1,1878 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotalByType render equal last time 1`] = `
+<MuiThemeProvider>
+  <TotalByType
+    investmentsByType={
+      Object {
+        "CDB": Object {
+          "investments": Array [
+            Object {
+              "_id": "5b0cdf5bc15e16201f282eb9",
+              "filteredIncomes": Array [
+                Object {
+                  "_id": "5a1cda7bb15b16001f282eba",
+                  "bought": 1000,
+                  "date": "2017-11-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1000,
+                },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
+                },
+              ],
+              "holder": "Holder",
+              "incomes": Array [
+                Object {
+                  "_id": "5a1cda7bb15b16001f282eba",
+                  "bought": 1000,
+                  "date": "2017-11-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1000,
+                },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
+                },
+              ],
+              "name": "Test",
+              "type": "CDB",
+            },
+          ],
+          "value": 1000,
+        },
+        "Total": Object {
+          "investments": Array [
+            Object {
+              "_id": "5b0cdf5bc15e16201f282eb9",
+              "filteredIncomes": Array [
+                Object {
+                  "_id": "5a1cda7bb15b16001f282eba",
+                  "bought": 1000,
+                  "date": "2017-11-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1000,
+                },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
+                },
+              ],
+              "holder": "Holder",
+              "incomes": Array [
+                Object {
+                  "_id": "5a1cda7bb15b16001f282eba",
+                  "bought": 1000,
+                  "date": "2017-11-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1000,
+                },
+                Object {
+                  "_id": "5a17590153c4ca001f21f43d",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 0,
+                  "investment": "5b0cdf5bc15e16201f282eb9",
+                  "ir": 0,
+                  "quantity": 1,
+                  "value": 1020,
+                },
+              ],
+              "name": "Test",
+              "type": "CDB",
+            },
+            Object {
+              "_id": "5a17579f15c4da021g21a43a",
+              "filteredIncomes": Array [
+                Object {
+                  "_id": "5a1757g125c4ad001f21f43c",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 100,
+                  "investment": "5a17579f15c4da021g21a43a",
+                  "ir": 0,
+                  "quantity": 100,
+                  "value": 1550,
+                },
+              ],
+              "holder": "broker",
+              "incomes": Array [
+                Object {
+                  "_id": "5a1757g125c4ad001f21f43c",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 100,
+                  "investment": "5a17579f15c4da021g21a43a",
+                  "ir": 0,
+                  "quantity": 100,
+                  "value": 1550,
+                },
+              ],
+              "name": "HGTX3",
+              "type": "monetary action",
+            },
+          ],
+          "value": 2550,
+        },
+        "monetary action": Object {
+          "investments": Array [
+            Object {
+              "_id": "5a17579f15c4da021g21a43a",
+              "filteredIncomes": Array [
+                Object {
+                  "_id": "5a1757g125c4ad001f21f43c",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 100,
+                  "investment": "5a17579f15c4da021g21a43a",
+                  "ir": 0,
+                  "quantity": 100,
+                  "value": 1550,
+                },
+              ],
+              "holder": "broker",
+              "incomes": Array [
+                Object {
+                  "_id": "5a1757g125c4ad001f21f43c",
+                  "bought": 0,
+                  "date": "2017-12-01T00:00:00.000Z",
+                  "fee": 0,
+                  "gross": 100,
+                  "investment": "5a17579f15c4da021g21a43a",
+                  "ir": 0,
+                  "quantity": 100,
+                  "value": 1550,
+                },
+              ],
+              "name": "HGTX3",
+              "type": "monetary action",
+            },
+          ],
+          "value": 1550,
+        },
+      }
+    }
+  >
+    <Card
+      containerStyle={Object {}}
+      expandable={false}
+      expanded={null}
+      initiallyExpanded={false}
+    >
+      <Paper
+        circle={false}
+        rounded={true}
+        style={
+          Object {
+            "zIndex": 1,
+          }
+        }
+        transitionEnabled={true}
+        zDepth={1}
+      >
+        <div
+          style={
+            Object {
+              "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+              "backgroundColor": "#ffffff",
+              "borderRadius": 2,
+              "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+         0 1px 4px rgba(0, 0, 0, 0.12)",
+              "boxSizing": "border-box",
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto, sans-serif",
+              "muiPrepared": true,
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              "zIndex": 1,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "paddingBottom": 0,
+              }
+            }
+          >
+            <CardHeader
+              avatar={null}
+              key=".0"
+              title="Totais por tipo"
+            >
+              <div
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "fontWeight": 500,
+                    "muiPrepared": true,
+                    "padding": 16,
+                    "position": "relative",
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "muiPrepared": true,
+                      "paddingRight": "90px",
+                      "verticalAlign": "top",
+                      "whiteSpace": "normal",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "display": "block",
+                        "fontSize": 15,
+                        "muiPrepared": true,
+                      }
+                    }
+                  >
+                    Totais por tipo
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                        "display": "block",
+                        "fontSize": 14,
+                        "muiPrepared": true,
+                      }
+                    }
+                  />
+                </div>
+              </div>
+            </CardHeader>
+            <CardMedia
+              key=".1"
+            >
+              <div
+                style={
+                  Object {
+                    "muiPrepared": true,
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "muiPrepared": true,
+                    }
+                  }
+                >
+                  <Container
+                    fluid={false}
+                    key=".0"
+                    lg={false}
+                    md={false}
+                    sm={false}
+                    style={
+                      Object {
+                        "maxWidth": "100%",
+                        "minWidth": "100%",
+                        "muiPrepared": true,
+                        "verticalAlign": "top",
+                        "width": "100%",
+                      }
+                    }
+                    xl={false}
+                    xs={false}
+                  >
+                    <div
+                      style={
+                        Object {
+                          "boxSizing": "border-box",
+                          "marginLeft": "auto",
+                          "marginRight": "auto",
+                          "maxWidth": "960px",
+                          "minWidth": "100%",
+                          "muiPrepared": true,
+                          "paddingLeft": "15px",
+                          "paddingRight": "15px",
+                          "position": "relative",
+                          "verticalAlign": "top",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Row
+                        align="normal"
+                        debug={false}
+                        nogutter={false}
+                        style={
+                          Object {
+                            "marginBottom": 30,
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "alignItems": "normal",
+                              "display": "flex",
+                              "flexGrow": 0,
+                              "flexShrink": 0,
+                              "flexWrap": "wrap",
+                              "marginBottom": 30,
+                              "marginLeft": "-15px",
+                              "marginRight": "-15px",
+                            }
+                          }
+                        >
+                          <Col
+                            debug={false}
+                            lg={9}
+                            md={null}
+                            offset={Object {}}
+                            pull={Object {}}
+                            push={Object {}}
+                            sm={null}
+                            style={Object {}}
+                            xl={null}
+                            xs={null}
+                          >
+                            <div
+                              style={
+                                Object {
+                                  "boxSizing": "border-box",
+                                  "flexBasis": "75%",
+                                  "flexGrow": 0,
+                                  "flexShrink": 0,
+                                  "left": "auto",
+                                  "marginLeft": "0%",
+                                  "maxWidth": "75%",
+                                  "minHeight": "1px",
+                                  "overflow": "hidden",
+                                  "paddingLeft": "15px",
+                                  "paddingRight": "15px",
+                                  "position": "relative",
+                                  "right": "auto",
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <InvestmentsTable
+                                investmentsByType={
+                                  Object {
+                                    "CDB": Object {
+                                      "investments": Array [
+                                        Object {
+                                          "_id": "5b0cdf5bc15e16201f282eb9",
+                                          "filteredIncomes": Array [
+                                            Object {
+                                              "_id": "5a1cda7bb15b16001f282eba",
+                                              "bought": 1000,
+                                              "date": "2017-11-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
+                                            },
+                                          ],
+                                          "holder": "Holder",
+                                          "incomes": Array [
+                                            Object {
+                                              "_id": "5a1cda7bb15b16001f282eba",
+                                              "bought": 1000,
+                                              "date": "2017-11-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
+                                            },
+                                          ],
+                                          "name": "Test",
+                                          "type": "CDB",
+                                        },
+                                      ],
+                                      "value": 1000,
+                                    },
+                                    "Total": Object {
+                                      "investments": Array [
+                                        Object {
+                                          "_id": "5b0cdf5bc15e16201f282eb9",
+                                          "filteredIncomes": Array [
+                                            Object {
+                                              "_id": "5a1cda7bb15b16001f282eba",
+                                              "bought": 1000,
+                                              "date": "2017-11-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
+                                            },
+                                          ],
+                                          "holder": "Holder",
+                                          "incomes": Array [
+                                            Object {
+                                              "_id": "5a1cda7bb15b16001f282eba",
+                                              "bought": 1000,
+                                              "date": "2017-11-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "_id": "5a17590153c4ca001f21f43d",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 0,
+                                              "investment": "5b0cdf5bc15e16201f282eb9",
+                                              "ir": 0,
+                                              "quantity": 1,
+                                              "value": 1020,
+                                            },
+                                          ],
+                                          "name": "Test",
+                                          "type": "CDB",
+                                        },
+                                        Object {
+                                          "_id": "5a17579f15c4da021g21a43a",
+                                          "filteredIncomes": Array [
+                                            Object {
+                                              "_id": "5a1757g125c4ad001f21f43c",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 100,
+                                              "investment": "5a17579f15c4da021g21a43a",
+                                              "ir": 0,
+                                              "quantity": 100,
+                                              "value": 1550,
+                                            },
+                                          ],
+                                          "holder": "broker",
+                                          "incomes": Array [
+                                            Object {
+                                              "_id": "5a1757g125c4ad001f21f43c",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 100,
+                                              "investment": "5a17579f15c4da021g21a43a",
+                                              "ir": 0,
+                                              "quantity": 100,
+                                              "value": 1550,
+                                            },
+                                          ],
+                                          "name": "HGTX3",
+                                          "type": "monetary action",
+                                        },
+                                      ],
+                                      "value": 2550,
+                                    },
+                                    "monetary action": Object {
+                                      "investments": Array [
+                                        Object {
+                                          "_id": "5a17579f15c4da021g21a43a",
+                                          "filteredIncomes": Array [
+                                            Object {
+                                              "_id": "5a1757g125c4ad001f21f43c",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 100,
+                                              "investment": "5a17579f15c4da021g21a43a",
+                                              "ir": 0,
+                                              "quantity": 100,
+                                              "value": 1550,
+                                            },
+                                          ],
+                                          "holder": "broker",
+                                          "incomes": Array [
+                                            Object {
+                                              "_id": "5a1757g125c4ad001f21f43c",
+                                              "bought": 0,
+                                              "date": "2017-12-01T00:00:00.000Z",
+                                              "fee": 0,
+                                              "gross": 100,
+                                              "investment": "5a17579f15c4da021g21a43a",
+                                              "ir": 0,
+                                              "quantity": 100,
+                                              "value": 1550,
+                                            },
+                                          ],
+                                          "name": "HGTX3",
+                                          "type": "monetary action",
+                                        },
+                                      ],
+                                      "value": 1550,
+                                    },
+                                  }
+                                }
+                                totalValue={2550}
+                              >
+                                <Table
+                                  allRowsSelected={false}
+                                  fixedFooter={true}
+                                  fixedHeader={true}
+                                  height="inherit"
+                                  multiSelectable={false}
+                                  selectable={false}
+                                >
+                                  <div
+                                    style={
+                                      Object {
+                                        "height": "auto",
+                                        "muiPrepared": true,
+                                        "overflow": "auto",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      style={
+                                        Object {
+                                          "muiPrepared": true,
+                                        }
+                                      }
+                                    >
+                                      <table
+                                        style={
+                                          Object {
+                                            "backgroundColor": "#ffffff",
+                                            "borderCollapse": "collapse",
+                                            "borderSpacing": 0,
+                                            "fontFamily": "Roboto, sans-serif",
+                                            "tableLayout": "fixed",
+                                            "width": "100%",
+                                          }
+                                        }
+                                      >
+                                        <TableHeader
+                                          adjustForCheckbox={false}
+                                          displaySelectAll={false}
+                                          enableSelectAll={false}
+                                          onSelectAll={[Function]}
+                                          selectAllSelected={false}
+                                        >
+                                          <thead
+                                            style={
+                                              Object {
+                                                "borderBottom": "1px solid #e0e0e0",
+                                                "muiPrepared": true,
+                                              }
+                                            }
+                                          >
+                                            <TableRow
+                                              displayBorder={true}
+                                              hoverable={false}
+                                              hovered={false}
+                                              key="h1"
+                                              rowNumber={1}
+                                              selectable={true}
+                                              striped={false}
+                                            >
+                                              <tr
+                                                style={
+                                                  Object {
+                                                    "borderBottom": "1px solid #e0e0e0",
+                                                    "color": "rgba(0, 0, 0, 0.87)",
+                                                    "height": 48,
+                                                    "muiPrepared": true,
+                                                  }
+                                                }
+                                              >
+                                                <TableHeaderColumn
+                                                  columnNumber={1}
+                                                  hoverable={false}
+                                                  key="1-1/.1"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Tipo
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={2}
+                                                  hoverable={false}
+                                                  key="1-2/.2"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Total
+                                                  </th>
+                                                </TableHeaderColumn>
+                                                <TableHeaderColumn
+                                                  columnNumber={3}
+                                                  hoverable={false}
+                                                  key="1-3/.3"
+                                                  onClick={[Function]}
+                                                  onHover={[Function]}
+                                                  onHoverExit={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "backgroundColor": "inherit",
+                                                    }
+                                                  }
+                                                >
+                                                  <th
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                    onMouseLeave={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                        "color": "#9e9e9e",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "normal",
+                                                        "height": 56,
+                                                        "muiPrepared": true,
+                                                        "paddingLeft": 24,
+                                                        "paddingRight": 24,
+                                                        "position": "relative",
+                                                        "textAlign": "left",
+                                                        "textOverflow": "ellipsis",
+                                                        "whiteSpace": "nowrap",
+                                                      }
+                                                    }
+                                                  >
+                                                    Perc
+                                                  </th>
+                                                </TableHeaderColumn>
+                                              </tr>
+                                            </TableRow>
+                                          </thead>
+                                        </TableHeader>
+                                      </table>
+                                    </div>
+                                    <div
+                                      style={
+                                        Object {
+                                          "height": "inherit",
+                                          "muiPrepared": true,
+                                          "overflowX": "hidden",
+                                          "overflowY": "auto",
+                                        }
+                                      }
+                                    >
+                                      <table
+                                        style={
+                                          Object {
+                                            "backgroundColor": "#ffffff",
+                                            "borderCollapse": "collapse",
+                                            "borderSpacing": 0,
+                                            "fontFamily": "Roboto, sans-serif",
+                                            "tableLayout": "fixed",
+                                            "width": "100%",
+                                          }
+                                        }
+                                      >
+                                        <TableBody
+                                          allRowsSelected={false}
+                                          deselectOnClickaway={true}
+                                          displayRowCheckbox={false}
+                                          multiSelectable={false}
+                                          onCellClick={[Function]}
+                                          onCellHover={[Function]}
+                                          onCellHoverExit={[Function]}
+                                          onRowHover={[Function]}
+                                          onRowHoverExit={[Function]}
+                                          onRowSelection={[Function]}
+                                          preScanRows={true}
+                                          selectable={false}
+                                          showRowHover={true}
+                                          stripedRows={true}
+                                          style={Object {}}
+                                        >
+                                          <ClickAwayListener
+                                            onClickAway={[Function]}
+                                          >
+                                            <tbody
+                                              style={
+                                                Object {
+                                                  "muiPrepared": true,
+                                                }
+                                              }
+                                            >
+                                              <TableRow
+                                                displayBorder={true}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".$CDB"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={0}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={true}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": "1px solid #e0e0e0",
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="0-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      CDB
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="0-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      R$ 1.000,00
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="0-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      39.22%
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                              <TableRow
+                                                displayBorder={true}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".$Total"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={1}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={false}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": "1px solid #e0e0e0",
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="1-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      Total
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="1-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      R$ 2.550,00
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="1-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "inherit",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "inherit",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      100.00%
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                              <TableRow
+                                                displayBorder={false}
+                                                hoverable={true}
+                                                hovered={false}
+                                                key=".$monetary action"
+                                                onCellClick={[Function]}
+                                                onCellHover={[Function]}
+                                                onCellHoverExit={[Function]}
+                                                onRowClick={[Function]}
+                                                onRowHover={[Function]}
+                                                onRowHoverExit={[Function]}
+                                                rowNumber={2}
+                                                selectable={true}
+                                                selected={false}
+                                                striped={true}
+                                              >
+                                                <tr
+                                                  style={
+                                                    Object {
+                                                      "borderBottom": false,
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "height": 48,
+                                                      "muiPrepared": true,
+                                                    }
+                                                  }
+                                                >
+                                                  <TableRowColumn
+                                                    columnNumber={1}
+                                                    hoverable={true}
+                                                    key="2-1/.1"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      monetary action
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={2}
+                                                    hoverable={true}
+                                                    key="2-2/.2"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      R$ 1.550,00
+                                                    </td>
+                                                  </TableRowColumn>
+                                                  <TableRowColumn
+                                                    columnNumber={3}
+                                                    hoverable={true}
+                                                    key="2-3/.3"
+                                                    onClick={[Function]}
+                                                    onHover={[Function]}
+                                                    onHoverExit={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                      }
+                                                    }
+                                                  >
+                                                    <td
+                                                      onClick={[Function]}
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "rgba(127, 221, 233, 0.4)",
+                                                          "fontSize": 13,
+                                                          "height": 48,
+                                                          "muiPrepared": true,
+                                                          "overflow": "hidden",
+                                                          "paddingLeft": 24,
+                                                          "paddingRight": 24,
+                                                          "textAlign": "left",
+                                                          "textOverflow": "ellipsis",
+                                                          "whiteSpace": "nowrap",
+                                                        }
+                                                      }
+                                                    >
+                                                      60.78%
+                                                    </td>
+                                                  </TableRowColumn>
+                                                </tr>
+                                              </TableRow>
+                                            </tbody>
+                                          </ClickAwayListener>
+                                        </TableBody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </Table>
+                              </InvestmentsTable>
+                            </div>
+                          </Col>
+                          <Col
+                            debug={false}
+                            lg={3}
+                            md={null}
+                            offset={Object {}}
+                            pull={Object {}}
+                            push={Object {}}
+                            sm={null}
+                            style={Object {}}
+                            xl={null}
+                            xs={null}
+                          >
+                            <div
+                              style={
+                                Object {
+                                  "boxSizing": "border-box",
+                                  "flexBasis": "25%",
+                                  "flexGrow": 0,
+                                  "flexShrink": 0,
+                                  "left": "auto",
+                                  "marginLeft": "0%",
+                                  "maxWidth": "25%",
+                                  "minHeight": "1px",
+                                  "overflow": "hidden",
+                                  "paddingLeft": "15px",
+                                  "paddingRight": "15px",
+                                  "position": "relative",
+                                  "right": "auto",
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <PieChart
+                                barCategoryGap="10%"
+                                barGap={4}
+                                cx="50%"
+                                cy="50%"
+                                endAngle={360}
+                                height={220}
+                                innerRadius={0}
+                                layout="centric"
+                                margin={
+                                  Object {
+                                    "bottom": 5,
+                                    "left": 5,
+                                    "right": 5,
+                                    "top": 5,
+                                  }
+                                }
+                                outerRadius="80%"
+                                reverseStackOrder={false}
+                                stackOffset="none"
+                                startAngle={0}
+                                width={220}
+                              >
+                                <div
+                                  className="recharts-wrapper"
+                                  style={
+                                    Object {
+                                      "cursor": "default",
+                                      "height": 220,
+                                      "position": "relative",
+                                      "width": 220,
+                                    }
+                                  }
+                                >
+                                  <Surface
+                                    height={220}
+                                    width={220}
+                                  >
+                                    <svg
+                                      className="recharts-surface"
+                                      height={220}
+                                      version="1.1"
+                                      viewBox="0 0 220 220"
+                                      width={220}
+                                    >
+                                      <Pie
+                                        angleAxis={
+                                          Object {
+                                            "angleAxisId": 0,
+                                            "axisLine": true,
+                                            "axisType": "angleAxis",
+                                            "cx": 110,
+                                            "cy": 110,
+                                            "domain": Array [
+                                              0,
+                                              1,
+                                            ],
+                                            "endAngle": 360,
+                                            "hide": true,
+                                            "innerRadius": 0,
+                                            "isCategorial": true,
+                                            "layout": "centric",
+                                            "orientation": undefined,
+                                            "originalDomain": Array [
+                                              0,
+                                              "auto",
+                                            ],
+                                            "outerRadius": 84,
+                                            "radius": 84,
+                                            "realScaleType": "band",
+                                            "scale": [Function],
+                                            "startAngle": 0,
+                                            "tick": true,
+                                            "tickLine": true,
+                                            "type": "category",
+                                          }
+                                        }
+                                        animationBegin={400}
+                                        animationDuration={1500}
+                                        animationEasing="ease"
+                                        animationId={0}
+                                        cx={110}
+                                        cy={110}
+                                        data={
+                                          Array [
+                                            Object {
+                                              "name": "CDB",
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "name": "monetary action",
+                                              "value": 1550,
+                                            },
+                                          ]
+                                        }
+                                        dataKey="value"
+                                        endAngle={360}
+                                        fill="#8884d8"
+                                        hide={false}
+                                        innerRadius={90}
+                                        isAnimationActive={true}
+                                        key="item-0"
+                                        labelLine={true}
+                                        legendType="rect"
+                                        maxRadius={148.49242404917499}
+                                        minAngle={0}
+                                        nameKey="name"
+                                        onMouseEnter={[Function]}
+                                        onMouseLeave={[Function]}
+                                        outerRadius={110}
+                                        paddingAngle={0}
+                                        radiusAxis={
+                                          Object {
+                                            "allowDataOverflow": false,
+                                            "angle": 0,
+                                            "axisLine": true,
+                                            "axisType": "radiusAxis",
+                                            "cx": 110,
+                                            "cy": 110,
+                                            "domain": Array [
+                                              0,
+                                              1550,
+                                            ],
+                                            "endAngle": 360,
+                                            "hide": true,
+                                            "innerRadius": 0,
+                                            "isCategorial": false,
+                                            "layout": "centric",
+                                            "niceTicks": Array [
+                                              0,
+                                              400,
+                                              800,
+                                              1200,
+                                              1600,
+                                            ],
+                                            "orientation": undefined,
+                                            "originalDomain": Array [
+                                              0,
+                                              "auto",
+                                            ],
+                                            "outerRadius": 84,
+                                            "radius": 84,
+                                            "radiusAxisId": 0,
+                                            "realScaleType": "linear",
+                                            "scale": [Function],
+                                            "startAngle": 0,
+                                            "stroke": "#ccc",
+                                            "tick": true,
+                                            "tickCount": 5,
+                                            "type": "number",
+                                          }
+                                        }
+                                        sectors={
+                                          Array [
+                                            Object {
+                                              "cornerRadius": undefined,
+                                              "cx": 110,
+                                              "cy": 110,
+                                              "endAngle": 141.1764705882353,
+                                              "fill": "#4eb8ea",
+                                              "innerRadius": 90,
+                                              "maxRadius": 148.49242404917499,
+                                              "midAngle": 70.58823529411765,
+                                              "middleRadius": 100,
+                                              "name": "CDB",
+                                              "outerRadius": 110,
+                                              "paddingAngle": 0,
+                                              "payload": Object {
+                                                "fill": "#4eb8ea",
+                                                "name": "CDB",
+                                                "payload": Object {
+                                                  "name": "CDB",
+                                                  "value": 1000,
+                                                },
+                                                "stroke": "#fff",
+                                                "value": 1000,
+                                              },
+                                              "percent": 0.39215686274509803,
+                                              "startAngle": 0,
+                                              "stroke": "#fff",
+                                              "tooltipPayload": Array [
+                                                Object {
+                                                  "name": "CDB",
+                                                  "payload": Object {
+                                                    "fill": "#4eb8ea",
+                                                    "name": "CDB",
+                                                    "payload": Object {
+                                                      "name": "CDB",
+                                                      "value": 1000,
+                                                    },
+                                                    "stroke": "#fff",
+                                                    "value": 1000,
+                                                  },
+                                                  "value": 1000,
+                                                },
+                                              ],
+                                              "tooltipPosition": Object {
+                                                "x": 143.23547994796596,
+                                                "y": 15.684556552872252,
+                                              },
+                                              "value": 1000,
+                                            },
+                                            Object {
+                                              "cornerRadius": undefined,
+                                              "cx": 110,
+                                              "cy": 110,
+                                              "endAngle": 360,
+                                              "fill": "#ac92ec",
+                                              "innerRadius": 90,
+                                              "maxRadius": 148.49242404917499,
+                                              "midAngle": 250.58823529411765,
+                                              "middleRadius": 100,
+                                              "name": "monetary action",
+                                              "outerRadius": 110,
+                                              "paddingAngle": 0,
+                                              "payload": Object {
+                                                "fill": "#ac92ec",
+                                                "name": "monetary action",
+                                                "payload": Object {
+                                                  "name": "monetary action",
+                                                  "value": 1550,
+                                                },
+                                                "stroke": "#fff",
+                                                "value": 1550,
+                                              },
+                                              "percent": 0.6078431372549019,
+                                              "startAngle": 141.1764705882353,
+                                              "stroke": "#fff",
+                                              "tooltipPayload": Array [
+                                                Object {
+                                                  "name": "monetary action",
+                                                  "payload": Object {
+                                                    "fill": "#ac92ec",
+                                                    "name": "monetary action",
+                                                    "payload": Object {
+                                                      "name": "monetary action",
+                                                      "value": 1550,
+                                                    },
+                                                    "stroke": "#fff",
+                                                    "value": 1550,
+                                                  },
+                                                  "value": 1550,
+                                                },
+                                              ],
+                                              "tooltipPosition": Object {
+                                                "x": 76.76452005203403,
+                                                "y": 204.31544344712773,
+                                              },
+                                              "value": 1550,
+                                            },
+                                          ]
+                                        }
+                                        startAngle={0}
+                                        stroke="#fff"
+                                      >
+                                        <Layer
+                                          className="recharts-pie"
+                                        >
+                                          <g
+                                            className="recharts-layer recharts-pie"
+                                          >
+                                            <g
+                                              clipPath="url(#recharts-pie-2)"
+                                            >
+                                              <Animate
+                                                attributeName=""
+                                                begin={400}
+                                                canBegin={true}
+                                                duration={1500}
+                                                easing="ease"
+                                                from={
+                                                  Object {
+                                                    "t": 0,
+                                                  }
+                                                }
+                                                isActive={true}
+                                                key="pie-0"
+                                                onAnimationEnd={[Function]}
+                                                onAnimationStart={[Function]}
+                                                steps={Array []}
+                                                to={
+                                                  Object {
+                                                    "t": 1,
+                                                  }
+                                                }
+                                              >
+                                                <Layer>
+                                                  <g
+                                                    className="recharts-layer"
+                                                  >
+                                                    <Layer
+                                                      className="recharts-pie-sector"
+                                                      key="sector-0"
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                    >
+                                                      <g
+                                                        className="recharts-layer recharts-pie-sector"
+                                                        onMouseEnter={[Function]}
+                                                        onMouseLeave={[Function]}
+                                                      >
+                                                        <Sector
+                                                          cornerRadius={0}
+                                                          cx={110}
+                                                          cy={110}
+                                                          endAngle={0}
+                                                          fill="#4eb8ea"
+                                                          innerRadius={90}
+                                                          maxRadius={148.49242404917499}
+                                                          midAngle={70.58823529411765}
+                                                          middleRadius={100}
+                                                          name="CDB"
+                                                          outerRadius={110}
+                                                          paddingAngle={0}
+                                                          payload={
+                                                            Object {
+                                                              "fill": "#4eb8ea",
+                                                              "name": "CDB",
+                                                              "payload": Object {
+                                                                "name": "CDB",
+                                                                "value": 1000,
+                                                              },
+                                                              "stroke": "#fff",
+                                                              "value": 1000,
+                                                            }
+                                                          }
+                                                          percent={0.39215686274509803}
+                                                          startAngle={0}
+                                                          stroke="#fff"
+                                                          tooltipPayload={
+                                                            Array [
+                                                              Object {
+                                                                "name": "CDB",
+                                                                "payload": Object {
+                                                                  "fill": "#4eb8ea",
+                                                                  "name": "CDB",
+                                                                  "payload": Object {
+                                                                    "name": "CDB",
+                                                                    "value": 1000,
+                                                                  },
+                                                                  "stroke": "#fff",
+                                                                  "value": 1000,
+                                                                },
+                                                                "value": 1000,
+                                                              },
+                                                            ]
+                                                          }
+                                                          tooltipPosition={
+                                                            Object {
+                                                              "x": 143.23547994796596,
+                                                              "y": 15.684556552872252,
+                                                            }
+                                                          }
+                                                          value={1000}
+                                                        />
+                                                      </g>
+                                                    </Layer>
+                                                    <Layer
+                                                      className="recharts-pie-sector"
+                                                      key="sector-1"
+                                                      onMouseEnter={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                    >
+                                                      <g
+                                                        className="recharts-layer recharts-pie-sector"
+                                                        onMouseEnter={[Function]}
+                                                        onMouseLeave={[Function]}
+                                                      >
+                                                        <Sector
+                                                          cornerRadius={0}
+                                                          cx={110}
+                                                          cy={110}
+                                                          endAngle={0}
+                                                          fill="#ac92ec"
+                                                          innerRadius={90}
+                                                          maxRadius={148.49242404917499}
+                                                          midAngle={250.58823529411765}
+                                                          middleRadius={100}
+                                                          name="monetary action"
+                                                          outerRadius={110}
+                                                          paddingAngle={0}
+                                                          payload={
+                                                            Object {
+                                                              "fill": "#ac92ec",
+                                                              "name": "monetary action",
+                                                              "payload": Object {
+                                                                "name": "monetary action",
+                                                                "value": 1550,
+                                                              },
+                                                              "stroke": "#fff",
+                                                              "value": 1550,
+                                                            }
+                                                          }
+                                                          percent={0.6078431372549019}
+                                                          startAngle={0}
+                                                          stroke="#fff"
+                                                          tooltipPayload={
+                                                            Array [
+                                                              Object {
+                                                                "name": "monetary action",
+                                                                "payload": Object {
+                                                                  "fill": "#ac92ec",
+                                                                  "name": "monetary action",
+                                                                  "payload": Object {
+                                                                    "name": "monetary action",
+                                                                    "value": 1550,
+                                                                  },
+                                                                  "stroke": "#fff",
+                                                                  "value": 1550,
+                                                                },
+                                                                "value": 1550,
+                                                              },
+                                                            ]
+                                                          }
+                                                          tooltipPosition={
+                                                            Object {
+                                                              "x": 76.76452005203403,
+                                                              "y": 204.31544344712773,
+                                                            }
+                                                          }
+                                                          value={1550}
+                                                        />
+                                                      </g>
+                                                    </Layer>
+                                                  </g>
+                                                </Layer>
+                                              </Animate>
+                                            </g>
+                                          </g>
+                                        </Layer>
+                                      </Pie>
+                                    </svg>
+                                  </Surface>
+                                  <Tooltip
+                                    active={false}
+                                    animationDuration={400}
+                                    animationEasing="ease"
+                                    coordinate={
+                                      Object {
+                                        "x": 0,
+                                        "y": 0,
+                                      }
+                                    }
+                                    cursor={true}
+                                    cursorStyle={Object {}}
+                                    filterNull={true}
+                                    formatter={[Function]}
+                                    isAnimationActive={true}
+                                    itemSorter={[Function]}
+                                    itemStyle={Object {}}
+                                    labelStyle={Object {}}
+                                    offset={10}
+                                    payload={Array []}
+                                    separator=" : "
+                                    viewBox={
+                                      Object {
+                                        "bottom": 5,
+                                        "brushBottom": 5,
+                                        "height": 210,
+                                        "left": 5,
+                                        "right": 5,
+                                        "top": 5,
+                                        "width": 210,
+                                        "x": 5,
+                                        "y": 5,
+                                      }
+                                    }
+                                    wrapperStyle={Object {}}
+                                  >
+                                    <div
+                                      className="recharts-tooltip-wrapper"
+                                      style={
+                                        Object {
+                                          "MozTransform": "translate(undefinedpx, undefinedpx)",
+                                          "OTransform": "translate(undefinedpx, undefinedpx)",
+                                          "WebkitTransform": "translate(undefinedpx, undefinedpx)",
+                                          "msTransform": "translate(undefinedpx, undefinedpx)",
+                                          "pointerEvents": "none",
+                                          "position": "absolute",
+                                          "top": 0,
+                                          "transform": "translate(undefinedpx, undefinedpx)",
+                                          "visibility": "hidden",
+                                        }
+                                      }
+                                    >
+                                      <DefaultTooltipContent
+                                        active={false}
+                                        animationDuration={400}
+                                        animationEasing="ease"
+                                        coordinate={
+                                          Object {
+                                            "x": 0,
+                                            "y": 0,
+                                          }
+                                        }
+                                        cursor={true}
+                                        cursorStyle={Object {}}
+                                        filterNull={true}
+                                        formatter={[Function]}
+                                        isAnimationActive={true}
+                                        itemSorter={[Function]}
+                                        itemStyle={Object {}}
+                                        labelStyle={Object {}}
+                                        offset={10}
+                                        payload={Array []}
+                                        separator=" : "
+                                        viewBox={
+                                          Object {
+                                            "bottom": 5,
+                                            "brushBottom": 5,
+                                            "height": 210,
+                                            "left": 5,
+                                            "right": 5,
+                                            "top": 5,
+                                            "width": 210,
+                                            "x": 5,
+                                            "y": 5,
+                                          }
+                                        }
+                                        wrapperStyle={Object {}}
+                                      >
+                                        <div
+                                          className="recharts-default-tooltip"
+                                          style={
+                                            Object {
+                                              "backgroundColor": "#fff",
+                                              "border": "1px solid #ccc",
+                                              "margin": 0,
+                                              "padding": 10,
+                                              "whiteSpace": "nowrap",
+                                            }
+                                          }
+                                        >
+                                          <p
+                                            className="recharts-tooltip-label"
+                                            style={
+                                              Object {
+                                                "margin": 0,
+                                              }
+                                            }
+                                          />
+                                        </div>
+                                      </DefaultTooltipContent>
+                                    </div>
+                                  </Tooltip>
+                                </div>
+                              </PieChart>
+                            </div>
+                          </Col>
+                          <ClearFix
+                            lg={true}
+                            md={true}
+                            sm={true}
+                            xl={true}
+                            xs={true}
+                          >
+                            <Visible
+                              lg={true}
+                              md={true}
+                              sm={true}
+                              xl={true}
+                              xs={true}
+                            >
+                              <RenderAny>
+                                <div
+                                  style={
+                                    Object {
+                                      "clear": "both",
+                                      "display": "table",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    style={
+                                      Object {
+                                        "display": "none",
+                                      }
+                                    }
+                                  >
+                                     
+                                  </span>
+                                </div>
+                              </RenderAny>
+                            </Visible>
+                          </ClearFix>
+                        </div>
+                      </Row>
+                      <span
+                        style={
+                          Object {
+                            "clear": "both",
+                            "display": "table",
+                          }
+                        }
+                      />
+                    </div>
+                  </Container>
+                </div>
+              </div>
+            </CardMedia>
+          </div>
+        </div>
+      </Paper>
+    </Card>
+  </TotalByType>
+</MuiThemeProvider>
+`;

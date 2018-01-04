@@ -1,3 +1,5 @@
 import getInvestmentsByType from './investmentsByType'
+import getTotalBought from './totalBought'
+import getIncomesByMonth from './incomesByMonth'
 
-export { getInvestmentsByType }
+export { getInvestmentsByType, getTotalBought, getIncomesByMonth }

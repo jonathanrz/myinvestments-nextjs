@@ -4,7 +4,7 @@ export const initialState = {
   investments: [],
   types: {},
   holders: {},
-  filteredInvestments: { investments: [], byType: {} },
+  filteredInvestments: [],
   selectedMenuItem: 'Dashboard'
 }
 
