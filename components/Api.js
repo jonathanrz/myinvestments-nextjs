@@ -78,6 +78,7 @@ const buildIncomeBody = income => {
     quantity: income.quantity,
     value: income.value,
     bought: income.bought,
+    sold: income.sold,
     gross: income.gross,
     ir: income.ir,
     fee: income.fee
