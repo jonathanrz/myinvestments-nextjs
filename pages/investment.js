@@ -111,6 +111,7 @@ class Index extends React.Component {
                   <TableHeaderColumn>Quantidade</TableHeaderColumn>
                   <TableHeaderColumn>Valor</TableHeaderColumn>
                   <TableHeaderColumn>Comprado</TableHeaderColumn>
+                  <TableHeaderColumn>Vendido</TableHeaderColumn>
                   <TableHeaderColumn>Rendimento</TableHeaderColumn>
                   <TableHeaderColumn>IR</TableHeaderColumn>
                   <TableHeaderColumn>Taxa</TableHeaderColumn>
@@ -130,6 +131,9 @@ class Index extends React.Component {
                     </TableRowColumn>
                     <TableRowColumn>
                       <Money value={item.bought} />
+                    </TableRowColumn>
+                    <TableRowColumn>
+                      <Money value={item.sold} />
                     </TableRowColumn>
                     <TableRowColumn>
                       <MoneyWithColor value={item.gross} />

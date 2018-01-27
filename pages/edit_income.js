@@ -43,6 +43,7 @@ class Index extends React.Component {
       quantity: income ? income.quantity : lastIncome ? lastIncome.quantity : 0,
       value: income ? income.value : lastIncome ? lastIncome.value : 0,
       bought: income ? income.bought : 0,
+      sold: income ? income.sold : 0,
       gross: income ? income.gross : 0,
       ir: income ? income.ir : 0,
       fee: income ? income.fee : 0
@@ -62,6 +63,10 @@ class Index extends React.Component {
       {
         name: 'bought',
         label: 'Comprado'
+      },
+      {
+        name: 'sold',
+        label: 'Vendido'
       },
       {
         name: 'gross',
